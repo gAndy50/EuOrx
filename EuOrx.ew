@@ -4309,6 +4309,223 @@ end function
 
 --Joystick Functions
 
+public constant xorxJoystick_Setup = define_c_proc(orx,"+orxJoystick_Setup",{})
+
+public procedure orxJoystick_Setup()
+
+ c_proc(xorxJoystick_Setup,{})
+	
+end procedure
+
+public constant xorxJoystick_Init = define_c_func(orx,"+orxJoystick_Init",{},C_UINT),
+				xorxJoystick_Exit = define_c_proc(orx,"+orxJoystick_Exit",{}),
+				xorxJoystick_GetAxisValue = define_c_func(orx,"+orxJoystick_GetAxisValue",{C_UINT},C_FLOAT),
+				xorxJoystick_IsButtonPressed = define_c_func(orx,"+orxJoystick_IsButtonPressed",{C_UINT},C_BOOL),
+				xorxJoystick_GetButtonName = define_c_func(orx,"+orxJoystick_GetButtonName",{C_UINT},C_POINTER),
+				xorxJoystick_GetAxisName = define_c_func(orx,"+orxJoystick_GetAxisName",{C_UINT},C_POINTER),
+				xorxJoystick_IsConnected = define_c_func(orx,"+orxJoystick_IsConnected",{C_UINT},C_BOOL)
+				
+public function orxJoystick_Init()
+
+ return c_func(xorxJoystick_Init,{})
+	
+end function
+
+public procedure orxJoystick_Exit()
+
+ c_proc(xorxJoystick_Exit,{})
+	
+end procedure
+
+public function orxJoystick_GetAxisValue(atom ax)
+
+ return c_func(xorxJoystick_GetAxisValue,{ax})
+	
+end function
+
+public function orxJoystick_IsButtonPressed(atom btn)
+
+ return c_func(xorxJoystick_IsButtonPressed,{btn})
+	
+end function
+
+public function orxJoystick_GetButtonName(atom btn)
+
+ return c_func(xorxJoystick_GetButtonName,{btn})
+	
+end function
+
+public function orxJoystick_GetAxisName(atom ax)
+
+ return c_func(xorxJoystick_GetAxisName,{ax})
+	
+end function
+
+public function orxJoystick_IsConnected(atom id)
+
+ return c_func(xorxJoystick_IsConnected,{id})
+	
+end function
+
+--Keyboard Functions
+
+public constant xorxKeyboard_Setup = define_c_proc(orx,"+orxKeyboard_Setup",{})
+
+public procedure orxKeyboard_Setup()
+
+ c_proc(xorxKeyboard_Setup,{})
+	
+end procedure
+
+public constant xorxKeyboard_Init = define_c_func(orx,"+orxKeyboard_Init",{},C_UINT),
+				xorxKeyboard_Exit = define_c_proc(orx,"+orxKeyboard_Exit",{}),
+				xorxKeyboard_IsKeyPressed = define_c_func(orx,"+orxKeyboard_IsKeyPressed",{C_UINT},C_BOOL),
+				xorxKeyboard_GetKeyDisplayName = define_c_func(orx,"+orxKeyboard_GetKeyDisplayName",{C_UINT},C_POINTER),
+				xorxKeyboard_ReadKey = define_c_func(orx,"+orxKeyboard_ReadKey",{},C_UINT),
+				xorxKeyboard_ReadString = define_c_func(orx,"+orxKeyboard_ReadString",{},C_POINTER),
+				xorxKeyboard_ClearBuffer = define_c_proc(orx,"+orxKeyboard_ClearBuffer",{}),
+				xorxKeyboard_GetKeyName = define_c_func(orx,"+orxKeyboard_GetKeyName",{C_UINT},C_POINTER),
+				xorxKeyboard_Show = define_c_func(orx,"+orxKeyboard_Show",{C_BOOL},C_UINT)
+				
+public function orxKeyboard_Init()
+
+ return c_func(xorxKeyboard_Init,{})
+	
+end function
+
+public procedure orxKeyboard_Exit()
+
+ c_proc(xorxKeyboard_Exit,{})
+	
+end procedure
+
+public function orxKeyboard_IsKeyPressed(atom ek)
+
+ return c_func(xorxKeyboard_IsKeyPressed,{ek})
+	
+end function
+
+public function orxKeyboard_GetKeyDisplayName(atom ek)
+
+ return c_func(xorxKeyboard_GetKeyDisplayName,{ek})
+	
+end function
+
+public function orxKeyboard_ReadKey()
+
+ return c_func(xorxKeyboard_ReadKey,{})
+	
+end function
+
+public function orxKeyboard_ReadString()
+
+ return c_func(xorxKeyboard_ReadString,{})
+	
+end function
+
+public procedure orxKeyboard_ClearBuffer()
+
+ c_proc(xorxKeyboard_ClearBuffer,{})
+	
+end procedure
+
+public function orxKeyboard_GetKeyName(atom ek)
+
+ return c_func(xorxKeyboard_GetKeyName,{ek})
+	
+end function
+
+public function orxKeyboard_Show(atom show)
+
+ return c_func(xorxKeyboard_Show,{show})
+	
+end function
+
+--Mouse Functions
+
+public constant xorxMouse_Setup = define_c_proc(orx,"+orxMouse_Setup",{})
+
+public procedure orxMouse_Setup()
+
+ c_proc(xorxMouse_Setup,{})
+	
+end procedure
+
+public constant xorxMouse_Init = define_c_func(orx,"+orxMouse_Init",{},C_UINT),
+				xorxMouse_Exit = define_c_proc(orx,"+orxMouse_Exit",{}),
+				xorxMouse_SetPosition = define_c_func(orx,"+orxMouse_SetPosition",{C_FLOAT,C_FLOAT},C_UINT),
+				xorxMouse_GetPosition = define_c_func(orx,"+orxMouse_GetPosition",{C_POINTER},C_POINTER),
+				xorxMouse_IsButtonPressed = define_c_func(orx,"+orxMouse_IsButtonPressed",{C_UINT},C_BOOL),
+				xorxMouse_GetMoveDelta = define_c_func(orx,"+orxMouse_GetMoveDelta",{C_POINTER},C_POINTER),
+				xorxMouse_GetWheelDelta = define_c_func(orx,"+orxMouse_GetWheelDelta",{},C_FLOAT),
+				xorxMouse_ShowCursor = define_c_func(orx,"+orxMouse_ShowCursor",{C_BOOL},C_UINT),
+				xorxMouse_Grab = define_c_func(orx,"+orxMouse_Grab",{C_BOOL},C_UINT),
+				xorxMouse_SetCursor = define_c_func(orx,"+orxMouse_SetCursor",{C_POINTER,C_POINTER},C_UINT),
+				xorxMouse_GetButtonName = define_c_func(orx,"+orxMouse_GetButtonName",{C_UINT},C_POINTER),
+				xorxMouse_GetAxisName = define_c_func(orx,"+orxMouse_GetAxisName",{C_UINT},C_POINTER)
+				
+public function orxMouse_Init()
+
+ return c_func(xorxMouse_Init,{})
+	
+end function
+
+public procedure orxMouse_Exit()
+
+ c_proc(xorxMouse_Exit,{})
+	
+end procedure
+
+public function orxMouse_SetPosition(atom x,atom y)
+
+ return c_func(xorxMouse_SetPosition,{x,y})
+	
+end function
+
+public function orxMouse_GetPosition(atom pos)
+
+ return c_func(xorxMouse_GetPosition,{pos})
+	
+end function
+
+public function orxMouse_IsButtonPressed(atom btn)
+
+ return c_func(xorxMouse_IsButtonPressed,{btn})
+	
+end function
+
+public function orxMouse_GetMoveDelta(atom del)
+
+ return c_func(xorxMouse_GetMoveDelta,{del})
+	
+end function
+
+public function orxMouse_GetWheelDelta()
+
+ return c_func(xorxMouse_GetWheelDelta,{})
+	
+end function
+
+public function orxMouse_ShowCursor(atom show)
+
+ return c_func(xorxMouse_ShowCursor,{show})
+	
+end function
+
+public function orxMouse_GetButtonName(atom btn)
+
+ return c_func(xorxMouse_GetButtonName,{btn})
+	
+end function
+
+public function orxMouse_GetAxisName(atom ax)
+
+ return c_func(xorxMouse_GetAxisName,{ax})
+	
+end function
+
+--Android Functions
+
 --Param Functions
 
 public constant xorxParam_Setup = define_c_proc(orx,"+orxParam_Setup",{}),
@@ -4609,4 +4826,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­4310.20
+­4527.19
