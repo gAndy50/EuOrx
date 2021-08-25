@@ -3823,6 +3823,492 @@ end function
 
 --File Functions
 
+public constant xorxFile_Setup = define_c_proc(orx,"+orxFile_Setup",{}),
+				xorxFile_Init = define_c_func(orx,"+orxFile_Init",{},C_UINT),
+				xorxFile_Exit = define_c_proc(orx,"+orxFile_Exit",{}),
+				xorxFile_GetHomeDirectory = define_c_func(orx,"+orxFile_GetHomeDirectory",{C_POINTER},C_POINTER),
+				xorxFile_GetApplicationSaveDirectory = define_c_func(orx,"+orxFile_GetApplicationSaveDirectroy",{C_POINTER},C_POINTER),
+				xorxFile_Exists = define_c_func(orx,"+orxFile_Exists",{C_POINTER},C_BOOL),
+				xorxFile_FindFirst = define_c_func(orx,"+orxFile_FindFirst",{C_POINTER,C_POINTER},C_UINT),
+				xorxFile_FindNext = define_c_func(orx,"+orxFile_FindNext",{C_POINTER},C_UINT),
+				xorxFile_FindClose = define_c_proc(orx,"+orxFile_FindClose",{C_POINTER}),
+				xorxFile_GetInfo = define_c_func(orx,"+orxFile_GetInfo",{C_POINTER,C_POINTER},C_UINT),
+				xorxFile_Remove = define_c_func(orx,"+orxFile_Remove",{C_POINTER},C_UINT),
+				xorxFile_MakeDirectory = define_c_func(orx,"+orxFile_MakeDirectory",{C_POINTER},C_UINT),
+				xorxFile_Open = define_c_func(orx,"+orxFile_Open",{C_POINTER,C_UINT},C_POINTER),
+				xorxFile_Read = define_c_func(orx,"+orxFile_Read",{C_POINTER,C_LONG,C_LONG,C_POINTER},C_LONG),
+				xorxFile_Write = define_c_func(orx,"+orxFile_Write",{C_POINTER,C_LONG,C_LONG,C_POINTER},C_LONG),
+				xorxFile_Delete = define_c_func(orx,"+orxFile_Delete",{C_POINTER},C_UINT),
+				xorxFile_Seek = define_c_func(orx,"+orxFile_Seek",{C_POINTER,C_LONG,C_UINT},C_LONG),
+				xorxFile_Tell = define_c_func(orx,"+orxFile_Tell",{C_POINTER},C_LONG),
+				xorxFile_GetSize = define_c_func(orx,"+orxFile_GetSize",{C_POINTER},C_LONG),
+				xorxFile_GetTime = define_c_func(orx,"+orxFile_GetTime",{C_POINTER},C_LONG),
+				xorxFile_Print = define_c_func(orx,"+orxFile_Print",{C_POINTER,C_POINTER},C_UINT),
+				xorxFile_Close = define_c_func(orx,"+orxFile_Close",{C_POINTER},C_UINT)
+				
+public procedure orxFile_Setup()
+
+ c_proc(xorxFile_Setup,{})
+	
+end procedure
+
+public function orxFile_Init()
+
+ return c_func(xorxFile_Init,{})
+	
+end function
+
+public procedure orxFile_Exit()
+
+ c_proc(xorxFile_Exit,{})
+	
+end procedure
+
+public function orxFile_GetHomeDirectory(sequence path)
+
+ atom str = allocate_string(path,1)
+ 
+ return c_func(xorxFile_GetHomeDirectory,{str})
+	
+end function
+
+public function orxFile_GetApplicationSaveDirectory(sequence path)
+
+ atom str = allocate_string(path,1)
+ 
+ return c_func(xorxFile_GetApplicationSaveDirectory,{str})
+	
+end function
+
+public function orxFile_Exists(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxFile_Exists,{str})
+	
+end function
+
+public function orxFile_FindFirst(sequence pat,atom file)
+
+ atom str = allocate_string(pat,1)
+ 
+ return c_func(xorxFile_FindFirst,{str,file})
+	
+end function
+
+public function orxFile_FindNext(atom file)
+ 
+ return c_func(xorxFile_FindNext,{file}) 
+	
+end function
+
+public procedure orxFile_FindClose(atom file)
+
+ c_proc(xorxFile_FindClose,{file})
+	
+end procedure
+
+public function orxFile_GetInfo(sequence name,atom file)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxFile_GetInfo,{str,file})
+	
+end function
+
+public function orxFile_Remove(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxFile_Remove,{str})
+	
+end function
+
+public function orxFile_MakeDirectory(sequence name)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxFile_MakeDirectory,{str})
+	
+end function
+
+public function orxFile_Open(sequence name,atom flags)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxFile_Open,{str,flags})
+	
+end function
+
+public function orxFile_Read(atom data,atom size,atom ele,atom file)
+
+ return c_func(xorxFile_Read,{data,size,ele,file})
+	
+end function
+
+public function orxFile_Write(atom writedata,atom elesize,atom ele,atom file)
+
+ return c_func(xorxFile_Write,{writedata,elesize,ele,file})
+	
+end function
+
+public function orxFile_Delete(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxFile_Delete,{str})
+	
+end function
+
+public function orxFile_Seek(atom file,atom poa,atom wh)
+
+ return c_func(xorxFile_Seek,{file,poa,wh})
+	
+end function
+
+public function orxFile_Tell(atom file)
+
+ return c_func(xorxFile_Tell,{file})
+	
+end function
+
+public function orxFile_GetSize(atom file)
+
+ return c_func(xorxFile_GetSize,{file})
+	
+end function
+
+public function orxFile_GetTime(atom file)
+
+ return c_func(xorxFile_GetTime,{file})
+	
+end function
+
+public function orxFile_Print(atom file,sequence st)
+
+ atom str = allocate_string(st,1)
+ 
+ return c_func(xorxFile_Print,{file,str})
+	
+end function
+
+public function orxFile_Close(atom file)
+ 
+ return c_func(xorxFile_Close,{file})
+	
+end function
+
+--Input Functions
+
+public constant xorxInput_Setup = define_c_proc(orx,"+orxInput_Setup",{}),
+				xorxInput_Init = define_c_func(orx,"+orxInput_Init",{},C_UINT),
+				xorxInput_Exit = define_c_proc(orx,"+orxInput_Exit",{})
+				
+public procedure orxInput_Setup()
+ 
+ c_proc(xorxInput_Setup,{})
+	
+end procedure
+
+public function orxInput_Init()
+
+ return c_func(xorxInput_Init,{})
+	
+end function
+
+public procedure orxInput_Exit()
+
+ c_proc(xorxInput_Exit,{})
+	
+end procedure
+
+public constant xorxInput_Load = define_c_func(orx,"+orxInput_Load",{C_POINTER},C_UINT),
+				xorxInput_Save = define_c_func(orx,"+orxInput_Save",{C_POINTER},C_UINT)
+				
+public function orxInput_Load(sequence file)
+
+ atom str = allocate_string(file,1)
+ 
+ return c_func(xorxInput_Load,{str})
+	
+end function
+
+public function orxInput_Save(sequence file)
+
+ atom str = allocate_string(file,1)
+ 
+ return c_func(xorxInput_Save,{str})
+	
+end function
+
+public constant xorxInput_SelectSet = define_c_func(orx,"+orxInput_SelectSet",{C_POINTER},C_UINT),
+				xorxInput_GetCurrentSet = define_c_func(orx,"+orxInput_GetCurrentSet",{},C_POINTER),
+				xorxInput_RemoveSet = define_c_func(orx,"+orxInput_RemoveSet",{C_POINTER},C_UINT)
+				
+public function orxInput_SelectSet(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SelectSet,{str})
+	
+end function
+
+public function orxInput_GetCurrentSet()
+
+ return c_func(xorxInput_GetCurrentSet,{})
+	
+end function
+
+public function orxInput_RemoveSet(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_RemoveSet,{str})
+	
+end function
+
+public constant xorxInput_EnableSet = define_c_func(orx,"+orxInput_EnableSet",{C_POINTER,C_BOOL},C_UINT),
+				xorxInput_IsSetEnabled = define_c_func(orx,"+orxInput_IsSetEnabled",{C_POINTER},C_BOOL)
+				
+public function orxInput_EnableSet(sequence name,atom en)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_EnableSet,{str,en})
+	
+end function
+
+public function orxInput_IsSetEnabled(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_IsSetEnabled,{str})
+	
+end function
+
+public constant xorxInput_SetTypeFlags = define_c_func(orx,"+orxInput_SetTypeFlags",{C_UINT,C_UINT},C_UINT)
+
+public function orxInput_SetTypeFlags(atom addflag,atom remflag)
+
+ return c_func(xorxInput_SetTypeFlags,{addflag,remflag})
+	
+end function
+
+public constant xorxInput_IsActive = define_c_func(orx,"+orxInput_IsActive",{C_POINTER},C_BOOL),
+				xorxInput_HasBeenActivated = define_c_func(orx,"+orxInput_HasBeenActivated",{C_POINTER},C_BOOL),
+				xorxInput_HasBeenDeactivated = define_c_func(orx,"+orxInput_HasBeenDeactivated",{C_POINTER},C_BOOL),
+				xorxInput_HasNewStatus = define_c_func(orx,"+orxInput_HasNewStatus",{C_POINTER},C_BOOL),
+				xorxInput_GetValue = define_c_func(orx,"+orxInput_GetValue",{C_POINTER},C_FLOAT),
+				xorxInput_SetValue = define_c_func(orx,"+orxInput_SetValue",{C_POINTER,C_FLOAT},C_UINT),
+				xorxInput_SetPermanentValue = define_c_func(orx,"+orxInput_SetPermanentValue",{C_POINTER,C_FLOAT},C_UINT),
+				xorxInput_ResetValue = define_c_func(orx,"+orxInput_ResetValue",{C_POINTER},C_UINT)
+				
+public function orxInput_IsActive(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_IsActive,{str})
+	
+end function
+
+public function orxInput_HasBeenActivated(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_HasBeenActivated,{str})
+	
+end function
+
+public function orxInput_HasBeenDeactivated(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_HasBeenDeactivated,{str})
+	
+end function
+
+public function orxInput_HasNewStatus(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_HasNewStatus,{str})
+	
+end function
+
+public function orxInput_GetValue(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetValue,{str})
+	
+end function
+
+public function orxInput_SetValue(sequence name,atom val)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SetValue,{str,val})
+	
+end function
+
+public function orxInput_SetPermnanentValue(sequence name,atom val)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SetPermanentValue,{str,val})
+	
+end function
+
+public function orxInput_ResetValue(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_ResetValue,{str})
+	
+end function
+
+public constant xorxInput_GetThreshold = define_c_func(orx,"+orxInput_GetThreshold",{C_POINTER},C_FLOAT),
+				xorxInput_SetThreshold = define_c_func(orx,"+orxInput_SetThreshold",{C_POINTER,C_FLOAT},C_UINT),
+				xorxInput_GetMultiplier = define_c_func(orx,"+orxInput_GetMultiplier",{C_POINTER},C_FLOAT),
+				xorxInput_SetMultiplier = define_c_func(orx,"+orxInput_SetMultiplier",{C_POINTER,C_FLOAT},C_UINT)
+				
+public function orxInput_GetThreshold(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetThreshold,{str})
+	
+end function
+
+public function orxInput_SetThreshold(sequence name,atom thres)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SetThreshold,{str,thres})
+	
+end function
+
+public function orxInput_GetMultiplier(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetMultiplier,{str})
+	
+end function
+
+public function orxInput_SetMultiplier(sequence name,atom mult)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SetMultiplier,{str,mult})
+	
+end function
+
+public constant xorxInput_SetCombineMode = define_c_func(orx,"+orxInput_SetCombineMode",{C_POINTER,C_BOOL},C_UINT),
+				xorxInput_IsInCombineMode = define_c_func(orx,"+orxInput_IsInCombineMode",{C_POINTER},C_BOOL)
+				
+public function orxInput_SetCombineMode(sequence name,atom comb)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_SetCombineMode,{str,comb})
+	
+end function
+
+public function orxInput_IsInCombineMode(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_IsInCombineMode,{str})
+	
+end function
+
+public constant xorxInput_Bind = define_c_func(orx,"+orxInput_Bind",{C_POINTER,C_UINT,C_UINT,C_UINT},C_UINT)
+
+public function orxInput_Bind(sequence name,atom etype,atom id,atom mode,atom i)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_Bind,{str,etype,id,mode,i})
+	
+end function
+
+public constant xorxInput_Unbind = define_c_func(orx,"+orxInput_Unbind",{C_POINTER,C_UINT},C_UINT)
+
+public function orxInput_Unbind(sequence name,atom i)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_Unbind,{str,i})
+	
+end function
+
+public constant xorxInput_GetBoundInputCount = define_c_func(orx,"+orxInput_GetBoundInputCount",{C_UINT,C_UINT,C_UINT},C_UINT)
+
+public function orxInput_GetBoundInputCount(atom etype,atom id,atom mode)
+
+ return c_func(xorxInput_GetBoundInputCount,{etype,id,mode})
+	
+end function
+
+public constant xorxInput_GetBoundInput = define_c_func(orx,"+orxInput_GetBoundInput",{C_UINT,C_UINT,C_UINT,C_UINT,C_POINTER,C_POINTER},C_UINT)
+
+public function orxInput_GetBoundInput(atom etype,atom id,atom mode,atom i,sequence name,atom bi)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetBoundInput,{etype,id,mode,i,str,bi})
+	
+end function
+
+public constant xorxInput_GetBinding = define_c_func(orx,"+orxInput_GetBinding",{C_POINTER,C_UINT,C_POINTER,C_POINTER,C_POINTER},C_UINT)
+
+public function orxInput_GetBinding(sequence name,atom bi,atom ptype,atom id,atom mode)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetBinding,{str,bi,ptype,id,mode})
+	
+end function
+
+public constant xorxInput_GetBindingList = define_c_func(orx,"+orxInput_GetBindingList",{C_POINTER,C_UINT,C_UINT,C_UINT},C_UINT)
+
+public function orxInput_GetBindingList(sequence name,atom etype,atom id,atom mode)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetBindingList,{str,etype,id,mode})
+	
+end function
+
+public constant xorxInput_GetBindingName = define_c_func(orx,"+orxInput_GetBindingName",{C_UINT,C_UINT,C_UINT},C_POINTER)
+
+public function orxInput_GetBindingName(atom etype,atom id,atom mode)
+
+ return c_func(xorxInput_GetBindingName,{etype,id,mode})
+	
+end function
+
+public constant xorxInput_GetBindingType = define_c_func(orx,"+orxInput_GetBindingType",{C_POINTER,C_POINTER,C_POINTER,C_POINTER},C_UINT)
+
+public function orxInput_GetBindingType(sequence name,atom ptype,atom id,atom mode)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxInput_GetBindingType,{str,ptype,id,mode})
+	
+end function
+
+public constant xorxInput_GetActiveBinding = define_c_func(orx,"+orxInput_GetActiveBinding",{C_POINTER,C_POINTER,C_POINTER},C_UINT)
+
+public function orxInput_GetActiveBinding(atom ptype,atom id,atom val)
+
+ return c_func(xorxInput_GetActiveBinding,{ptype,id,val})
+	
+end function
+
+--Joystick Functions
+
 --Param Functions
 
 public constant xorxParam_Setup = define_c_proc(orx,"+orxParam_Setup",{}),
@@ -4123,4 +4609,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­4060.0
+­4310.20
