@@ -3873,7 +3873,196 @@ end function
 
 --Bank Functions
 
+public constant xorxBank_Init = define_c_func(orx,"+orxBank_Init",{},C_UINT),
+				xorxBank_Exit = define_c_proc(orx,"+orxBank_Exit",{}),
+				xorxBank_Create = define_c_func(orx,"+orxBank_Create",{C_UINT,C_UINT,C_UINT,C_UINT},C_POINTER),
+				xorxBank_Delete = define_c_proc(orx,"+orxBank_Delete",{C_POINTER}),
+				xorxBank_Allocate = define_c_proc(orx,"+orxBank_Allocate",{C_POINTER}),
+				xorxBank_AllocateIndexed = define_c_proc(orx,"+orxBank_AllocateIndexed",{C_POINTER,C_POINTER,C_POINTER}),
+				xorxBank_Free = define_c_proc(orx,"+orxBank_Free",{C_POINTER,C_POINTER}),
+				xorxBank_FreeAtIndex = define_c_proc(orx,"+orxBank_FreeAtIndex",{C_POINTER,C_UINT}),
+				xorxBank_Clear = define_c_proc(orx,"+orxBank_Clear",{C_POINTER}),
+				xorxBank_Compact = define_c_proc(orx,"+orxBank_Compact",{C_POINTER}),
+				xorxBank_CompactAll = define_c_proc(orx,"+orxBank_CompactAll",{}),
+				xorxBank_GetNext = define_c_func(orx,"+orxBank_GetNext",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBank_GetIndex = define_c_func(orx,"+orxBank_GetIndex",{C_POINTER,C_POINTER},C_UINT),
+				xorxBank_GetAtIndex = define_c_func(orx,"+orxBank_GetAtIndex",{C_POINTER,C_UINT},C_POINTER),
+				xorxBank_GetCount = define_c_func(orx,"+orxBank_GetCount",{C_POINTER},C_UINT)
+				
+public function orxBank_Init()
+
+ return c_func(xorxBank_Init,{})
+	
+end function
+
+public procedure orxBank_Exit()
+
+ c_proc(xorxBank_Exit,{})
+	
+end procedure
+
+public function orxBank_Create(atom count,atom size,atom flags,atom memtype)
+
+ return c_func(xorxBank_Create,{count,size,flags,memtype})
+	
+end function
+
+public procedure orxBank_Delete(atom b)
+
+ c_proc(xorxBank_Delete,{b})
+	
+end procedure
+
+public procedure orxBank_Allocate(atom b)
+
+ c_proc(xorxBank_Allocate,{b})
+	
+end procedure
+
+public procedure orxBank_AllocateIndexed(atom b,atom i,atom p)
+
+ c_proc(xorxBank_AllocateIndexed,{b,i,p})
+	
+end procedure
+
+public procedure orxBank_Free(atom b,atom c)
+
+ c_proc(xorxBank_Free,{b,c})
+	
+end procedure
+
+public procedure orxBank_FreeAtIndex(atom b,atom i)
+
+ c_proc(xorxBank_FreeAtIndex,{b,i})
+	
+end procedure
+
+public procedure orxBank_Clear(atom b)
+
+ c_proc(xorxBank_Clear,{b})
+	
+end procedure
+
+public procedure orxBank_Compact(atom b)
+
+ c_proc(xorxBank_Compact,{b})
+	
+end procedure
+
+public procedure orxBank_CompactAll()
+
+ c_proc(xorxBank_CompactAll,{})
+	
+end procedure
+
+public function orxBank_GetNext(atom b,atom p)
+
+ return c_func(xorxBank_GetNext,{b,p})
+	
+end function
+
+public function orxBank_GetIndex(atom b,atom p)
+
+ return c_func(xorxBank_GetIndex,{b,p})
+	
+end function
+
+public procedure orxBank_GetAtIndex(atom b,atom i)
+
+ c_proc(xorxBank_GetAtIndex,{b,i})
+	
+end procedure
+
+public function orxBank_GetCount(atom b)
+
+ return c_func(xorxBank_GetCount,{b})
+	
+end function
+
 --Memory Functions
+
+public constant xorxMemory_Setup = define_c_proc(orx,"+orxMemory_Setup",{}),
+				xorxMemory_Init = define_c_func(orx,"+orxMemory_Init",{},C_UINT),
+				xorxMemory_Exit = define_c_proc(orx,"+orxMemory_Exit",{}),
+				xorxMemory_Allocate = define_c_func(orx,"+orxMemory_Allocate",{C_UINT,C_UINT},C_POINTER),
+				xorxMemory_Reallocate = define_c_func(orx,"+orxMemory_Reallocate",{C_POINTER,C_UINT,C_UINT},C_POINTER),
+				xorxMemory_Free = define_c_proc(orx,"+orxMemory_Free",{C_POINTER})
+				
+public procedure orxMemory_Setup()
+
+ c_proc(xorxMemory_Setup,{})
+	
+end procedure
+
+public function orxMemory_Init()
+
+ return c_func(xorxMemory_Init,{})
+	
+end function
+
+public procedure orxMemory_Exit()
+
+ c_proc(xorxMemory_Exit,{})
+	
+end procedure
+
+public function orxMemory_Allocate(atom size,atom memtype)
+
+ return c_func(xorxMemory_Allocate,{size,memtype})
+	
+end function
+
+public function orxMemory_Reallocate(atom mem,atom size,atom memtype)
+
+ return c_func(xorxMemory_Reallocate,{mem,size,memtype})
+	
+end function
+
+public procedure orxMemory_Free(atom m)
+
+ c_proc(xorxMemory_Free,{m})
+	
+end procedure
+
+public constant xorxMemory_GetTypeName = define_c_func(orx,"+orxMemory_GetTypeName",{C_UINT},C_POINTER)
+
+public function orxMemory_GetTypeName(atom memtype)
+
+ return c_func(xorxMemory_GetTypeName,{memtype})
+	
+end function
+
+public constant xorxMemory_GetCacheLineSize = define_c_func(orx,"+orxMemory_GetCacheLineSize",{},C_UINT)
+
+public function orxMemory_GetCacheLineSize()
+
+ return c_func(xorxMemory_GetCacheLineSize,{})
+	
+end function
+
+public constant xorxMemory_GetUsage = define_c_func(orx,"+orxMemory_GetUsage",{C_UINT,C_POINTER,C_POINTER,C_POINTER,C_POINTER,C_POINTER},C_UINT)
+
+public function orxMemory_GetUsage(atom memtype,atom count,atom peakcount,atom size,atom peaksize,atom opcount)
+
+ return c_func(xorxMemory_GetUsage,{memtype,count,peakcount,size,peaksize,opcount})
+	
+end function
+
+public constant xorxMemory_Track = define_c_func(orx,"+orxMemory_Track",{C_UINT,C_UINT,C_BOOL},C_UINT)
+
+public function orxMemory_Track(atom memtype,atom size,atom allo)
+
+ return c_func(xorxMemory_Track,{memtype,size,allo})
+	
+end function
+---------------------------------------------------
+--Declared as inline functions - Need to convert
+
+--OrxMemory_Copy(void _pdest,void _psrc,u32 size)
+--orxMemory_Move(void _pdest,void _psrc,u32 size)
+--orxMemory_Compare(void mem,void mem2,u32 size)
+--orxMemory_Set(void _pset,u8 data,u32 size)
+---------------------------------------------------
 
 --Memory Zero is an inline functions
 public procedure orxMemory_Zero(atom d,atom size)
@@ -3884,7 +4073,7 @@ public procedure orxMemory_Zero(atom d,atom size)
 end procedure
 
 --Orx inline Functions converted to Eu
-
+--WIP
 integer sbStopByEvent = orxFALSE
 
 public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zInit,sequence _zRun,sequence _zExit,integer _fnInit=routine_id(_zInit),integer _fnRun=routine_id(_zRun),integer _fnExit=routine_id(_zExit))
@@ -3934,4 +4123,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­10.36
+­4060.0
