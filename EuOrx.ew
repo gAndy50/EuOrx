@@ -4526,6 +4526,77 @@ end function
 
 --Android Functions
 
+public constant xorxAndroid_GetActivity = define_c_func(orx,"+orxAndroid_GetActivity",{},C_POINTER),
+				xorxAndroid_GetInternalStoragePath = define_c_func(orx,"+orxAndroid_GetInternalStoragePath",{},C_POINTER),
+				xorxAndroid_GetJNIEnv = define_c_func(orx,"+orxAndroid_GetJNIEnv",{},C_POINTER),
+				xorxAndroid_GetNativeWindow = define_c_func(orx,"+orxAndroid_GetNativeWindow",{},C_POINTER),
+				xorxAndroid_JNI_GetDeviceIds = define_c_proc(orx,"+orxAndroid_JNI_GetDeviceIds",{C_UINT}),
+				xorxAndroid_JNI_GetInputDevice = define_c_func(orx,"+orxAndroid_JNI_GetInputDevice",{C_UINT,C_POINTER},C_UINT),
+				xorxAndroid_JNI_GetRotation = define_c_func(orx,"+orxAndroid_JNI_GetRotation",{},C_UINT),
+				xorxAndroid_JNI_SetupThread = define_c_func(orx,"+orxAndroid_JNI_SetupThread",{C_POINTER},C_UINT),
+				xorxAndroid_PumpEvents = define_c_proc(orx,"+orxAndroid_PumpEvents",{}),
+				xorxAndroid_RegisterAPKResource = define_c_func(orx,"+orxAndroid_RegisterAPKResource",{},C_UINT)
+				
+public function orxAndroid_GetActivity()
+
+ return c_func(xorxAndroid_GetActivity,{})
+	
+end function
+
+public function orxAndroid_GetInternalStoragePath()
+
+ return c_func(xorxAndroid_GetInternalStoragePath,{})
+	
+end function
+
+public function orxAndroid_GetJNIEnv()
+
+ return c_func(xorxAndroid_GetJNIEnv,{})
+	
+end function
+
+public function orxAndroid_GetNativeWindow()
+
+ return c_func(xorxAndroid_GetNativeWindow,{})
+	
+end function
+
+public procedure orxAndroid_JNI_GetDeviceIds(atom id)
+
+ c_proc(xorxAndroid_JNI_GetDeviceIds,{id})
+	
+end procedure
+
+public function orxAndroid_JNI_GetInputDevice(atom id,atom joy)
+
+ return c_func(xorxAndroid_JNI_GetInputDevice,{id,joy})
+	
+end function
+
+public function orxAndroid_JNI_GetRotation()
+
+ return c_func(xorxAndroid_JNI_GetRotation,{})
+	
+end function
+
+public function orxAndroid_JNI_SetupThread(atom p)
+
+ return c_func(xorxAndroid_JNI_SetupThread,{p})
+	
+end function
+
+public procedure orxAndroid_PumpEvents()
+
+ c_proc(xorxAndroid_PumpEvents,{})
+	
+end procedure
+
+public function orxAndroid_RegisterAPKResource()
+
+ return c_func(xorxAndroid_RegisterAPKResource,{})
+	
+end function
+
 --Param Functions
 
 public constant xorxParam_Setup = define_c_proc(orx,"+orxParam_Setup",{}),
@@ -4573,6 +4644,186 @@ public function orxParam_SetArgs(atom parms,sequence zparms)
  return c_func(xorxParam_SetArgs,{parms,str})
 	
 end function
+
+--Math Functions
+
+--------------------------------------------------------
+--AABox Functions (Inline)
+--orxAABox_Copy(box dst,box src)
+--orxAABox_GetCenter(box pstop,vector pvres)
+--orxAABox_IsInside(box pstbox,vector pvposition)
+--orxAABox_Move(box pstres,boc pstop,vector pvmove)
+--orxAABox_Reorder(box pstbox)
+--orxAABox_Set(box pstres,vector pvtl,vector pvbr)
+--orxAABox_Test2DIntersection(box pstbox1,box pstbox2)
+--orxAABox_TestIntersection(box pstbox1,box pstbox2)
+---------------------------------------------------------
+
+--Math Functions
+
+public constant xorxMath_InitRandom = define_c_proc(orx,"+orxMath_InitRandom",{C_UINT}),
+				xorxMath_GetRandomFloat = define_c_func(orx,"+orxMath_GetRandomFloat",{C_FLOAT,C_FLOAT},C_FLOAT),
+				xorxMath_GetSteppedRandomFloat = define_c_func(orx,"+orxMath_GetSteppedRandomFloat",{C_FLOAT,C_FLOAT,C_FLOAT},C_FLOAT),
+				xorxMath_GetRandomU32 = define_c_func(orx,"+orxMath_GetRandomU32",{C_UINT,C_UINT},C_UINT),
+				xorxMath_GetSteppedRandomU32 = define_c_func(orx,"+orxMath_GetSteppedRandomU32",{C_UINT,C_UINT,C_UINT},C_UINT),
+				xorxMath_GetRandomS32 = define_c_func(orx,"+orxMath_GetRandomS32",{C_UINT,C_UINT},C_UINT),
+				xorxMath_GetSteppedRandomS32 = define_c_func(orx,"+orxMath_GetSteppedRandomS32",{C_UINT,C_UINT,C_UINT},C_UINT),
+				xorxMath_GetRandomU64 = define_c_func(orx,"+orxMath_GetRandomU64",{C_LONG,C_LONG},C_LONG),
+				xorxMath_GetSteppedRandomU64 = define_c_func(orx,"+orxMath_GetSteppedRandomU64",{C_LONG,C_LONG,C_LONG},C_LONG),
+				xorxMath_GetRandomS64 = define_c_func(orx,"+orxMath_GetRandomS64",{C_LONG,C_LONG},C_LONG),
+				xorxMath_GetSteppedRandomS64 = define_c_func(orx,"+orxMath_GetSteppedRandomS64",{C_LONG,C_LONG,C_LONG},C_LONG),
+				xorxMath_GetRandomSeeds = define_c_proc(orx,"+orxMath_GetRandomSeeds",{C_UINT,C_UINT,C_UINT,C_UINT}),
+				xorxMath_SetRandomSeeds = define_c_proc(orx,"+orxMath_SetRandomSeeds",{C_UINT,C_UINT,C_UINT,C_UINT})
+				
+public procedure orxMath_InitRandom(atom s)
+
+ c_proc(xorxMath_InitRandom,{s})
+	
+end procedure
+
+public function orxMath_GetRandomFloat(atom min,atom max)
+
+ return c_func(xorxMath_GetRandomFloat,{min,max})
+	
+end function
+
+public function orxMath_GetSteppedRandomFloat(atom min,atom max,atom step)
+
+ return c_func(xorxMath_GetSteppedRandomFloat,{min,max,step})
+	
+end function
+
+public function orxMath_GetRandomU32(atom min,atom max)
+
+ return c_func(xorxMath_GetRandomU32,{min,max})
+	
+end function
+
+public function orxMath_GetSteppedRandomU32(atom min,atom max,atom step)
+
+ return c_func(xorxMath_GetSteppedRandomU32,{min,max,step})
+	
+end function
+
+public function orxMath_GetRandomS32(atom min,atom max)
+
+ return c_func(xorxMath_GetRandomS32,{min,max})
+	
+end function
+
+public function orxMath_GetSteppedRandomS32(atom min,atom max,atom step)
+
+ return c_func(xorxMath_GetSteppedRandomS32,{min,max,step})
+	
+end function
+
+public function orxMath_GetRandomU64(atom min,atom max)
+
+ return c_func(xorxMath_GetRandomU64,{min,max})
+	
+end function
+
+public function orxMath_GetSteppedRandomU64(atom min,atom max,atom step)
+
+ return c_func(xorxMath_GetSteppedRandomU64,{min,max,step})
+	
+end function
+
+public function orxMath_GetRandomS64(atom min,atom max)
+
+ return c_func(xorxMath_GetRandomS64,{min,max})
+	
+end function
+
+public function orxMath_GetSteppedRandomS64(atom min,atom max,atom step)
+
+ return c_func(xorxMath_GetSteppedRandomS64,{min,max,step})
+	
+end function
+
+public procedure orxMath_GetRandomSeeds(atom s,atom s2,atom s3,atom s4)
+
+ c_proc(xorxMath_GetRandomSeeds,{s,s2,s3,s4})
+	
+end procedure
+
+public procedure orxMath_SetRandomSeeds(atom s,atom s2,atom s3,atom s4)
+
+ c_proc(xorxMath_SetRandomSeeds,{s,s2,s3,s4})
+	
+end procedure
+
+-----------------------------------------------------
+--Math Inline Functions
+--orxMath_GetBitCount(u32 value)
+--orxMath_GetTrailingZeroCount(u32 value)
+--orxMath_GetTrailingZeroCount64(u64 value)
+--orxMath_IsPowerOfTwo(u32 value)
+--orxMath_GetNextPowerOfTwo(u32 value)
+--orxMath_SmoothStep(float min,float max,float value)
+--orxMath_SmootherStep(float min,float max,float value)
+--orxMath_Sin(float op)
+--orxMath_Cos(float op)
+--orxMath_Tan(float op)
+--orxMath_ACos(float op)
+--orxMath_ASin(float op)
+--orxMath_ATan(float op,float op2)
+--orxMath_Sqrt(float op)
+--orxMath_Floor(float op)
+--orxMath_Ceil(float op)
+--orxMath_Round(float op)
+--orxMath_Mod(float op,float op2)
+--orxMath_Pow(float op,float exp)
+--orxMath_Abs(float op)
+------------------------------------------------------------
+
+------------------------------------------------------------
+---orxOBox Functions (Inline)
+--orxOBox_2DIsInside(obox pstbox, vector pvposition)
+--orxOBox_2DRotate(obox pstres,obox pstop,float angle)
+--orxOBox_2DSet(obox pstres,vector worldposition,vector pivot,vector size,float angle)
+--orxOBox_Copy(obox dst,obox src)
+--orxOBox_GetCenter(box op,vector res)
+--orxOBox_IsInside(box box,vector position)
+--orxOBox_Move(box res,box op,vector move)
+--orxOBox_ZAlignedTestIntersection(box box1, box box2)
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+--Vector Functions (Inline)
+--orxVector_2DDot(vector op1, vector op2)
+--orxVector_2dRotate(vector res,vector op,float angle)
+--orxVector_Add(vector res,vector op1,vector op2)
+--orxVector_AreEqual(vector op1, vector op2)
+--orxVector_Bezier(vector res,vector point1,vector point2,vector point3,vector point4,float ft)
+--orxVector_CatmullRom(vector res,atom point1,vector point2,vector point3,vector point4,float ft)
+--orxVector_Clamp(vector res,vector op,vector min,vector max)
+--orxVector_Copy(vector dst,vector src)
+--orxVector_Cross(vector res,vector op1,vector op2)
+--orxVector_Div(vector res,vector op1,vector op2)
+--orxVector_Divf(vector res,vector op1,float op2)
+--orxVector_Dot(vector op1,vector op2)
+--orxVector_Floor(vector res,vector op)
+--orxVector_FromCartesianToSpherical(vector res,vector op)
+--orxVector_FromSphericalToCartesian(vector res,vector op)
+--orxVector_GetDistance(vector op,vector op2)
+--orxVector_GetSize(vector op)
+--orxVector_GetSquareDistance(vector op,vector op2)
+--orxVector_GetSquareSize(vector op)
+--orxVector_IsNull(vector op)
+--orxVector_Lerp(vector res,vector op1,vector op2,float op)
+--orxVector_Max(vector res,vector op1,vector op2)
+--orxVector_Min(vector res,vector op,vector op2)
+--orxVector_Mul(vector res,vector op1,vector op2)
+--orxVector_Mulf(vector res,vector op,float op2)
+--orxVector_Neg(vector res,vector op)
+--orxVector_Normalize(vector res,vector op)
+--orxVector_Rec(vector res,vector op)
+--orxVector_Round(vector res,vector op)
+--orxVector_Set(vector vec,float x,float y,float z)
+--orxVector_SetAll(vector vec,float value)
+--orxVector_Sub(vector res,vector op1,vector op2)
+----------------------------------------------------------
 
 --Bank Functions
 
@@ -4775,6 +5026,168 @@ public procedure orxMemory_Zero(atom d,atom size)
 	
 end procedure
 
+--Object Functions
+
+--Frame Functions
+
+public constant xorxFrame_GetIgnoreFlagValues = define_c_func(orx,"+orxFrame_GetIgnoreFlagValues",{C_POINTER},C_UINT),
+				xorxFrame_GetIgnoreFlagNames = define_c_func(orx,"+orxFrame_GetIgnoreFlagNames",{C_UINT},C_POINTER)
+				
+public function orxFrame_GetIgnoreFlagValues(sequence flag)
+
+ atom str = allocate_string(flag,1)
+ 
+ return c_func(xorxFrame_GetIgnoreFlagValues,{str})
+	
+end function
+
+public function orxFrame_GetIgnoreFlagNames(atom flags)
+
+ return c_func(xorxFrame_GetIgnoreFlagNames,{flags})
+	
+end function
+
+public constant xorxFrame_Setup = define_c_proc(orx,"+orxFrame_Setup",{}),
+				xorxFrame_Init = define_c_func(orx,"+orxFrame_Init",{},C_UINT),
+				xorxFrame_Exit = define_c_proc(orx,"+orxFrame_Exit",{})
+				
+public procedure orxFrame_Setup()
+
+ c_proc(xorxFrame_Setup,{})
+	
+end procedure
+
+public function orxFrame_Init()
+
+ return c_func(xorxFrame_Init,{})
+	
+end function
+
+public procedure orxFrame_Exit()
+
+ c_proc(xorxFrame_Exit,{})
+	
+end procedure
+
+public constant xorxFrame_Create = define_c_func(orx,"+orxFrame_Create",{C_UINT},C_POINTER),
+				xorxFrame_Delete = define_c_func(orx,"+orxFrame_Delete",{C_POINTER},C_UINT)
+				
+public function orxFrame_Create(atom flags)
+
+ return c_func(xorxFrame_Create,{flags})
+	
+end function
+
+public function orxFrame_Delete(atom frame)
+
+ return c_func(xorxFrame_Delete,{frame})
+	
+end function
+
+public constant xorxFrame_SetParent = define_c_proc(orx,"+orxFrame_SetParent",{C_POINTER,C_POINTER}),
+				xorxFrame_GetParent = define_c_func(orx,"+orxFrame_GetParent",{C_POINTER},C_POINTER),
+				xorxFrame_GetChild = define_c_func(orx,"+orxFrame_GetChild",{C_POINTER},C_POINTER),
+				xorxFrame_GetSibling = define_c_func(orx,"+orxFrame_GetSibling",{C_POINTER},C_POINTER),
+				xorxFrame_IsRootChild = define_c_func(orx,"+orxFrame_IsRootChild",{C_POINTER},C_BOOL)
+				
+public procedure orxFrame_SetParent(atom frame,atom par)
+
+ c_proc(xorxFrame_SetParent,{frame,par})
+	
+end procedure
+
+public function orxFrame_GetParent(atom frame)
+
+ return c_func(xorxFrame_GetParent,{frame})
+	
+end function
+
+public function orxFrame_GetChild(atom frame)
+
+ return c_func(xorxFrame_GetChild,{frame})
+	
+end function
+
+public function orxFrame_GetSibling(atom frame)
+
+ return c_func(xorxFrame_GetSibling,{frame})
+	
+end function
+
+public function orxFrame_IsRootChild(atom frame)
+
+ return c_func(xorxFrame_IsRootChild,{frame})
+	
+end function
+
+public constant xorxFrame_SetPosition = define_c_proc(orx,"+orxFrame_SetPosition",{C_POINTER,C_UINT,C_POINTER}),
+				xorxFrame_SetRotation = define_c_proc(orx,"+orxFrame_SetRotation",{C_POINTER,C_UINT,C_FLOAT}),
+				xorxFrame_SetScale = define_c_proc(orx,"+orxFrame_SetScale",{C_POINTER,C_UINT,C_POINTER})
+				
+public procedure orxFrame_SetPosition(atom frame,atom space,atom pos)
+
+ c_proc(xorxFrame_SetPosition,{frame,space,pos})
+	
+end procedure
+
+public procedure orxFrame_SetRotation(atom frame,atom space,atom rot)
+
+ c_proc(xorxFrame_SetRotation,{frame,space,rot})
+	
+end procedure
+
+public procedure orxFrame_SetScale(atom frame,atom space,atom scale)
+
+ c_proc(xorxFrame_SetScale,{frame,space,scale})
+	
+end procedure
+
+public constant xorxFrame_GetPosition = define_c_func(orx,"+orxFrame_GetPosition",{C_POINTER,C_UINT,C_POINTER},C_POINTER),
+				xorxFrame_GetRotation = define_c_func(orx,"+orxFrame_GetRotation",{C_POINTER,C_UINT},C_FLOAT),
+				xorxFrame_GetScale = define_c_func(orx,"+orxFrame_GetScale",{C_POINTER,C_UINT,C_POINTER},C_POINTER)
+				
+public function orxFrame_GetPosition(atom frame,atom space,atom pos)
+
+ return c_func(xorxFrame_GetPosition,{frame,space,pos})
+	
+end function
+
+public function orxFrame_GetRotation(atom frame,atom space)
+
+ return c_func(xorxFrame_GetRotation,{frame,space})
+	
+end function
+
+public function orxFrame_GetScale(atom frame,atom space,atom scale)
+
+ return c_func(xorxFrame_GetScale,{frame,space,scale})
+	
+end function
+
+public constant xorxFrame_TransformPosition = define_c_func(orx,"+orxFrame_TransformPosition",{C_POINTER,C_UINT,C_POINTER},C_POINTER),
+				xorxFrame_TransformRotation = define_c_func(orx,"+orxFrame_TransformRotation",{C_POINTER,C_UINT,C_FLOAT},C_FLOAT),
+				xorxFrame_TransformScale = define_c_func(orx,"+orxFrame_TransformScale",{C_POINTER,C_UINT,C_POINTER},C_POINTER)
+				
+public function orxFrame_TransformPosition(atom frame,atom space,atom pos)
+
+ return c_func(xorxFrame_TransformPosition,{frame,space,pos})
+	
+end function
+
+public function orxFrame_TransformRotation(atom frame,atom space,atom rot)
+
+ return c_func(xorxFrame_TransformRotation,{frame,space,rot})
+	
+end function
+
+public function orxFrame_TransformScale(atom frame,atom space,atom scale)
+
+ return c_func(xorxFrame_TransformScale,{frame,space,scale})
+	
+end function
+
+--FX Functions
+
 --Orx inline Functions converted to Eu
 --WIP
 integer sbStopByEvent = orxFALSE
@@ -4826,4 +5239,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­4527.19
+­5189.14
