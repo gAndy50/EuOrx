@@ -954,5 +954,29 @@ public enum orxFRAME_SPACE_GLOBAL = 0,
 			orxFRAME_SPACE_NUMBER,
 			orxFRAME_SPACE_NONE = orxENUM_NONE
 			
---FX Flags 
-­957.10
+--FX Flags
+
+public constant orxFX_SLOT_KU32_FLAG_ABSOLUTE = #00000100,
+				orxFX_SLOT_KU32_FLAG_USE_ROTATION = #00000200,
+				orxFX_SLOT_KU32_FLAG_USE_SCALE = #00000400
+				
+public enum orxFX_CURVE_LINEAR = 0,
+			orxFX_CURVE_SMOOTH,
+			orxFX_CURVE_SMOOTHER,
+			orxFX_CURVE_TRIANGLE,
+			orxFX_CURVE_SINE,
+			orxFX_CURVE_SQUARE,
+			orxFX_CURVE_NUMBER,
+			orxFX_CURVE_NONE = orxENUM_NONE
+			
+public enum orxFX_EVENT_START = 0,
+			orxFX_EVENT_STOP,
+			orxFX_EVENT_ADD,
+			orxFX_EVENT_REMOVE,
+			orxFX_EVENT_LOOP,
+			orxFX_EVENT_NUMBER,
+			orxFX_EVENT_NONE = orxENUM_NONE
+			
+--FXPointer Flag
+public constant orxFXPOINTER_KU32_FX_NUMBER = 8 
+­981.47

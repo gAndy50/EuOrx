@@ -5188,6 +5188,214 @@ end function
 
 --FX Functions
 
+public constant xorxFX_Setup = define_c_proc(orx,"+orxFX_Setup",{}),
+				xorxFX_Init = define_c_func(orx,"+orxFX_Init",{},C_UINT),
+				xorxFX_Exit = define_c_proc(orx,"+orxFX_Exit",{}),
+				xorxFX_Create = define_c_func(orx,"+orxFX_Create",{},C_POINTER),
+				xorxFX_CreateFromConfig = define_c_func(orx,"+orxFX_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxFX_Delete = define_c_func(orx,"+orxFX_Delete",{C_POINTER},C_UINT),
+				xorxFX_ClearCache = define_c_func(orx,"+orxFX_ClearCache",{},C_UINT),
+				xorxFX_Apply = define_c_func(orx,"+orxFX_Apply",{C_POINTER,C_POINTER,C_FLOAT,C_FLOAT},C_UINT),
+				xorxFX_Enable = define_c_proc(orx,"+orxFX_Enable",{C_POINTER,C_BOOL}),
+				xorxFX_IsEnabled = define_c_func(orx,"+orxFX_IsEnabled",{C_POINTER},C_BOOL)
+				
+public procedure orxFX_Setup()
+
+ c_proc(xorxFX_Setup,{})
+	
+end procedure
+
+public function orxFX_Init()
+
+ return c_func(xorxFX_Init,{})
+	
+end function
+
+public procedure orxFX_Exit()
+
+ c_proc(xorxFX_Exit,{})
+	
+end procedure
+
+public function orxFX_Create()
+
+ return c_func(xorxFX_Create,{})
+	
+end function
+
+public function orxFX_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxFX_CreateFromConfig,{str})
+	
+end function
+
+public function orxFX_Delete(atom fx)
+
+ return c_func(xorxFX_Delete,{fx})
+	
+end function
+
+public function orxFX_ClearCache()
+
+ return c_func(xorxFX_ClearCache,{})
+	
+end function
+
+public function orxFX_Apply(atom fx,atom obj,atom start,atom xend)
+
+ return c_func(xorxFX_Apply,{fx,obj,start,xend})
+	
+end function
+
+public procedure orxFX_Enable(atom fx,atom en)
+
+ c_proc(xorxFX_Enable,{fx,en})
+	
+end procedure
+
+public function orxFX_IsEnabled(atom fx)
+
+ return c_func(xorxFX_IsEnabled,{fx})
+	
+end function
+
+public constant xorxFX_AddAlpha = define_c_func(orx,"+orxFX_AddAlpha",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddAlpha(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom stal,atom eal,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddAlpha,{fx,start,xend,cycle,phase,amp,acc,stal,eal,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddRGB = define_c_func(orx,"+orxFX_AddRGB",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddRGB(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom scol,atom ecol,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddRGB,{fx,start,xend,cycle,phase,amp,acc,scol,ecol,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddHSL = define_c_func(orx,"+orxFX_ADdHSL",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddHSL(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom scol,atom ecol,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddHSL,{fx,start,xend,cycle,phase,amp,acc,scol,ecol,curve,po, flags})
+	
+end function
+
+public constant xorxFX_AddHSV = define_c_func(orx,"+orxFX_AddHSV",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddHSV(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom scol,atom ecol,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddHSV,{fx,start,xend,cycle,phase,amp,acc,scol,ecol,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddRotation = define_c_func(orx,"+orxFX_AddRotation",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddRotation(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom srot,atom erot,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddRotation,{fx,start,xend,cycle,phase,amp,acc,srot,erot,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddScale = define_c_func(orx,"+orxFX_AddScale",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddScale(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom ssca,atom esca,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddScale,{fx,start,xend,cycle,phase,amp,acc,ssca,esca,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddPosition = define_c_func(orx,"+orxFX_AddPosition",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddPosition(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom stran,atom etran,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddPosition,{fx,start,xend,cycle,phase,amp,acc,stran,etran,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddSpeed = define_c_func(orx,"+orxFX_AddSpeed",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_POINTER,C_POINTER,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddSpeed(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom sspd,atom espd,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddSpeed,{fx,start,xend,cycle,phase,amp,acc,sspd,espd,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddVolume = define_c_func(orx,"+orxFX_AddVolume",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddVolume(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom svol,atom evol,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddVolume,{fx,start,xend,cycle,phase,amp,acc,svol,evol,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddPitch = define_c_func(orx,"+orxFX_AddPitch",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT,C_UINT,C_FLOAT,C_UINT},C_UINT)
+
+public function orxFX_AddPitch(atom fx,atom start,atom xend,atom cycle,atom phase,atom amp,atom acc,atom spit,atom epit,atom curve,atom po,atom flags)
+
+ return c_func(xorxFX_AddPitch,{fx,start,xend,cycle,phase,amp,acc,spit,epit,curve,po,flags})
+	
+end function
+
+public constant xorxFX_AddSlotFromConfig = define_c_func(orx,"+orxFX_AddSlotFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxFX_GetDuration = define_c_func(orx,"+orxFX_GetDuration",{C_POINTER},C_FLOAT),
+				xorxFX_GetName = define_c_func(orx,"+orxFX_GetName",{C_POINTER},C_POINTER),
+				xorxFX_Loop = define_c_func(orx,"+orxFX_Loop",{C_POINTER,C_BOOL},C_UINT),
+				xorxFX_IsLooping = define_c_func(orx,"+orxFX_IsLooping",{C_POINTER},C_BOOL),
+				xorxFX_SetStagger = define_c_func(orx,"+orxFX_SetStagger",{C_POINTER,C_BOOL,C_FLOAT},C_UINT),
+				xorxFX_GetStagger = define_c_func(orx,"+orxFX_GetStagger",{C_POINTER,C_POINTER},C_BOOL)
+				
+public function orxFX_AddSlotFromConfig(atom fx,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxFX_AddSlotFromConfig,{fx,str})
+	
+end function
+
+public function orxFX_GetDuration(atom fx)
+
+ return c_func(xorxFX_GetDuration,{fx})
+	
+end function
+
+public function orxFX_GetName(atom fx)
+
+ return c_func(xorxFX_GetName,{fx})
+	
+end function
+
+public function orxFX_Loop(atom fx,atom lop)
+
+ return c_func(xorxFX_Loop,{fx,lop})
+	
+end function
+
+public function orxFX_IsLooping(atom fx)
+
+ return c_func(xorxFX_IsLooping,{fx})
+	
+end function
+
+public function orxFX_SetStagger(atom fx,atom stag,atom set)
+
+ return c_func(xorxFX_SetStagger,{fx,stag,set})
+	
+end function
+
+public function orxFX_GetStagger(atom fx,atom set)
+
+ return c_func(xorxFX_GetStagger,{fx,set})
+	
+end function
+
+--FXPointer Functions
+
+-------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
 integer sbStopByEvent = orxFALSE
@@ -5239,4 +5447,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­5189.14
+­5396.21
