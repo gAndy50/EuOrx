@@ -5395,6 +5395,1674 @@ end function
 
 --FXPointer Functions
 
+public constant xorxFXPointer_Setup = define_c_proc(orx,"+orxFXPointer_Setup",{}),
+				xorxFXPointer_Init = define_c_func(orx,"+orxFXPointer_Init",{},C_UINT),
+				xorxFXPointer_Exit = define_c_proc(orx,"+orxFXPointer_Exit",{})
+				
+public procedure orxFXPointer_Setup()
+
+ c_proc(xorxFXPointer_Setup,{})
+	
+end procedure
+
+public function orxFXPointer_Init()
+
+ return c_func(xorxFXPointer_Init,{})
+	
+end function
+
+public procedure orxFXPointer_Exit()
+
+ c_proc(xorxFXPointer_Exit,{})
+	
+end procedure
+
+public constant xorxFXPointer_Create = define_c_func(orx,"+orxFXPointer_Create",{},C_POINTER),
+				xorxFXPointer_Delete = define_c_func(orx,"+orxFXPointer_Delete",{C_POINTER},C_UINT),
+				xorxFXPointer_Enable = define_c_proc(orx,"+orxFXPointer_Enable",{C_POINTER,C_BOOL}),
+				xorxFXPointer_IsEnabled = define_c_func(orx,"+orxFXPointer_IsEnabled",{C_POINTER},C_BOOL)
+				
+public function orxFXPointer_Create()
+
+ return c_func(xorxFXPointer_Create,{})
+	
+end function
+
+public function orxFXPointer_Delete(atom fx)
+
+ return c_func(xorxFXPointer_Delete,{fx})
+	
+end function
+
+public procedure orxFXPointer_Enable(atom fx,atom en)
+
+ c_proc(xorxFXPointer_Enable,{fx,en})
+	
+end procedure
+
+public function orxFXPointer_IsEnabled(atom fx)
+
+ return c_func(xorxFXPointer_IsEnabled,{fx})
+	
+end function
+
+public constant xorxFXPointer_AddFX = define_c_func(orx,"+orxFXPointer_AddFX",{C_POINTER,C_POINTER},C_UINT),
+				xorxFXPointer_AddDelayedFX = define_c_func(orx,"+orxFXPointer_AddDelayedFX",{C_POINTER,C_POINTER,C_FLOAT},C_UINT),
+				xorxFXPointer_RemoveFX = define_c_func(orx,"+orxFXPointer_RemoveFX",{C_POINTER,C_POINTER},C_UINT),
+				xorxFXPointer_RemoveAllFXs = define_c_func(orx,"+orxFXPointer_RemoveAllFXs",{C_POINTER},C_UINT),
+				xorxFXPointer_AddFXFromConfig = define_c_func(orx,"+orxFXPointer_AddFXFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxFXPointer_AddUniqueFXFromConfig = define_c_func(orx,"+orxFXPointer_AddUniqueFXFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxFXPointer_AddDelayedFXFromConfig = define_c_func(orx,"+orxFXPointer_AddDelayedFXFromConfig",{C_POINTER,C_POINTER,C_FLOAT},C_UINT),
+				xorxFXPointer_RemoveFXFromConfig = define_c_func(orx,"+orxFXPointer_RemoveFXFromConfig",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxFXPointer_AddFX(atom fxp,atom fx)
+
+ return c_func(xorxFXPointer_AddFX,{fxp,fx})
+	
+end function
+
+public function orxFXPointer_AddDelayedFX(atom pfx,atom fx,atom d)
+
+ return c_func(xorxFXPointer_AddDelayedFX,{pfx,fx,d})
+	
+end function
+
+public function orxFXPointer_RemoveFX(atom pfx,atom fx)
+
+ return c_func(xorxFXPointer_RemoveFX,{pfx,fx})
+	
+end function
+
+public function orxFXPointer_RemoveAllFXs(atom fx)
+
+ return c_func(xorxFXPointer_RemoveAllFXs,{fx})
+	
+end function
+
+public function orxFXPointer_AddFXFromConfig(atom fx,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxFXPointer_AddFXFromConfig,{fx,str})
+	
+end function
+
+public function orxFXPointer_AddUniqueFXFromConfig(atom fx,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxFXPointer_AddUniqueFXFromConfig,{fx,str})
+	
+end function
+
+public function orxFXPointer_AddDelayedFXFromConfig(atom fx,sequence id,atom d)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxFXPointer_AddDelayedFXFromConfig,{fx,str,d})
+	
+end function
+
+public function orxFXPointer_RemoveFXFromConfig(atom fx,atom m)
+
+ return c_func(xorxFXPointer_RemoveFXFromConfig,{fx,m})
+	
+end function
+
+public constant xorxFXPointer_Synchronize = define_c_func(orx,"+orxFXPointer_Synchronize",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxFXPointer_Synchronize(atom fx,atom m)
+
+ return c_func(xorxFXPointer_Synchronize,{fx,m})
+	
+end function
+
+public constant xorxFXPointer_GetTime = define_c_func(orx,"+orxFXPointer_GetTime",{C_POINTER},C_FLOAT),
+				xorxFXPointer_GetCount = define_c_func(orx,"+orxFXPointer_GetCount",{C_POINTER},C_UINT),
+				xorxFXPointer_GetFrequency = define_c_func(orx,"+orxFXPointer_GetFrequency",{C_POINTER},C_FLOAT),
+				xorxFXPointer_SetTime = define_c_func(orx,"+orxFXPointer_SetTime",{C_POINTER,C_FLOAT},C_UINT),
+				xorxFXPointer_SetFrequency = define_c_func(orx,"+orxFXPointer_SetFrequency",{C_POINTER,C_FLOAT},C_UINT)
+				
+public function orxFXPointer_GetTime(atom fx)
+
+ return c_func(xorxFXPointer_GetTime,{fx})
+	
+end function
+
+public function orxFXPointer_GetCount(atom fx)
+
+ return c_func(xorxFXPointer_GetCount,{fx})
+	
+end function
+
+public function orxFXPointer_GetFrequency(atom fx)
+
+ return c_func(xorxFXPointer_GetFrequency,{fx})
+	
+end function
+
+public function orxFXPointer_SetTime(atom fx,atom xtime)
+
+ return c_func(xorxFXPointer_SetTime,{fx,xtime})
+	
+end function
+
+public function orxFXPointer_SetFrequency(atom fx,atom freq)
+
+ return c_func(xorxFXPointer_SetFrequency,{fx,freq})
+	
+end function
+
+--Object Functions
+
+public constant xorxObject_Setup = define_c_proc(orx,"+orxObject_Setup",{}),
+				xorxObject_Init = define_c_func(orx,"+orxObject_Init",{},C_UINT),
+				xorxObject_Exit = define_c_proc(orx,"+orxObject_Exit",{})
+				
+public procedure orxObject_Setup()
+
+ c_proc(xorxObject_Setup,{})
+	
+end procedure
+
+public function orxObject_Init()
+
+ return c_func(xorxObject_Init,{})
+	
+end function
+
+public procedure orxObject_Exit()
+
+ c_proc(xorxObject_Exit,{})
+	
+end procedure
+
+public constant xorxObject_Create = define_c_func(orx,"+orxObject_Create",{},C_POINTER)
+
+public function orxObject_Create()
+
+ return c_func(xorxObject_Create,{})
+	
+end function
+
+public constant xorxObject_CreateFromConfig = define_c_func(orx,"+orxObject_CreateFromConfig",{C_POINTER},C_POINTER)
+
+public function orxObject_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_CreateFromConfig,{str})
+	
+end function
+
+public constant xorxObject_Delete = define_c_func(orx,"+orxObject_Delete",{C_POINTER},C_UINT)
+
+public function orxObject_Delete(atom o)
+
+ return c_func(xorxObject_Delete,{o})
+	
+end function
+
+public constant xorxObject_Update = define_c_func(orx,"+orxObject_Update",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_Update(atom o,atom clock)
+
+ return c_func(xorxObject_Update,{o,clock})
+	
+end function
+
+public constant xorxObject_Enable = define_c_proc(orx,"+orxObject_Enable",{C_POINTER,C_BOOL})
+
+public procedure orxObject_Enable(atom o,atom en)
+
+ c_proc(xorxObject_Enable,{o,en})
+	
+end procedure
+
+public constant xorxObject_EnableRecursive = define_c_proc(orx,"+orxObject_EnableRecursive",{C_POINTER,C_BOOL})
+
+public procedure orxObject_EnableRecursive(atom o,atom en)
+
+ c_proc(xorxObject_EnableRecursive,{o,en})
+	
+end procedure
+
+public constant xorxObject_IsEnabled = define_c_func(orx,"+orxObject_IsEnabled",{C_POINTER},C_BOOL)
+
+public function orxObject_IsEnabled(atom o)
+
+ return c_func(xorxObject_IsEnabled,{o})
+	
+end function
+
+public constant xorxObject_Pause = define_c_proc(orx,"+orxObject_Pause",{C_POINTER,C_BOOL})
+
+public procedure orxObject_Pause(atom o,atom pau)
+
+ c_proc(xorxObject_Pause,{o,pau})
+	
+end procedure
+
+public constant xorxObject_PauseRecursive = define_c_proc(orx,"+orxObject_PauseRecursive",{C_POINTER,C_BOOL})
+
+public procedure orxObject_PauseRecursive(atom o,atom pau)
+
+ c_proc(xorxObject_PauseRecursive,{o,pau})
+	
+end procedure
+
+public constant xorxObject_IsPaused = define_c_func(orx,"+orxObject_IsPaused",{C_POINTER},C_BOOL)
+
+public function orxObject_IsPaused(atom o)
+
+ return c_func(xorxObject_IsPaused,{o})
+	
+end function
+
+public constant xorxObject_SetUserData = define_c_proc(orx,"+orxObject_SetUserData",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetUserData(atom o,atom dat)
+
+ c_proc(xorxObject_SetUserData,{o,dat})
+	
+end procedure
+
+public constant xorxObject_GetUserData = define_c_func(orx,"+orxObject_GetUserData",{C_POINTER},C_POINTER),
+				xorxObject_SetOwner = define_c_proc(orx,"+orxObject_SetOwner",{C_POINTER,C_POINTER})
+				
+public function orxObject_GetUserData(atom o)
+
+ return c_func(xorxObject_GetUserData,{o})
+	
+end function
+
+public procedure orxObject_SetOwner(atom o,atom own)
+
+ c_proc(xorxObject_SetOwner,{o,own})
+	
+end procedure
+
+public constant xorxObject_GetOwner = define_c_func(orx,"+orxObject_GetOwner",{C_POINTER},C_POINTER)
+
+public function orxObject_GetOwner(atom o)
+
+ return c_func(xorxObject_GetOwner,{o})
+	
+end function
+
+public constant xorxObject_GetOwnedChild = define_c_func(orx,"+orxObject_GetOwnedChild",{C_POINTER},C_POINTER)
+
+public function orxObject_GetOwnedChild(atom o)
+
+ return c_func(xorxObject_GetOwnedChild,{o})
+	
+end function
+
+public constant xorxObject_GetOwnedSibling = define_c_func(orx,"+orxObject_GetOwnedSibling",{C_POINTER},C_POINTER),
+				xorxObject_SetClock = define_c_func(orx,"+orxObject_SetClock",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_GetOwnedSibling(atom o)
+
+ return c_func(xorxObject_GetOwnedSibling,{o})
+	
+end function
+
+public function orxObject_SetClock(atom o,atom clock)
+
+ return c_func(xorxObject_SetClock,{o,clock})
+	
+end function
+
+public constant xorxObject_SetClockRecursive = define_c_proc(orx,"+orxObject_SetClockRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetClockRecursive(atom o,atom clock)
+
+ c_proc(xorxObject_SetClockRecursive,{o,clock})
+	
+end procedure
+
+public constant xorxObject_GetClock = define_c_func(orx,"+orxObject_GetClock",{C_POINTER},C_POINTER),
+				xorxObject_LinkStructure = define_c_func(orx,"+orxObject_LinkStructure",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_GetClock(atom o)
+
+ return c_func(xorxObject_GetClock,{o})
+	
+end function
+
+public function orxObject_LinkStructure(atom o,atom s)
+
+ return c_func(xorxObject_LinkStructure,{o,s})
+	
+end function
+
+public constant xorxObject_UnlinkStructure = define_c_proc(orx,"+orxObject_UnlinkStructure",{C_POINTER,C_UINT})
+
+public procedure orxObject_UnlinkStructure(atom o,atom id)
+
+ c_proc(xorxObject_UnlinkStructure,{o,id})
+	
+end procedure
+
+public constant xorxObject_GetStructure = define_c_func(orx,"+orxObject_GetStructure",{C_POINTER,C_UINT},C_POINTER),
+				xorxObject_SetFlip = define_c_func(orx,"+orxObject_SetFlip",{C_POINTER,C_BOOL,C_BOOL},C_UINT)
+				
+public function orxObject_GetStructure(atom o,atom id)
+
+ return c_func(xorxObject_GetStructure,{o,id})
+	
+end function
+
+public function orxObject_SetFlip(atom o,atom x,atom y)
+
+ return c_func(xorxObject_SetFlip,{o,x,y})
+	
+end function
+
+public constant xorxObject_GetFlip = define_c_func(orx,"+orxObject_GetFlip",{C_POINTER,C_POINTER,C_POINTER},C_UINT),
+				xorxObject_SetPivot = define_c_func(orx,"+orxObject_SetPivot",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_GetFlip(atom o,atom x,atom y)
+
+ return c_func(xorxObject_GetFlip,{o,x,y})
+	
+end function
+
+public function orxObject_SetPivot(atom o,atom piv)
+
+ return c_func(xorxObject_SetPivot,{o,piv})
+	
+end function
+
+public constant xorxObject_SetOrigin = define_c_func(orx,"+orxObject_SetOrigin",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetOrigin(atom o,atom ori)
+
+ return c_func(xorxObject_SetOrigin,{o,ori})
+	
+end function
+
+public constant xorxObject_SetSize = define_c_func(orx,"+orxObject_SetSize",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetSize(atom o,atom size)
+
+ return c_func(xorxObject_SetSize,{o,size})
+	
+end function
+
+public constant xorxObject_GetPivot = define_c_func(orx,"+orxObject_GetPivot",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetPivot(atom o,atom piv)
+
+ return c_func(xorxObject_GetPivot,{o,piv})
+	
+end function
+
+public constant xorxObject_GetOrigin = define_c_func(orx,"+orxObject_GetOrigin",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetOrigin(atom o,atom ori)
+
+ return c_func(xorxObject_GetOrigin,{o,ori})
+	
+end function
+
+public constant xorxObject_GetSize = define_c_func(orx,"+orxObject_GetSize",{C_POINTER,C_POINTER},C_POINTER),
+				xorxObject_SetPosition = define_c_func(orx,"+orxObject_SetPosition",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_GetSize(atom o,atom size)
+
+ return c_func(xorxObject_GetSize,{o,size})
+	
+end function
+
+public function orxObject_SetPosition(atom o,atom pos)
+
+ return c_func(xorxObject_SetPosition,{o,pos})
+	
+end function
+
+public constant xorxObject_SetWorldPosition = define_c_func(orx,"+orxObject_SetWorldPosition",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetWorldPosition(atom o,atom pos)
+
+ return c_func(xorxObject_SetWorldPosition,{o,pos})
+	
+end function
+
+public constant xorxObject_SetRotation = define_c_func(orx,"+orxObject_SetRotation",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetRotation(atom o,atom rot)
+
+ return c_func(xorxObject_SetRotation,{o,rot})
+	
+end function
+
+public constant xorxObject_SetWorldRotation = define_c_func(orx,"+orxObject_SetWorldRotation",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetWorldRotation(atom o,atom rot)
+
+ return c_func(xorxObject_SetWorldRotation,{o,rot})
+	
+end function
+
+public constant xorxObject_SetScale = define_c_func(orx,"+orxObject_SetScale",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetScale(atom o,atom sca)
+
+ return c_func(xorxObject_SetScale,{o,sca})
+	
+end function
+
+public constant xorxObject_SetWorldScale = define_c_func(orx,"+orxObject_SetWorldScale",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetWorldScale(atom o,atom sca)
+
+ return c_func(xorxObject_SetWorldScale,{o,sca})
+	
+end function
+
+public constant xorxObject_GetPosition = define_c_func(orx,"+orxObject_GetPosition",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetPosition(atom o,atom pos)
+
+ return c_func(xorxObject_GetPosition,{o,pos})
+	
+end function
+
+public constant xorxObject_GetWorldPosition = define_c_func(orx,"+orxObject_GetWorldPosition",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetWorldPosition(atom o,atom pos)
+
+ return c_func(xorxObject_GetWorldPosition,{o,pos})
+	
+end function
+
+public constant xorxObject_GetRotation = define_c_func(orx,"+orxObject_GetRotation",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetRotation(atom o)
+
+ return c_func(xorxObject_GetRotation,{o})
+	
+end function
+
+public constant xorxObject_GetWorldRotation = define_c_func(orx,"+orxObject_GetWorldRotation",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetWorldRotation(atom o)
+
+ return c_func(xorxObject_GetWorldRotation,{o})
+	
+end function
+
+public constant xorxObject_GetScale = define_c_func(orx,"+orxObject_GetScale",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetScale(atom o,atom sca)
+
+ return c_func(xorxObject_GetScale,{o,sca})
+	
+end function
+
+public constant xorxObject_GetWorldScale = define_c_func(orx,"+orxObject_GetWorldScale",{C_POINTER,C_POINTER},C_POINTER),
+				xorxObject_SetParent = define_c_func(orx,"+orxObject_SetParent",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_GetWorldScale(atom o,atom sca)
+
+ return c_func(xorxObject_GetWorldScale,{o,sca})
+	
+end function
+
+public function orxObject_SetParent(atom o,atom p)
+
+ return c_func(xorxObject_SetParent,{o,p})
+	
+end function
+
+public constant xorxObject_GetParent = define_c_func(orx,"+orxObject_GetParent",{C_POINTER},C_POINTER)
+
+public function orxObject_GetParent(atom o)
+
+ return c_func(xorxObject_GetParent,{o})
+	
+end function
+
+public constant xorxObject_GetChild = define_c_func(orx,"+orxObject_GetChild",{C_POINTER},C_POINTER)
+
+public function orxObject_GetChild(atom o)
+
+ return c_func(xorxObject_GetChild,{o})
+	
+end function
+
+public constant xorxObject_GetSibling = define_c_func(orx,"+orxObject_GetSibling",{C_POINTER},C_POINTER)
+
+public function orxObject_GetSibling(atom o)
+
+ return c_func(xorxObject_GetSibling,{o})
+	
+end function
+
+public constant xorxObject_GetNextChild = define_c_func(orx,"+orxObject_GetNextChild",{C_POINTER,C_POINTER,C_UINT},C_POINTER)
+
+public function orxObject_GetNextChild(atom o,atom c,atom id)
+
+ return c_func(xorxObject_GetNextChild,{o,c,id})
+	
+end function
+
+public constant xorxObject_Attach = define_c_func(orx,"+orxObject_Attach",{C_POINTER,C_POINTER},C_UINT),
+				xorxObject_Detach = define_c_func(orx,"+orxObject_Detach",{C_POINTER},C_UINT)
+				
+public function orxObject_Attach(atom o,atom p)
+
+ return c_func(xorxObject_Attach,{o,p})
+	
+end function
+
+public function orxObject_Detach(atom o)
+
+ return c_func(xorxObject_Detach,{o})
+	
+end function
+
+public constant xorxObject_SetIgnoreFlags = define_c_func(orx,"+orxObject_SetIgnoreFlags",{C_POINTER,C_UINT},C_UINT),
+				xorxObject_SetLiteralIgnoreFlags = define_c_func(orx,"+orxObject_SetLiteralIgnoreFlags",{C_POINTER,C_POINTER},C_UINT),
+				xorxObject_GetIgnoreFlags = define_c_func(orx,"+orxObject_GetIgnoreFlags",{C_POINTER},C_UINT),
+				xorxObject_GetLiteralIgnoreFlags = define_c_func(orx,"+orxObject_GetLiteralIgnoreFlags",{C_POINTER},C_POINTER)
+				
+public function orxObject_SetIgnoreFlags(atom o,atom flag)
+
+ return c_func(xorxObject_SetIgnoreFlags,{o,flag})
+	
+end function
+
+public function orxObject_SetLiteralIgnoreFlags(atom o,sequence z)
+
+ atom str = allocate_string(z,1)
+ 
+ return c_func(xorxObject_SetLiteralIgnoreFlags,{o,str})
+	
+end function
+
+public function orxObject_GetIgnoreFlags(atom o)
+
+ return c_func(xorxObject_GetIgnoreFlags,{o})
+	
+end function
+
+public function orxObject_GetLiteralIgnoreFlags(atom o)
+
+ return c_func(xorxObject_GetLiteralIgnoreFlags,{o})
+	
+end function
+
+public constant xorxObject_LogParents = define_c_func(orx,"+orxObject_LogParents",{C_POINTER},C_UINT),
+				xorxObject_SetAnimSet = define_c_func(orx,"+orxObject_SetAnimSet",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_LogParents(atom o)
+
+ return c_func(xorxObject_LogParents,{o})
+	
+end function
+
+public function orxObject_SetAnimSet(atom o,atom ani)
+
+ return c_func(xorxObject_SetAnimSet,{o,ani})
+	
+end function
+
+public constant xorxObject_SetAnimFrequency = define_c_func(orx,"+orxObject_SetAnimFrequency",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetAnimFrequency(atom o,atom freq)
+
+ return c_func(xorxObject_SetAnimFrequency,{o,freq})
+	
+end function
+
+public constant xorxObject_SetAnimFrequencyRecursive = define_c_proc(orx,"+orxObject_SetAnimFrequencyRecusirve",{C_POINTER,C_FLOAT})
+
+public procedure orxObject_SetAnimFrequencyRecursive(atom o,atom freq)
+
+ c_proc(xorxObject_SetAnimFrequencyRecursive,{o,freq})
+	
+end procedure
+
+public constant xorxObject_GetAnimFrequency = define_c_func(orx,"+orxObject_GetAnimFrequency",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetAnimFrequency(atom o)
+
+ return c_func(xorxObject_GetAnimFrequency,{o})
+	
+end function
+
+public constant xorxObject_SetCurrentAnim = define_c_func(orx,"+orxObject_SetCurrentAnim",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetCurrentAnim(atom o,sequence z)
+
+ atom str = allocate_string(z,1)
+ 
+ return c_func(xorxObject_SetCurrentAnim,{o,str})
+	
+end function
+
+public constant xorxObject_SetCurrentAnimRecursive = define_c_proc(orx,"+orxObject_SetCurrentAnimRecusrive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetCurrentAnimRecursive(atom o,sequence z)
+
+ atom str = allocate_string(z,1)
+ 
+ c_proc(xorxObject_SetCurrentAnimRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_SetTargetAnim = define_c_func(orx,"+orxObject_SetTargetAnim",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetTargetAnim(atom o,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxObject_SetTargetAnim,{o,str})
+	
+end function
+
+public constant xorxObject_SetTargetAnimRecursive = define_c_proc(orx,"+orxObject_SetTargetAnimRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetTargetAnimRecursive(atom o,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ c_proc(xorxObject_SetTargetAnimRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_GetCurrentAnim = define_c_func(orx,"+orxObject_GetCurrentAnim",{C_POINTER},C_POINTER)
+
+public function orxObject_GetCurrentAnim(atom o)
+
+ return c_func(xorxObject_GetCurrentAnim,{o})
+	
+end function
+
+public constant xorxObject_GetTargetAnim = define_c_func(orx,"+orxObject_GetTargetAnim",{C_POINTER},C_POINTER)
+
+public function orxObject_GetTargetAnim(atom o)
+
+ return c_func(xorxObject_GetTargetAnim,{o})
+	
+end function
+
+public constant xorxObject_IsCurrentAnim = define_c_func(orx,"+orxObject_IsCurrentAnim",{C_POINTER,C_POINTER},C_BOOL)
+
+public function orxObject_IsCurrentAnim(atom o,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxObject_IsCurrentAnim,{o,str})
+	
+end function
+
+public constant xorxObject_IsTargetAnim = define_c_func(orx,"+orxObject_IsTargetAnim",{C_POINTER,C_POINTER},C_BOOL)
+
+public function orxObject_IsTargetAnim(atom o,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxObject_IsTargetAnim,{o,str})
+	
+end function
+
+public constant xorxObject_SetSpeed = define_c_func(orx,"+orxObject_SetSpeed",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetSpeed(atom o,atom rel)
+
+ return c_func(xorxObject_SetSpeed,{o,rel})
+	
+end function
+
+public constant xorxObject_SetRelativeSpeed = define_c_func(orx,"+orxObject_SetRelativeSpeed",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetRelativeSpeed(atom o,atom rel)
+
+ return c_func(xorxObject_SetRelativeSpeed,{o,rel})
+	
+end function
+
+public constant xorxObject_SetAngularVelocity = define_c_func(orx,"+orxObject_SetAngularVelocity",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetAngularVelocity(atom o,atom vel)
+
+ return c_func(xorxObject_SetAngularVelocity,{o,vel})
+	
+end function
+
+public constant xorxObject_SetCustomGravity = define_c_func(orx,"+orxObject_SetCustomGravity",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetCustomGravity(atom o,atom grav)
+
+ return c_func(xorxObject_SetCustomGravity,{o,grav})
+	
+end function
+
+public constant xorxObject_GetSpeed = define_c_func(orx,"+orxObject_GetSpeed",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetSpeed(atom o,atom spd)
+
+ return c_func(xorxObject_GetSpeed,{o,spd})
+	
+end function
+
+public constant xorxObject_GetRelativeSpeed = define_c_func(orx,"+orxObject_GetRelativeSpeed",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetRelativeSpeed(atom o,atom rel)
+
+ return c_func(xorxObject_GetRelativeSpeed,{o,rel})
+	
+end function
+
+public constant xorxObject_GetAngularVelocity = define_c_func(orx,"+orxObject_GetAngularVelocity",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetAngularVelocity(atom o)
+
+ return c_func(xorxObject_GetAngularVelocity,{o})
+	
+end function
+
+public constant xorxObject_GetCustomGravity = define_c_func(orx,"+orxObject_GetCustomGravity",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetCustomGravity(atom o,atom grav)
+
+ return c_func(xorxObject_GetCustomGravity,{o,grav})
+	
+end function
+
+public constant xorxObject_GetMass = define_c_func(orx,"+orxObject_GetMass",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetMass(atom o)
+
+ return c_func(xorxObject_GetMass,{o})
+	
+end function
+
+public constant xorxObject_GetMassCenter = define_c_func(orx,"+orxObject_GetMassCenter",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetMassCenter(atom o,atom mass)
+
+ return c_func(xorxObject_GetMassCenter,{o,mass})
+	
+end function
+
+public constant xorxObject_ApplyTorque = define_c_func(orx,"+orxObject_ApplyTorque",{C_POINTER,C_FLOAT},C_UINT),
+				xorxObject_ApplyForce = define_c_func(orx,"+orxObject_ApplyForce",{C_POINTER,C_POINTER,C_POINTER},C_UINT),
+				xorxObject_ApplyImpulse = define_c_func(orx,"+orxObject_ApplyImpulse",{C_POINTER,C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_ApplyTorque(atom o,atom tor)
+
+ return c_func(xorxObject_ApplyTorque,{o,tor})
+	
+end function
+
+public function orxObject_ApplyForce(atom o,atom force,atom pt)
+
+ return c_func(xorxObject_ApplyForce,{o,force,pt})
+	
+end function
+
+public function orxObject_ApplyImpulse(atom o,atom imp,atom pt)
+
+ return c_func(xorxObject_ApplyImpulse,{o,imp,pt})
+	
+end function
+
+public constant xorxObject_Raycast = define_c_func(orx,"+orxObject_Raycast",{C_POINTER,C_POINTER,C_UINT,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_Raycast(atom beg,atom xend,atom flags,atom mask,atom early,atom con,atom norm)
+
+ return c_func(xorxObject_Raycast,{beg,xend,flags,mask,early,con,norm})
+	
+end function
+
+public constant xorxObject_SetTextString = define_c_func(orx,"+orxObject_SetTextString",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetTextString(atom o,sequence s)
+
+ atom str = allocate_string(s,1)
+ 
+ return c_func(xorxObject_SetTextString,{o,str})
+	
+end function
+
+public constant xorxObject_GetTextString = define_c_func(orx,"+orxObject_GetTextString",{C_POINTER},C_POINTER)
+
+public function orxObject_GetTextString(atom o)
+
+ return c_func(xorxObject_GetTextString,{o})
+	
+end function
+
+public constant xorxObject_GetBoundingBox = define_c_func(orx,"+orxObject_GetBoundingBox",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetBoundingBox(atom o,atom box)
+
+ return c_func(xorxObject_GetBoundingBox,{o,box})
+	
+end function
+
+public constant xorxObject_AddFX = define_c_func(orx,"+orxObject_AddFX",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_AddFX(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_AddFX,{o,str})
+	
+end function
+
+public constant xorxObject_AddFXRecursive = define_c_proc(orx,"+orxObject_AddFXRecursive",{C_POINTER,C_POINTER,C_FLOAT})
+
+public procedure orxObject_AddFXRecursive(atom o,sequence id,atom de)
+
+ atom str = allocate_string(id,1)
+
+ c_proc(xorxObject_AddFXRecursive,{o,str,de})
+	
+end procedure
+
+public constant xorxObject_AddUniqueFX = define_c_func(orx,"+orxObject_AddUniqueFX",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_AddUniqueFX(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_AddUniqueFX,{o,str})
+	
+end function
+
+public constant xorxObject_AddUniqueFXRecursive = define_c_proc(orx,"+orxObject_AddUniqueFXRecursive",{C_POINTER,C_POINTER,C_FLOAT})
+
+public procedure orxObject_AddUniqueFXRecursive(atom o,sequence id,atom de)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_AddUniqueFXRecursive,{o,str,de})
+	
+end procedure
+
+public constant xorxObject_RemoveFX = define_c_func(orx,"+orxObject_RemoveFX",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_RemoveFX(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_RemoveFX,{o,str})
+	
+end function
+
+public constant xorxObject_RemoveFXRecursive = define_c_proc(orx,"+orxObject_RemoveFXRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_RemoveFXRecursive(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_RemoveFXRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_RemoveAllFXs = define_c_func(orx,"+orxObject_RemoveAllFXs",{C_POINTER},C_UINT)
+
+public function orxObject_RemoveAllFXs(atom o)
+
+ return c_func(xorxObject_RemoveAllFXs,{o})
+	
+end function
+
+public constant xorxObject_RemoveAllFXsRecursive = define_c_func(orx,"+orxObject_RemoveAllFXsRecursive",{C_POINTER},C_UINT)
+
+public function orxObject_RemoveAllFXsRecursive(atom o)
+
+ return c_func(xorxObject_RemoveAllFXsRecursive,{o})
+	
+end function
+
+public constant xorxObject_SetFXFrequency = define_c_func(orx,"+orxObject_SetFXFrequency",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetFXFrequency(atom o,atom freq)
+
+ return c_func(xorxObject_SetFXFrequency,{o,freq})
+	
+end function
+
+public constant xorxObject_SetFXFrequencyRecursive = define_c_proc(orx,"+orxObject_SetFXFrquencyRecursive",{C_POINTER,C_FLOAT})
+
+public procedure orxObject_SetFXFrequencyRecursive(atom o,atom freq)
+
+ c_proc(xorxObject_SetFXFrequencyRecursive,{o,freq})
+	
+end procedure
+
+public constant xorxObject_GetFXFrequency = define_c_func(orx,"+orxObject_GetFXFrequency",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetFXFrequency(atom o)
+
+ return c_func(xorxObject_GetFXFrequency,{o})
+	
+end function
+
+public constant xorxObject_SynchronizeFX = define_c_func(orx,"+orxObject_SynchronizeFX",{C_POINTER,C_POINTER},C_UINT),
+				xorxObject_AddSound = define_c_func(orx,"+orxObject_AddSound",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_SynchronizeFX(atom o,atom m)
+
+ return c_func(xorxObject_SynchronizeFX,{o,m})
+	
+end function
+
+public function orxObject_AddSound(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_AddSound,{o,str})
+	
+end function
+
+public constant xorxObject_RemoveSound = define_c_func(orx,"+orxObject_RemoveSound",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_RemoveSound(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_RemoveSound,{o,str})
+	
+end function
+
+public constant xorxObject_GetLastAddedSound = define_c_func(orx,"+orxObject_GetLastAddedSound",{C_POINTER},C_POINTER)
+
+public function orxObject_GetLastAddedSound(atom o)
+
+ return c_func(xorxObject_GetLastAddedSound,{o})
+	
+end function
+
+public constant xorxObject_SetVolume = define_c_func(orx,"+orxObject_SetVolume",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetVolume(atom o,atom vol)
+
+ return c_func(xorxObject_SetVolume,{o,vol})
+	
+end function
+
+public constant xorxObject_SetPitch = define_c_func(orx,"+orxObject_SetPitch",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetPitch(atom o,atom pit)
+
+ return c_func(xorxObject_SetPitch,{o,pit})
+	
+end function
+
+public constant xorxObject_Play = define_c_func(orx,"+orxObject_Play",{C_POINTER},C_UINT)
+
+public function orxObject_Play(atom o)
+
+ return c_func(xorxObject_Play,{o})
+	
+end function
+
+public constant xorxObject_Stop = define_c_func(orx,"+orxObject_Stop",{C_POINTER},C_UINT)
+
+public function orxObject_Stop(atom o)
+
+ return c_func(xorxObject_Stop,{o})
+	
+end function
+
+public constant xorxObject_AddShader = define_c_func(orx,"+orxObject_AddShader",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_AddShader(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_AddShader,{o,str})
+	
+end function
+
+public constant xorxObject_AddShaderRecursive = define_c_proc(orx,"+orxObject_AddShaderRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_AddShaderRecursive(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_AddShaderRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_RemoveShader = define_c_func(orx,"+orxObject_RemoveShader",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_RemoveShader(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_RemoveShader,{o,str})
+	
+end function
+
+public constant xorxObject_RemoveShaderRecursive = define_c_proc(orx,"+orxObject_RemoveShaderRecursive",{C_POINTER,C_POINTER}),
+				xorxObject_EnableShader = define_c_proc(orx,"+orxObject_EnableShader",{C_POINTER,C_BOOL})
+				
+public procedure orxObject_RemoveShaderRecursive(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_RemoveShaderRecursive,{o,str})
+	
+end procedure
+
+public procedure orxObject_EnableShader(atom o,atom en)
+
+ c_proc(xorxObject_EnableShader,{o,en})
+	
+end procedure
+
+public constant xorxObject_IsShaderEnabled = define_c_func(orx,"+orxObject_IsShaderEnabled",{C_POINTER},C_BOOL),
+				xorxObject_AddTimeLineTrack = define_c_func(orx,"+orxObject_AddTimeLineTrack",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_IsShaderEnabled(atom o)
+
+ return c_func(xorxObject_IsShaderEnabled,{o})
+	
+end function
+
+public function orxObject_AddTimeLineTrack(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_AddTimeLineTrack,{o,str})
+	
+end function
+
+public constant xorxObject_AddTimeLineTrackRecursive = define_c_proc(orx,"+orxObject_AddTimeLineTrackRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_AddTimeLineTrackRecursive(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_AddTimeLineTrackRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_RemoveTimeLineTrack = define_c_func(orx,"+orxObject_RemoveTimeLineTrack",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_RemoveTimeLineTrack(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxObject_RemoveTimeLineTrack,{o,str})
+	
+end function
+
+public constant xorxObject_RemoveTimeLineTrackRecursive = define_c_proc(orx,"+orxObject_RemoveTimeLineTrackRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_RemoveTimeLineTrackRecursive(atom o,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ c_proc(xorxObject_RemoveTimeLineTrackRecursive,{o,str})
+	
+end procedure
+
+public constant xorxObject_EnableTimeLine = define_c_proc(orx,"+orxObject_EnableTimeLine",{C_POINTER,C_BOOL})
+
+public procedure orxObject_EnableTimeLine(atom o,atom en)
+
+ c_proc(xorxObject_EnableTimeLine,{o,en})
+	
+end procedure
+
+public constant xorxObject_IsTimeLineEnabled = define_c_func(orx,"+orxObject_IsTimeLineEnabled",{C_POINTER},C_BOOL),
+				xorxObject_GetName = define_c_func(orx,"+orxObject_GetName",{C_POINTER},C_POINTER),
+				xorxObject_CreateNeighborList = define_c_func(orx,"+orxObject_CreateNeighborList",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxObject_IsTimeLineEnabled(atom o)
+
+ return c_func(xorxObject_IsTimeLineEnabled,{o})
+	
+end function
+
+public function orxObject_GetName(atom o)
+
+ return c_func(xorxObject_GetName,{o})
+	
+end function
+
+public function orxObject_CreateNeighborList(atom bo,atom id)
+
+ return c_func(xorxObject_CreateNeighborList,{bo,id})
+	
+end function
+
+public constant xorxObject_DeleteNeighborList = define_c_proc(orx,"+orxObject_DeleteNeighborList",{C_POINTER}),
+				xorxObject_SetSmoothing = define_c_func(orx,"+orxObject_SetSmoothing",{C_POINTER,C_UINT},C_UINT)
+				
+public procedure orxObject_DeleteNeighborList(atom o)
+
+ c_proc(xorxObject_DeleteNeighborList,{o})
+	
+end procedure
+
+public function orxObject_SetSmoothing(atom o,atom smo)
+
+ return c_func(xorxObject_SetSmoothing,{o,smo})
+	
+end function
+
+public constant xorxObject_SetSmoothingRecursive = define_c_proc(orx,"+orxObject_SetSmoothingRecursive",{C_POINTER,C_UINT})
+
+public procedure orxObject_SetSmoothingRecursive(atom o,atom smo)
+
+ c_proc(xorxObject_SetSmoothingRecursive,{o,smo})
+	
+end procedure
+
+public constant xorxObject_GetSmoothing = define_c_func(orx,"+orxObject_GetSmoothing",{C_POINTER},C_UINT),
+				xorxObject_GetWorkingTexture = define_c_func(orx,"+orxObject_GetWorkingTexture",{C_POINTER},C_POINTER),
+				xorxObject_GetWorkingGraphic = define_c_func(orx,"+orxObject_GetWorkingGraphic",{C_POINTER},C_POINTER)
+				
+public function orxObject_GetSmoothing(atom o)
+
+ return c_func(xorxObject_GetSmoothing,{o})
+	
+end function
+
+public function orxObject_GetWorkingTexture(atom o)
+
+ return c_func(xorxObject_GetWorkingTexture,{o})
+	
+end function
+
+public function orxObject_GetWorkingGraphic(atom o)
+
+ return c_func(xorxObject_GetWorkingGraphic,{o})
+	
+end function
+
+public constant xorxObject_SetColor = define_c_func(orx,"+orxObject_SetColor",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetColor(atom o,atom col)
+
+ return c_func(xorxObject_SetColor,{o,col})
+	
+end function
+
+public constant xorxObject_SetColorRecursive = define_c_proc(orx,"+orxObject_SetColorRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetColorRecursive(atom o,atom col)
+
+ c_proc(xorxObject_SetColorRecursive,{o,col})
+	
+end procedure
+
+public constant xorxObject_HasColor = define_c_func(orx,"+orxObject_HasColor",{C_POINTER},C_BOOL)
+
+public function orxObject_HasColor(atom o)
+
+ return c_func(xorxObject_HasColor,{o})
+	
+end function
+
+public constant xorxObject_GetColor = define_c_func(orx,"+orxObject_GetColor",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetColor(atom o,atom col)
+
+ return c_func(xorxObject_GetColor,{o,col})
+	
+end function
+
+public constant xorxObject_SetRGB = define_c_func(orx,"+orxObject_SetRGB",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetRGB(atom o,atom rg)
+
+ return c_func(xorxObject_SetRGB,{o,rg})
+	
+end function
+
+public constant xorxObject_SetRGBRecursive = define_c_proc(orx,"+orxObject_SetRGBRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetRGBRecursive(atom o,atom rg)
+
+ c_proc(xorxObject_SetRGBRecursive,{o,rg})
+	
+end procedure
+
+public constant xorxObject_SetAlpha = define_c_func(orx,"+orxObject_SetAlpha",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetAlpha(atom o,atom al)
+
+ return c_func(xorxObject_SetAlpha,{o,al})
+	
+end function
+
+public constant xorxObject_SetAlphaRecursive = define_c_proc(orx,"+orxObject_SetAlphaRecursive",{C_POINTER,C_FLOAT})
+
+public procedure orxObject_SetAlphaRecursive(atom o,atom al)
+
+ c_proc(xorxObject_SetAlphaRecursive,{o,al})
+	
+end procedure
+
+public constant xorxObject_SetRepeat = define_c_func(orx,"+orxObject_SetRepeat",{C_POINTER,C_FLOAT,C_FLOAT},C_UINT),
+				xorxObject_GetRepeat = define_c_func(orx,"+orxObject_GetRepeat",{C_POINTER,C_POINTER,C_POINTER},C_UINT)
+				
+public function orxObject_SetRepeat(atom o,atom x,atom y)
+
+ return c_func(xorxObject_SetRepeat,{o,x,y})
+	
+end function
+
+public function orxObject_GetRepeat(atom o,atom x,atom y)
+
+ return c_func(xorxObject_GetRepeat,{o,x,y})
+	
+end function
+
+public constant xorxObject_SetBlendMode = define_c_func(orx,"+orxObject_SetBlendMode",{C_POINTER,C_UINT},C_UINT)
+
+public function orxObject_SetBlendMode(atom o,atom mode)
+
+ return c_func(xorxObject_SetBlendMode,{o,mode})
+	
+end function
+
+public constant xorxObject_SetBlendModeRecursive = define_c_proc(orx,"+orxObject_SetBlendModeRecursive",{C_POINTER,C_UINT})
+
+public procedure orxObject_SetBlendModeRecursive(atom o,atom mode)
+
+ c_proc(xorxObject_SetBlendModeRecursive,{o,mode})
+	
+end procedure
+
+public constant xorxObject_HasBlendMode = define_c_func(orx,"+orxObject_HasBlendmode",{C_POINTER},C_BOOL)
+
+public function orxObject_HasBlendMode(atom o)
+
+ return c_func(xorxObject_HasBlendMode,{o})
+	
+end function
+
+public constant xorxObject_GetBlendMode = define_c_func(orx,"+orxObject_GetBlendMode",{C_POINTER},C_UINT)
+
+public function orxObject_GetBlendMode(atom o)
+
+ return c_func(xorxObject_GetBlendMode,{o})
+	
+end function
+
+public constant xorxObject_SetLiteralLifeTime = define_c_func(orx,"+orxObject_SetLiteralLifeTime",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetLiteralLifeTime(atom o,sequence z)
+
+ atom str = allocate_string(z,1)
+ 
+ return c_func(xorxObject_SetLiteralLifeTime,{o,str})
+	
+end function
+
+public constant xorxObject_SetLifeTime = define_c_func(orx,"+orxObject_SetLifeTime",{C_POINTER,C_FLOAT},C_UINT)
+
+public function orxObject_SetLifeTime(atom o,atom lt)
+
+ return c_func(xorxObject_SetLifeTime,{o,lt})
+	
+end function
+
+public constant xorxObject_GetLifeTime = define_c_func(orx,"+orxObject_GetLifeTime",{C_POINTER},C_FLOAT)
+
+public function orxObject_GetLifeTime(atom o)
+
+ return c_func(xorxObject_GetLifeTime,{o})
+	
+end function
+
+public constant xorxObject_GetActiveTime = define_c_func(orx,"+orxObject_GetActiveTime",{C_POINTER},C_FLOAT),
+				xorxObject_GetDefaultGroupID = define_c_func(orx,"+orxObject_GetDefaultGroupID",{},C_POINTER)
+				
+public function orxObject_GetActiveTime(atom o)
+
+ return c_func(xorxObject_GetActiveTime,{o})
+	
+end function
+
+public function orxObject_GetDefaultGroupID()
+
+ return c_func(xorxObject_GetDefaultGroupID,{})
+	
+end function
+
+public constant xorxObject_GetGroupID = define_c_func(orx,"+orxObject_GetGroupID",{C_POINTER},C_POINTER)
+
+public function orxObject_GetGroupID(atom o)
+
+ return c_func(xorxObject_GetGroupID,{o})
+	
+end function
+
+public constant xorxObject_SetGroupID = define_c_func(orx,"+orxObject_SetGroupID",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxObject_SetGroupID(atom o,atom id)
+
+ return c_func(xorxObject_SetGroupID,{o,id})
+	
+end function
+
+public constant xorxObject_SetGroupIDRecursive = define_c_proc(orx,"+orxObject_SetGroupIDRecursive",{C_POINTER,C_POINTER})
+
+public procedure orxObject_SetGroupIDRecursive(atom o,atom id)
+
+ c_proc(xorxObject_SetGroupIDRecursive,{o,id})
+	
+end procedure
+
+public constant xorxObject_GetNext = define_c_func(orx,"+orxObject_GetNext",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetNext(atom o,atom id)
+
+ return c_func(xorxObject_GetNext,{o,id})
+	
+end function
+
+public constant xorxObject_GetNextEnabled = define_c_func(orx,"+orxObject_GetNextEnabled",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_GetNextEnabled(atom o,atom id)
+
+ return c_func(xorxObject_GetNextEnabled,{o,id})
+	
+end function
+
+public constant xorxObject_Pick = define_c_func(orx,"+orxObject_Pick",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_Pick(atom pos,atom id)
+
+ return c_func(xorxObject_Pick,{pos,id})
+	
+end function
+
+public constant xorxObject_BoxPick = define_c_func(orx,"+orxObject_BoxPick",{C_POINTER,C_POINTER},C_POINTER)
+
+public function orxObject_BoxPick(atom box,atom id)
+
+ return c_func(xorxObject_BoxPick,{box,id})
+	
+end function
+
+--Spawner Functions
+
+public constant xorxSpawner_Setup = define_c_proc(orx,"+orxSpawner_Setup",{}),
+				xorxSpawner_Init = define_c_func(orx,"+orxSpawner_Init",{},C_UINT),
+				xorxSpawner_Exit = define_c_proc(orx,"+orxSpawner_Exit",{}),
+				xorxSpawner_Create = define_c_func(orx,"+orxSpawner_Create",{},C_POINTER),
+				xorxSpawner_CreateFromConfig = define_c_func(orx,"+orxSpawner_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxSpawner_Delete = define_c_func(orx,"+orxSpawner_Delete",{C_POINTER},C_UINT),
+				xorxSpawner_Enable = define_c_proc(orx,"+orxSpawner_Enable",{C_POINTER,C_BOOL}),
+				xorxSpawner_IsEnabled = define_c_func(orx,"+orxSpawner_IsEnabled",{C_POINTER},C_BOOL)
+				
+public procedure orxSpawner_Setup()
+
+ c_proc(xorxSpawner_Setup,{})
+	
+end procedure
+
+public function orxSpawner_Init()
+
+ return c_func(xorxSpawner_Init,{})
+	
+end function
+
+public procedure orxSpawner_Exit()
+
+ c_proc(xorxSpawner_Exit,{})
+	
+end procedure
+
+public function orxSpawner_Create()
+
+ return c_func(xorxSpawner_Create,{})
+	
+end function
+
+public function orxSpawner_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSpawner_CreateFromConfig,{str})
+	
+end function
+
+public function orxSpawner_Delete(atom s)
+
+ return c_func(xorxSpawner_Delete,{s})
+	
+end function
+
+public procedure orxSpawner_Enable(atom s,atom en)
+
+ c_proc(xorxSpawner_Enable,{s,en})
+	
+end procedure
+
+public function orxSpawner_IsEnabled(atom s)
+
+ return c_func(xorxSpawner_IsEnabled,{s})
+	
+end function
+
+public constant xorxSpawner_Reset = define_c_proc(orx,"+orxSpawner_Reset",{C_POINTER}),
+				xorxSpawner_SetTotalObjectLimit = define_c_func(orx,"+orxSpawner_SetTotalObjectLimit",{C_POINTER,C_UINT},C_UINT),
+				xorxSpawner_SetActiveObjectLimit = define_c_func(orx,"+orxSpawner_SetActiveObjectLimit",{C_POINTER,C_UINT},C_UINT),
+				xorxSpawner_GetTotalObjectLimit = define_c_func(orx,"+orxSpawner_GetTotalObjectLimit",{C_POINTER},C_UINT),
+				xorxSpawner_GetActiveObjectLimit = define_c_func(orx,"+orxSpawner_GetActiveObjectLimit",{C_POINTER},C_UINT),
+				xorxSpawner_GetTotalObjectCount = define_c_func(orx,"+orxSpawner_GetTotalObjectCount",{C_POINTER},C_UINT),
+				xorxSpawner_GetActiveObjectCount = define_c_func(orx,"+orxSpawner_GetActiveObjectCount",{C_POINTER},C_UINT)
+				
+public procedure orxSpawner_Reset(atom s)
+
+ c_proc(xorxSpawner_Reset,{s})
+	
+end procedure
+
+public function orxSpawner_SetTotalObjectLimit(atom s,atom lim)
+
+ return c_func(xorxSpawner_SetTotalObjectLimit,{s,lim})
+	
+end function
+
+public function orxSpawner_SetActiveObjectLimit(atom s,atom lim)
+
+ return c_func(xorxSpawner_SetActiveObjectLimit,{s,lim})
+	
+end function
+
+public function orxSpawner_GetTotalObjectLimit(atom s)
+
+ return c_func(xorxSpawner_GetTotalObjectLimit,{s})
+	
+end function
+
+public function orxSpawner_GetActiveObjectLimit(atom s)
+
+ return c_func(xorxSpawner_GetActiveObjectLimit,{s})
+	
+end function
+
+public function orxSpawner_GetTotalObjectCount(atom s)
+
+ return c_func(xorxSpawner_GetTotalObjectCount,{s})
+	
+end function
+
+public function orxSpawner_GetActiveObjectCount(atom s)
+
+ return c_func(xorxSpawner_GetActiveObjectCount,{s})
+	
+end function
+
+public constant xorxSpawner_SetWaveSize = define_c_func(orx,"+orxSpawner_SetWaveSize",{C_POINTER,C_UINT},C_UINT),
+				xorxSpawner_SetWaveDelay = define_c_func(orx,"+orxSpawner_SetWaveDelay",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSpawner_SetNextWaveDelay = define_c_func(orx,"+orxSpawner_SetNextWaveDelay",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSpawner_GetWaveSize = define_c_func(orx,"+orxSpawner_GetWaveSize",{C_POINTER},C_UINT),
+				xorxSpawner_GetWaveDelay = define_c_func(orx,"+orxSpawner_GetWaveDelay",{C_POINTER},C_FLOAT),
+				xorxSpawner_GetNextWaveDelay = define_c_func(orx,"+orxSpawner_GetNextWaveDelay",{C_POINTER},C_FLOAT)
+				
+public function orxSpawner_SetWaveSize(atom s,atom si)
+
+ return c_func(xorxSpawner_SetWaveSize,{s,si})
+	
+end function
+
+public function orxSpawner_SetWaveDelay(atom s,atom de)
+
+ return c_func(xorxSpawner_SetWaveDelay,{s,de})
+	
+end function
+
+public function orxSpawner_SetNextWaveDelay(atom s,atom de)
+
+ return c_func(xorxSpawner_SetNextWaveDelay,{s,de})
+	
+end function
+
+public function orxSpawner_GetWaveSize(atom s)
+
+ return c_func(xorxSpawner_GetWaveSize,{s})
+	
+end function
+
+public function orxSpawner_GetWaveDelay(atom s)
+
+ return c_func(xorxSpawner_GetWaveDelay,{s})
+	
+end function
+
+public function orxSpawner_GetNextWaveDelay(atom s)
+
+ return c_func(xorxSpawner_GetNextWaveDelay,{s})
+	
+end function
+
+public constant xorxSpawner_SetObjectSpeed = define_c_func(orx,"+orxSpawner_SetObjectSpeed",{C_POINTER,C_POINTER},C_UINT),
+				xorxSpawner_GetObjectSpeed = define_c_func(orx,"+orxSpawner_GetObjectSpeed",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxSpawner_SetObjectSpeed(atom s,atom spd)
+
+ return c_func(xorxSpawner_SetObjectSpeed,{s,spd})
+	
+end function
+
+public function orxSpawner_GetObjectSpeed(atom s,atom spd)
+
+ return c_func(xorxSpawner_GetObjectSpeed,{s,spd})
+	
+end function
+
+public constant xorxSpawner_Spawn = define_c_func(orx,"+orxSpawner_Spawn",{C_POINTER,C_UINT},C_UINT)
+
+public function orxSpawner_Spawn(atom s,atom num)
+
+ return c_func(xorxSpawner_Spawn,{s,num})
+	
+end function
+
+public constant xorxSpawner_GetFrame = define_c_func(orx,"+orxSpawner_GetFrame",{C_POINTER},C_POINTER)
+
+public function orxSpawner_GetFrame(atom s)
+
+ return c_func(xorxSpawner_GetFrame,{s})
+	
+end function
+
+public constant xorxSpawner_SetPosition = define_c_func(orx,"+orxSpawner_SetPosition",{C_POINTER,C_POINTER},C_UINT),
+				xorxSpawner_SetRotation = define_c_func(orx,"+orxSpawner_SetRotation",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSpawner_SetScale = define_c_func(orx,"+orxSpawner_SetScale",{C_POINTER,C_POINTER},C_UINT),
+				xorxSpawner_GetPosition = define_c_func(orx,"+orxSpawner_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSpawner_GetWorldPosition = define_c_func(orx,"+orxSpawner_GetWorldPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSpawner_GetRotation = define_c_func(orx,"+orxSpawner_GetRotation",{C_POINTER},C_FLOAT),
+				xorxSpawner_GetWorldRotation = define_c_func(orx,"+orxSpawner_GetWorldRotation",{C_POINTER},C_FLOAT),
+				xorxSpawner_GetScale = define_c_func(orx,"+orxSpawner_GetScale",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSpawner_GetWorldScale = define_c_func(orx,"+orxSpawner_GetWorldScale",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxSpawner_SetPosition(atom s,atom pos)
+
+ return c_func(xorxSpawner_SetPosition,{s,pos})
+	
+end function
+
+public function orxSpawner_SetRotation(atom s,atom rot)
+
+ return c_func(xorxSpawner_SetRotation,{s,rot})
+	
+end function
+
+public function orxSpawner_SetScale(atom s,atom sca)
+
+ return c_func(xorxSpawner_SetScale,{s,sca})
+	
+end function
+
+public function orxSpawner_GetPosition(atom s,atom pos)
+
+ return c_func(xorxSpawner_GetPosition,{s,pos})
+	
+end function
+
+public function orxSpawner_GetWorldPosition(atom s,atom pos)
+
+ return c_func(xorxSpawner_GetWorldPosition,{s,pos})
+	
+end function
+
+public function orxSpawner_GetRotation(atom s)
+
+ return c_func(xorxSpawner_GetRotation,{s})
+	
+end function
+
+public function orxSpawner_GetWorldRotation(atom s)
+
+ return c_func(xorxSpawner_GetWorldRotation,{s})
+	
+end function
+
+public function orxSpawner_GetScale(atom s,atom sca)
+
+ return c_func(xorxSpawner_GetScale,{s,sca})
+	
+end function
+
+public function orxSpawner_GetWorldScale(atom s,atom sca)
+
+ return c_func(xorxSpawner_GetWorldScale,{s,sca})
+	
+end function
+
+public constant xorxSpawner_SetParent = define_c_func(orx,"+orxSpawner_SetParent",{C_POINTER,C_POINTER},C_UINT),
+				xorxSpawner_GetParent = define_c_func(orx,"+orxSpawner_GetParent",{C_POINTER},C_POINTER)
+				
+public function orxSpawner_SetParent(atom s,atom p)
+
+ return c_func(xorxSpawner_SetParent,{s,p})
+	
+end function
+
+public function orxSpawner_GetParent(atom s)
+
+ return c_func(xorxSpawner_GetParent,{s})
+	
+end function
+
+public constant xorxSpawner_GetName = define_c_func(orx,"+orxSpawner_GetName",{C_POINTER},C_POINTER)
+
+public function orxSpawner_GetName(atom s)
+
+ return c_func(xorxSpawner_GetName,{s})
+	
+end function
+
+--Structure Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -5447,4 +7115,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­5396.21
+­7064.21
