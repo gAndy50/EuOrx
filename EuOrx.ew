@@ -7063,6 +7063,274 @@ end function
 
 --Structure Functions
 
+public constant xorxStructure_Setup = define_c_proc(orx,"+orxStructure_Setup",{}),
+				xorxStructure_Init = define_c_func(orx,"+orxStructure_Init",{},C_UINT),
+				xorxStructure_Exit = define_c_proc(orx,"+orxStructure_Exit",{})
+				
+public procedure orxStructure_Setup()
+
+ c_proc(xorxStructure_Setup,{})
+	
+end procedure
+
+public function orxStructure_Init()
+
+ return c_func(xorxStructure_Init,{})
+	
+end function
+
+public procedure orxStructure_Exit()
+
+ c_proc(xorxStructure_Exit,{})
+	
+end procedure
+
+public constant xorxStructure_Register = define_c_func(orx,"+orxStructure_Register",{C_UINT,C_UINT,C_UINT,C_UINT,C_UINT,C_UINT},C_UINT),
+				xorxStructure_Unregister = define_c_func(orx,"+orxStructure_Unregister",{C_UINT},C_UINT)
+				
+public function orxStructure_Register(atom id,atom etype,atom memtype,atom size,atom bsize,atom upd)
+
+ return c_func(xorxStructure_Register,{id,etype,memtype,size,bsize,upd})
+	
+end function
+
+public function orxStructure_Unregister(atom id)
+
+ return c_func(xorxStructure_Unregister,{id})
+	
+end function
+
+public constant xorxStructure_Create = define_c_func(orx,"+orxStructure_Create",{C_UINT},C_POINTER),
+				xorxStructure_Delete = define_c_func(orx,"+orxStructure_Delete",{C_POINTER},C_UINT)
+				
+public function orxStructure_Create(atom id)
+
+ return c_func(xorxStructure_Create,{id})
+	
+end function
+
+public function orxStructure_Delete(atom p)
+
+ return c_func(xorxStructure_Delete,{p})
+	
+end function
+
+public constant xorxStructure_GetStorageType = define_c_func(orx,"+orxStructure_GetStorageType",{C_UINT},C_UINT),
+				xorxStructure_GetCount = define_c_func(orx,"+orxStructure_GetCount",{C_UINT},C_UINT),
+				xorxStructure_Update = define_c_func(orx,"+orxStructure_Update",{C_POINTER,C_POINTER,C_POINTER},C_UINT)
+				
+public function orxStructure_GetStorageType(atom id)
+
+ return c_func(xorxStructure_GetStorageType,{id})
+	
+end function
+
+public function orxStructure_GetCount(atom id)
+
+ return c_func(xorxStructure_GetCount,{id})
+	
+end function
+
+public function orxStructure_Update(atom p,atom ph,atom clock)
+
+ return c_func(xorxStructure_Update,{p,ph,clock})
+	
+end function
+
+public constant xorxStructure_Get = define_c_func(orx,"+orxStructure_Get",{C_LONG},C_POINTER),
+				xorxStructure_GetOwner = define_c_func(orx,"+orxStructure_GetOwner",{C_POINTER},C_POINTER),
+				xorxStructure_SetOwner = define_c_func(orx,"+orxStructure_SetOwner",{C_POINTER,C_POINTER},C_UINT),
+				xorxStructure_GetFirst = define_c_func(orx,"+orxStructure_GetFirst",{C_UINT},C_POINTER),
+				xorxStructure_GetLast = define_c_func(orx,"+orxStructure_GetLast",{C_UINT},C_POINTER),
+				xorxStructure_GetParent = define_c_func(orx,"+orxStructure_GetParent",{C_POINTER},C_POINTER),
+				xorxStructure_GetChild = define_c_func(orx,"+orxStructure_GetChild",{C_POINTER},C_POINTER),
+				xorxStructure_GetSibling = define_c_func(orx,"+orxStructure_GetSibling",{C_POINTER},C_POINTER),
+				xorxStructure_GetPrevious = define_c_func(orx,"+orxStructure_GetPrevious",{C_POINTER},C_POINTER),
+				xorxStructure_GetNext = define_c_func(orx,"+orxStructure_GetNext",{C_POINTER},C_POINTER),
+				xorxStructure_SetParent = define_c_func(orx,"+orxStructure_SetParent",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxStructure_Get(atom uid)
+
+ return c_func(xorxStructure_Get,{uid})
+	
+end function
+
+public function orxStructure_GetOwner(atom p)
+
+ return c_func(xorxStructure_GetOwner,{p})
+	
+end function
+
+public function orxStructure_SetOwner(atom p,atom o)
+
+ return c_func(xorxStructure_SetOwner,{p,o})
+	
+end function
+
+public function orxStructure_GetFirst(atom id)
+
+ return c_func(xorxStructure_GetFirst,{id})
+	
+end function
+
+public function orxStructure_GetLast(atom id)
+
+ return c_func(xorxStructure_GetLast,{id})
+	
+end function
+
+public function orxStructure_GetParent(atom p)
+
+ return c_func(xorxStructure_GetParent,{p})
+	
+end function
+
+public function orxStructure_GetChild(atom p)
+
+ return c_func(xorxStructure_GetChild,{p})
+	
+end function
+
+public function orxStructure_GetSibling(atom p)
+
+ return c_func(xorxStructure_GetSibling,{p})
+	
+end function
+
+public function orxStructure_GetPrevious(atom p)
+
+ return c_func(xorxStructure_GetPrevious,{p})
+	
+end function
+
+public function orxStructure_GetNext(atom p)
+
+ return c_func(xorxStructure_GetNext,{p})
+	
+end function
+
+public function orxStructure_SetParent(atom p,atom ph)
+
+ return c_func(xorxStructure_SetParent,{p,ph})
+	
+end function
+
+public constant xorxStructure_LogAll = define_c_func(orx,"+orxStructure_LogAll",{C_BOOL},C_UINT)
+
+public function orxStructure_LogAll(atom p)
+
+ return c_func(xorxStructure_LogAll,{p})
+	
+end function
+
+----------------------------------------------------------------------
+--Structure Inline Functions
+--orxStructure_IncreaseCount(void *pstruct) void
+--orxStructure_DecreaseCount(void *pstruct) void
+--orxStructure_GetRefCount(void *pstruct) u32
+--orxStructure_GetGUID(void *pstruct) u64
+--orxStructure_GetID(void *pstruct) struct id
+--orxStructure_TestFlags(void *pstruct, u32 flags) bool
+--orxStructure_TestAllFlags(void *pstruct, u32 flags) bool
+--orxStructure_GetFlags(void *pstruct, u32 mask) u32
+--orxStructure_SetFlags(void *pstruct,u32 flags,u32 remove flags) void
+------------------------------------------------------------------------
+
+--orxTimeLine Functions
+
+public constant xorxTimeLine_Setup = define_c_proc(orx,"+orxTimeLine_Setup",{}),
+				xorxTimeLine_Init = define_c_func(orx,"+orxTimeLine_Init",{},C_UINT),
+				xorxTimeLine_Exit = define_c_proc(orx,"+orxTimeLine_Exit",{}),
+				xorxTimeLine_Create = define_c_func(orx,"+orxTimeLine_Create",{},C_POINTER),
+				xorxTimeLine_Delete = define_c_func(orx,"+orxTimeLine_Delete",{C_POINTER},C_UINT),
+				xorxTimeLine_ClearCache = define_c_func(orx,"+orxTimeLine_ClearCache",{},C_UINT),
+				xorxTimeLine_Enable = define_c_proc(orx,"+orxTimeLine_Enable",{C_POINTER,C_BOOL}),
+				xorxTimeLine_IsEnabled = define_c_func(orx,"+orxTimeLine_IsEnabled",{C_POINTER},C_BOOL),
+				xorxTimeLine_AddTrackFromConfig = define_c_func(orx,"+orxTimeLine_AddTrackFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxTimeLine_RemoveTrackFromConfig = define_c_func(orx,"+orxTimeLine_RemoveTrackFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxTimeLine_GetCount = define_c_func(orx,"+orxTimeLine_GetCount",{C_POINTER},C_UINT),
+				xorxTimeLine_GetTrackDuration = define_c_func(orx,"+orxTimeLine_GetTrackDuration",{C_POINTER},C_FLOAT)
+				
+public procedure orxTimeLine_Setup()
+
+ c_proc(xorxTimeLine_Setup,{})
+	
+end procedure
+
+public function orxTimeLine_Init()
+
+ return c_func(xorxTimeLine_Init,{})
+	
+end function
+
+public procedure orxTimeLine_Exit()
+
+ c_proc(xorxTimeLine_Exit,{})
+	
+end procedure
+
+public function orxTimeLine_Create()
+
+ return c_func(xorxTimeLine_Create,{})
+	
+end function
+
+public function orxTimeLine_Delete(atom tl)
+
+ return c_func(xorxTimeLine_Delete,{tl})
+	
+end function
+
+public function orxTimeLine_ClearCache()
+
+ return c_func(xorxTimeLine_ClearCache,{})
+	
+end function
+
+public procedure orxTimeLine_Enable(atom tl,atom en)
+
+ c_proc(xorxTimeLine_Enable,{tl,en})
+	
+end procedure
+
+public function orxTimeLine_IsEnabled(atom tl)
+
+ return c_func(xorxTimeLine_IsEnabled,{tl})
+	
+end function
+
+public function orxTimeLine_AddTrackFromConfig(atom tl,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxTimeLine_AddTrackFromConfig,{tl,str})
+	
+end function
+
+public function orxTimeLine_RemoveTrackFromConfig(atom tl,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxTimeLine_RemoveTrackFromConfig,{tl,str})
+	
+end function
+
+public function orxTimeLine_GetCount(atom tl)
+
+ return c_func(xorxTimeLine_GetCount,{tl})
+	
+end function
+
+public function orxTimeLine_GetTrackDuration(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxTimeLine_GetTrackDuration,{str})
+	
+end function
+
+--Plugin Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -7115,4 +7383,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­7064.21
+­7332.18
