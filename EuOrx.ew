@@ -7331,6 +7331,105 @@ end function
 
 --Plugin Functions
 
+public constant xorxPlugin_Setup = define_c_proc(orx,"+orxPlugin_Setup",{}),
+				xorxPlugin_Init = define_c_func(orx,"+orxPlugin_Init",{},C_UINT),
+				xorxPlugin_Exit = define_c_proc(orx,"+orxPlugin_Exit",{})
+				
+public procedure orxPlugin_Setup()
+
+ c_proc(xorxPlugin_Setup,{})
+	
+end procedure
+
+public function orxPlugin_Init()
+
+ return c_func(xorxPlugin_Init,{})
+	
+end function
+
+public procedure orxPlugin_Exit()
+
+ c_proc(xorxPlugin_Exit,{})
+	
+end procedure
+
+public constant xorxPlugin_Load = define_c_func(orx,"+orxPlugin_Load",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPlugin_LoadUsingExt = define_c_func(orx,"+orxPlugin_LoadUsingExt",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPlugin_Unload = define_c_func(orx,"+orxPlugin_Unload",{C_POINTER},C_UINT),
+				xorxPlugin_GetFunction = define_c_func(orx,"+orxPlugin_GetFunction",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPlugin_GetHandle = define_c_func(orx,"+orxPlugin_GetHandle",{C_POINTER},C_POINTER),
+				xorxPlugin_GetName = define_c_func(orx,"+orxPlugin_GetName",{C_POINTER},C_POINTER)
+				
+public function orxPlugin_Load(sequence name,sequence name2)
+
+ atom str = allocate_string(name,1)
+ atom str2 = allocate_string(name2,1)
+ 
+ return c_func(xorxPlugin_Load,{str,str2})
+	
+end function
+
+public function orxPlugin_LoadUsingExt(sequence name,sequence name2)
+
+ atom str = allocate_string(name,1)
+ atom str2 = allocate_string(name2,1)
+ 
+ return c_func(xorxPlugin_LoadUsingExt,{str,str2})
+	
+end function
+
+public function orxPlugin_Unload(atom hand)
+
+ return c_func(xorxPlugin_Unload,{hand})
+	
+end function
+
+public function orxPlugin_GetFunction(atom hand,sequence name)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxPlugin_GetFunction,{hand,str})
+	
+end function
+
+public function orxPlugin_GetHandle(sequence name)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxPlugin_GetHandle,{str})
+	
+end function
+
+public function orxPlugin_GetName(atom hand)
+
+ return c_func(xorxPlugin_GetName,{hand})
+	
+end function
+
+--Plugin Core Functions
+
+public constant xorxPlugin_AddCoreInfo = define_c_proc(orx,"+orxPlugin_AddCoreInfo",{C_UINT,C_UINT,C_POINTER,C_UINT}),
+				xorxPlugin_DefaultCoreFunction = define_c_func(orx,"+orxPlugin_DefaultCoreFunction",{C_POINTER,C_POINTER,C_UINT},C_POINTER)
+				
+public procedure orxPlugin_AddCoreInfo(atom coreid,atom id,atom cf,atom num)
+
+ c_proc(xorxPlugin_AddCoreInfo,{coreid,id,cf,num})
+	
+end procedure
+
+public function orxPlugin_DefaultCoreFunction(sequence name,sequence file,atom li)
+
+ atom str = allocate_string(name,1)
+ atom str2 = allocate_string(file,1)
+ 
+ return c_func(xorxPlugin_DefaultCoreFunction,{str,str2,li})
+	
+end function
+
+--Render Functions
+
+--Camera Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -7383,4 +7482,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­7332.18
+­7431.18
