@@ -7430,6 +7430,758 @@ end function
 
 --Camera Functions
 
+public constant xorxCamera_Setup = define_c_proc(orx,"+orxCamera_Setup",{}),
+				xorxCamera_Init = define_c_func(orx,"+orxCamera_Init",{},C_UINT),
+				xorxCamera_Exit = define_c_proc(orx,"+orxCamera_Exit",{})
+				
+public procedure orxCamera_Setup()
+
+ c_proc(xorxCamera_Setup,{})
+	
+end procedure
+
+public function orxCamera_Init()
+
+ return c_func(xorxCamera_Init,{})
+	
+end function
+
+public procedure orxCamera_Exit()
+
+ c_proc(xorxCamera_Exit,{})
+	
+end procedure
+
+public constant xorxCamera_Create = define_c_func(orx,"+orxCamera_Create",{C_UINT},C_POINTER),
+				xorxCamera_CreateFromConfig = define_c_func(orx,"+orxCamera_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxCamera_Delete = define_c_func(orx,"+orxCamera_Delete",{C_POINTER},C_UINT)
+				
+public function orxCamera_Create(atom flags)
+
+ return c_func(xorxCamera_Create,{flags})
+	
+end function
+
+public function orxCamera_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxCamera_CreateFromConfig,{str})
+	
+end function
+
+public function orxCamera_Delete(atom cam)
+
+ return c_func(xorxCamera_Delete,{cam})
+	
+end function
+
+public constant xorxCamera_AddGroupID = define_c_func(orx,"+orxCamera_AddGroupID",{C_POINTER,C_UINT,C_BOOL},C_UINT),
+				xorxCamera_RemoveGroupID = define_c_func(orx,"+orxCamera_RemoveGroupID",{C_POINTER,C_UINT},C_UINT),
+				xorxCamera_GetGroupIDCount = define_c_func(orx,"+orxCamera_GetGroupIDCount",{C_POINTER},C_UINT),
+				xorxCamera_GetGroupID = define_c_func(orx,"+orxCamera_GetGroupID",{C_POINTER,C_UINT},C_UINT)
+				
+public function orxCamera_AddGroupID(atom cam,atom id,atom add)
+
+ return c_func(xorxCamera_AddGroupID,{cam,id,add})
+	
+end function
+
+public function orxCamera_RemoveGroupID(atom cam,atom id)
+
+ return c_func(xorxCamera_RemoveGroupID,{cam,id})
+	
+end function
+
+public function orxCamera_GetGroupIDCount(atom cam)
+
+ return c_func(xorxCamera_GetGroupIDCount,{cam})
+	
+end function
+
+public function orxCamera_GetGroupID(atom cam,atom idx)
+
+ return c_func(xorxCamera_GetGroupID,{cam,idx})
+	
+end function
+
+public constant xorxCamera_SetFrustum = define_c_func(orx,"+orxCamera_SetFrustum",{C_POINTER,C_FLOAT,C_FLOAT,C_FLOAT,C_FLOAT},C_UINT),
+				xorxCamera_SetPosition = define_c_func(orx,"+orxCamera_SetPosition",{C_POINTER,C_POINTER},C_UINT),
+				xorxCamera_SetRotation = define_c_func(orx,"+orxCamera_SetRotation",{C_POINTER,C_FLOAT},C_UINT),
+				xorxCamera_SetZoom = define_c_func(orx,"+orxCamera_SetZoom",{C_POINTER,C_FLOAT},C_UINT),
+				xorxCamera_GetFrustum = define_c_func(orx,"+orxCamera_GetFrustum",{C_POINTER,C_POINTER},C_POINTER),
+				xorxCamera_GetPosition = define_c_func(orx,"+orxCamera_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxCamera_GetRotation = define_c_func(orx,"+orxCamera_GetRotation",{C_POINTER},C_FLOAT),
+				xorxCamera_GetZoom = define_c_func(orx,"+orxCamera_GetZoom",{C_POINTER},C_FLOAT),
+				xorxCamera_GetName = define_c_func(orx,"+orxCamera_GetName",{C_POINTER},C_POINTER),
+				xorxCamera_Get = define_c_func(orx,"+orxCamera_Get",{C_POINTER},C_POINTER)
+				
+public function orxCamera_SetFrustum(atom cam,atom w,atom h,atom near,atom far)
+
+ return c_func(xorxCamera_SetFrustum,{cam,w,h,near,far})
+	
+end function
+
+public function orxCamera_SetPosition(atom cam,atom pos)
+
+ return c_func(xorxCamera_SetPosition,{cam,pos})
+	
+end function
+
+public function orxCamera_SetRotation(atom cam,atom rot)
+
+ return c_func(xorxCamera_SetRotation,{cam,rot})
+	
+end function
+
+public function orxCamera_SetZoom(atom cam,atom zo)
+
+ return c_func(xorxCamera_SetZoom,{cam,zo})
+	
+end function
+
+public function orxCamera_GetFrustum(atom cam,atom fru)
+
+ return c_func(xorxCamera_GetFrustum,{cam,fru})
+	
+end function
+
+public function orxCamera_GetPosition(atom cam,atom pos)
+
+ return c_func(xorxCamera_GetPosition,{cam,pos})
+	
+end function
+
+public function orxCamera_GetRotation(atom cam)
+
+ return c_func(xorxCamera_GetRotation,{cam})
+	
+end function
+
+public function orxCamera_GetZoom(atom cam)
+
+ return c_func(xorxCamera_GetZoom,{cam})
+	
+end function
+
+public function orxCamera_GetName(atom cam)
+
+ return c_func(xorxCamera_GetName,{cam})
+	
+end function
+
+public function orxCamera_Get(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxCamera_Get,{str})
+	
+end function
+
+public constant xorxCamera_GetFrame = define_c_func(orx,"+orxCamera_GetFrame",{C_POINTER},C_POINTER)
+
+public function orxCamera_GetFrame(atom cam)
+
+ return c_func(xorxCamera_GetFrame,{cam})
+	
+end function
+
+public constant xorxCamera_SetParent = define_c_func(orx,"+orxCamera_SetParent",{C_POINTER,C_POINTER},C_UINT),
+				xorxCamera_GetParent = define_c_func(orx,"+orxCamera_GetParent",{C_POINTER},C_POINTER)
+				
+public function orxCamera_SetParent(atom cam,atom p)
+
+ return c_func(xorxCamera_SetParent,{cam,p})
+	
+end function
+
+public function orxCamera_GetParent(atom cam)
+
+ return c_func(xorxCamera_GetParent,{cam})
+	
+end function
+
+--Render Functions
+
+public constant xorxRender_Setup = define_c_proc(orx,"+orxRender_Setup",{})
+
+public procedure orxRender_Setup()
+
+ c_proc(xorxRender_Setup,{})
+	
+end procedure
+
+public constant xorxRender_Init = define_c_func(orx,"+orxRender_Init",{},C_UINT),
+				xorxRender_Exit = define_c_proc(orx,"+orxRender_Exit",{}),
+				xorxRender_GetWorldPosition = define_c_func(orx,"+orxRender_GetWorldPosition",{C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxRender_GetScreenPosition = define_c_func(orx,"+orxRender_GetScreenPosition",{C_POINTER,C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxRender_Init()
+
+ return c_func(xorxRender_Init,{})
+	
+end function
+
+public procedure orxRender_Exit()
+
+ c_proc(xorxRender_Exit,{})
+	
+end procedure
+
+public function orxRender_GetWorldPosition(atom screenpos,atom view,atom worldpos)
+
+ return c_func(xorxRender_GetWorldPosition,{screenpos,view,worldpos})
+	
+end function
+
+public function orxRender_GetScreenPosition(atom worldpos,atom view,atom screenpos)
+
+ return c_func(xorxRender_GetScreenPosition,{worldpos,view,screenpos})
+	
+end function
+
+--Shader Functions
+
+public constant xorxShader_Setup = define_c_proc(orx,"+orxShader_Setup",{}),
+				xorxShader_Init = define_c_func(orx,"+orxShader_Init",{},C_UINT),
+				xorxShader_Exit = define_c_proc(orx,"+orxShader_Exit",{}),
+				xorxShader_Create = define_c_func(orx,"+orxShader_Create",{},C_POINTER),
+				xorxShader_CreateFromConfig = define_c_func(orx,"+orxShader_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxShader_Delete = define_c_func(orx,"+orxShader_Delete",{C_POINTER},C_UINT),
+				xorxShader_ClearCache = define_c_func(orx,"+orxShader_ClearCache",{},C_UINT),
+				xorxShader_Start = define_c_func(orx,"+orxShader_Start",{C_POINTER,C_POINTER},C_UINT),
+				xorxShader_Stop = define_c_func(orx,"+orxShader_Stop",{C_POINTER},C_UINT),
+				xorxShader_AddFloatParam = define_c_func(orx,"+orxShader_AddFloatParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_AddTextureParam = define_c_func(orx,"+orxShader_AddTextureParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_AddVectorParam = define_c_func(orx,"+orxShader_AddVectorParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_AddTimeParam = define_c_func(orx,"+orxShader_AddTimeParam",{C_POINTER,C_POINTER},C_UINT),
+				xorxShader_SetFloatParam = define_c_func(orx,"+orxShader_SetFloatParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_SetTextureParam = define_c_func(orx,"+orxShader_SetTextureParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_SetVectorParam = define_c_func(orx,"+orxShader_SetVectorParam",{C_POINTER,C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxShader_CompileCode = define_c_func(orx,"+orxShader_CompileCode",{C_POINTER,C_POINTER,C_UINT},C_UINT),
+				xorxShader_Enable = define_c_proc(orx,"+orxShader_Enable",{C_POINTER,C_BOOL}),
+				xorxShader_IsEnabled = define_c_func(orx,"+orxShader_IsEnabled",{C_POINTER},C_BOOL),
+				xorxShader_GetName = define_c_func(orx,"+orxShader_GetName",{C_POINTER},C_POINTER),
+				xorxShader_GetID = define_c_func(orx,"+orxShader_GetID",{C_POINTER},C_UINT)
+				
+public procedure orxShader_Setup()
+
+ c_proc(xorxShader_Setup,{})
+	
+end procedure
+
+public function orxShader_Init()
+
+ return c_func(xorxShader_Init, {})
+	
+end function
+
+public procedure orxShader_Exit()
+
+ c_proc(xorxShader_Exit,{})
+	
+end procedure
+
+public function orxShader_Create()
+
+ return c_func(xorxShader_Create,{})
+	
+end function
+
+public function orxShader_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxShader_CreateFromConfig,{str})
+	
+end function
+
+public function orxShader_Delete(atom shade)
+
+ return c_func(xorxShader_Delete,{shade})
+	
+end function
+
+public function orxShader_ClearCache()
+
+ return c_func(xorxShader_ClearCache,{})
+	
+end function
+
+public function orxShader_Start(atom shade,atom own)
+
+ return c_func(xorxShader_Start,{shade,own})
+	
+end function
+
+public function orxShader_Stop(atom shade)
+
+ return c_func(xorxShader_Stop,{shade})
+	
+end function
+
+public function orxShader_AddFloatParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxShader_AddFloatParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_AddTextureParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxShader_AddTextureParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_AddVectorParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxShader_AddVectorParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_AddTimeParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+  
+ return c_func(xorxShader_AddTimeParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_SetFloatParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxShader_SetFloatParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_SetTextureParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxShader_SetTextureParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_SetVectorParam(atom shade,sequence name,atom size,atom val)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxShader_SetVectorParam,{shade,str,size,val})
+	
+end function
+
+public function orxShader_CompileCode(atom shade,sequence z,atom size)
+
+ atom str = allocate_string(z,1)
+ 
+ return c_func(xorxShader_CompileCode,{shade,str,size})
+	
+end function
+
+public procedure orxShader_Enable(atom shade,atom en)
+
+ c_proc(xorxShader_Enable,{shade,en})
+	
+end procedure
+
+public function orxShader_IsEnabled(atom shade)
+
+ return c_func(xorxShader_IsEnabled,{shade})
+	
+end function
+
+public function orxShader_GetName(atom shade)
+
+ return c_func(xorxShader_GetName,{shade})
+	
+end function
+
+public function orxShader_GetID(atom shade)
+
+ return c_func(xorxShader_GetID,{shade})
+	
+end function
+
+--ShaderPointer Functions
+
+public constant xorxShaderPointer_Setup = define_c_proc(orx,"+orxShaderPointer_Setup",{}),
+				xorxShaderPointer_Init = define_c_func(orx,"+orxShaderPointer_Init",{},C_UINT),
+				xorxShaderPointer_Exit = define_c_proc(orx,"+orxShaderPointer_Exit",{})
+				
+public procedure orxShaderPointer_Setup()
+
+ c_proc(xorxShaderPointer_Setup,{})
+	
+end procedure
+
+public function orxShaderPointer_Init()
+
+ return c_func(xorxShaderPointer_Init,{})
+	
+end function
+
+public procedure orxShaderPointer_Exit()
+
+ c_proc(xorxShaderPointer_Exit,{})
+	
+end procedure
+
+public constant xorxShaderPointer_Create = define_c_func(orx,"+orxShaderPointer_Create",{},C_POINTER),
+				xorxShaderPointer_Delete = define_c_func(orx,"+orxShaderPointer_Delete",{C_POINTER},C_UINT),
+				xorxShaderPointer_Start = define_c_func(orx,"+orxShaderPointer_Start",{C_POINTER},C_UINT),
+				xorxShaderPointer_Stop = define_c_func(orx,"+orxShaderPointer_Stop",{C_POINTER},C_UINT),
+				xorxShaderPointer_Enable = define_c_proc(orx,"+orxShaderPointer_Enable",{C_POINTER,C_BOOL}),
+				xorxShaderPointer_IsEnabled = define_c_func(orx,"+orxShaderPointer_IsEnabled",{C_POINTER},C_BOOL)
+				
+public function orxShaderPointer_Create()
+
+ return c_func(xorxShaderPointer_Create,{})
+	
+end function
+
+public function orxShaderPointer_Delete(atom sp)
+
+ return c_func(xorxShaderPointer_Delete,{sp})
+	
+end function
+
+public function orxShaderPointer_Start(atom sp)
+
+ return c_func(xorxShaderPointer_Start,{sp})
+	
+end function
+
+public function orxShaderPointer_Stop(atom sp)
+
+ return c_func(xorxShaderPointer_Stop,{sp})
+	
+end function
+
+public procedure orxShaderPointer_Enable(atom sp,atom en)
+
+ c_proc(xorxShaderPointer_Enable,{sp,en})
+	
+end procedure
+
+public function orxShaderPointer_IsEnabled(atom sp)
+
+ return c_func(xorxShaderPointer_IsEnabled,{sp})
+	
+end function
+
+public constant xorxShaderPointer_AddShader = define_c_func(orx,"+orxShaderPointer_AddShader",{C_POINTER,C_POINTER},C_UINT),
+				xorxShaderPointer_RemoveShader = define_c_func(orx,"+orxShaderPointer_RemoveShader",{C_POINTER,C_POINTER},C_UINT),
+				xorxShaderPointer_GetShader = define_c_func(orx,"+orxShaderPointer_GetShader",{C_POINTER,C_UINT},C_POINTER),
+				xorxShaderPointer_AddShaderFromConfig = define_c_func(orx,"+orxShaderPointer_AddShaderFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxShaderPointer_RemoveShaderFromConfig = define_c_func(orx,"+orxShaderPointer_RemoveShaderFromConfig",{C_POINTER,C_POINTER},C_UINT)
+				
+public function orxShaderPointer_AddShader(atom sp,atom sh)
+
+ return c_func(xorxShaderPointer_AddShader,{sp,sh})
+	
+end function
+
+public function orxShaderPointer_RemoveShader(atom sp,atom sh)
+
+ return c_func(xorxShaderPointer_RemoveShader,{sp,sh})
+	
+end function
+
+public function orxShaderPointer_GetShader(atom sp,atom idx)
+
+ return c_func(xorxShaderPointer_GetShader,{sp,idx})
+	
+end function
+
+public function orxShaderPointer_AddShaderFromConfig(atom sp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxShaderPointer_AddShaderFromConfig,{sp,id})
+	
+end function
+
+public function orxShaderPointer_RemoveShaderFromConfig(atom sp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxShaderPointer_RemoveShaderFromConfig,{sp,str})
+	
+end function
+
+--Viewport Functions
+
+public constant xorxViewport_Setup = define_c_proc(orx,"+orxViewport_Setup",{}),
+				xorxViewport_Init = define_c_func(orx,"+orxViewport_Init",{},C_UINT),
+				xorxViewport_Exit = define_c_proc(orx,"+orxViewport_Exit",{})
+				
+public procedure orxViewport_Setup()
+
+ c_proc(xorxViewport_Setup,{})
+	
+end procedure
+
+public function orxViewport_Init()
+
+ return c_func(xorxViewport_Init,{})
+	
+end function
+
+public procedure orxViewport_Exit()
+
+ c_proc(xorxViewport_Exit,{})
+	
+end procedure
+
+public constant xorxViewport_Create = define_c_func(orx,"+orxViewport_Create",{},C_POINTER),
+				xorxViewport_CreateFromConfig = define_c_func(orx,"+orxViewport_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxViewport_Delete = define_c_func(orx,"+orxViewport_Delete",{C_POINTER},C_UINT)
+				
+public function orxViewport_Create()
+
+ return c_func(xorxViewport_Create,{})
+	
+end function
+
+public function orxViewport_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxViewport_CreateFromConfig,{str})
+	
+end function
+
+public function orxViewport_Delete(atom vp)
+
+ return c_func(xorxViewport_Delete,{vp})
+	
+end function
+
+public constant xorxViewport_SetTextureList = define_c_proc(orx,"+orxViewport_SetTextureList",{C_POINTER,C_UINT,C_POINTER}),
+				xorxViewport_GetTextureList = define_c_func(orx,"+orxViewport_GetTextureList",{C_POINTER,C_UINT,C_POINTER},C_UINT),
+				xorxViewport_GetTextureCount = define_c_func(orx,"+orxViewport_GetTextureCount",{C_POINTER},C_UINT)
+				
+public procedure orxViewport_SetTextureList(atom vp,atom texnum,atom texlist)
+
+ c_proc(xorxViewport_SetTextureList,{vp,texnum,texlist})
+	
+end procedure
+
+public function orxViewport_GetTextureList(atom vp,atom texnum,atom texlist)
+
+ return c_func(xorxViewport_GetTextureList,{vp,texnum,texlist})
+	
+end function
+
+public function orxViewPort_GetTextureCount(atom vp)
+
+ return c_func(xorxViewport_GetTextureCount,{vp})
+	
+end function
+
+public constant xorxViewport_SetBackgroundColor = define_c_func(orx,"+orxViewport_SetBackgroundColor",{C_POINTER,C_POINTER},C_UINT),
+				xorxViewport_ClearBackgroundColor = define_c_func(orx,"+orxViewport_ClearBackgroundColor",{C_POINTER},C_UINT),
+				xorxViewport_HasBackgroundColor = define_c_func(orx,"+orxViewport_HasBackgroundColor",{C_POINTER},C_BOOL),
+				xorxViewport_GetBackgroundColor = define_c_func(orx,"+orxViewport_GetBackgroundColor",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxViewport_SetBackgroundColor(atom vp,atom col)
+
+ return c_func(xorxViewport_SetBackgroundColor,{vp,col})
+	
+end function
+
+public function orxViewport_ClearBackgroundColor(atom vp)
+
+ return c_func(xorxViewport_ClearBackgroundColor,{vp})
+	
+end function
+
+public function orxViewport_HasBackgroundColor(atom vp)
+
+ return c_func(xorxViewport_HasBackgroundColor,{vp})
+	
+end function
+
+public function orxViewport_GetBackgroundColor(atom vp,atom col)
+
+ return c_func(xorxViewport_GetBackgroundColor,{vp,col})
+	
+end function
+
+public constant xorxViewport_Enable = define_c_proc(orx,"+orxViewport_Enable",{C_POINTER,C_BOOL}),
+				xorxViewport_IsEnabled = define_c_func(orx,"+orxViewport_IsEnabled",{C_POINTER},C_BOOL)
+				
+public procedure orxViewport_Enable(atom vp,atom en)
+
+ c_proc(xorxViewport_Enable,{vp,en})
+	
+end procedure
+
+public function orxViewport_IsEnabled(atom vp)
+
+ return c_func(xorxViewport_IsEnabled,{vp})
+	
+end function
+
+public constant xorxViewport_SetCamera = define_c_proc(orx,"+orxViewport_SetCamera",{C_POINTER,C_POINTER}),
+				xorxViewport_GetCamera = define_c_func(orx,"+orxViewport_GetCamera",{C_POINTER},C_POINTER)
+				
+public procedure orxViewport_SetCamera(atom vp,atom cam)
+
+ c_proc(xorxViewport_SetCamera,{vp,cam})
+	
+end procedure
+
+public function orxViewport_GetCamera(atom vp)
+ 
+return c_func(xorxViewport_GetCamera,{vp})
+	
+end function
+
+public constant xorxViewport_AddShader = define_c_func(orx,"+orxViewport_AddShader",{C_POINTER,C_POINTER},C_UINT),
+				xorxViewport_RemoveShader = define_c_func(orx,"+orxViewport_RemoveShader",{C_POINTER,C_POINTER},C_UINT),
+				xorxViewport_EnableShader = define_c_proc(orx,"+orxViewport_EnableShader",{C_POINTER,C_BOOL}),
+				xorxViewport_IsShaderEnabled = define_c_func(orx,"+orxViewport_IsShaderEnabled",{C_POINTER},C_BOOL),
+				xorxViewport_GetShaderPointer = define_c_func(orx,"+orxViewport_GetShaderPointer",{C_POINTER},C_POINTER)
+				
+public function orxViewport_AddShader(atom vp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxViewport_AddShader,{vp,str})
+	
+end function
+
+public function orxViewport_RemoveShader(atom vp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxViewport_RemoveShader,{vp,str})
+	
+end function
+
+public procedure orxViewport_EnableShader(atom vp,atom en)
+
+ c_proc(xorxViewport_EnableShader,{vp,en})
+	
+end procedure
+
+public function orxViewport_IsShaderEnabled(atom vp)
+
+ return c_func(xorxViewport_IsShaderEnabled,{vp})
+	
+end function
+
+public function orxViewport_GetShaderPointer(atom vp)
+
+ return c_func(xorxViewport_GetShaderPointer,{vp})
+	
+end function
+
+public constant xorxViewport_SetBlendMode = define_c_func(orx,"+orxViewport_SetBlendMode",{C_POINTER,C_UINT},C_UINT),
+				xorxViewport_GetBlendMode = define_c_func(orx,"+orxViewport_GetBlendMode",{C_POINTER},C_UINT)
+				
+public function orxViewport_SetBlendMode(atom vp,atom mode)
+
+ return c_func(xorxViewport_SetBlendMode,{vp,mode})
+	
+end function
+
+public function orxViewport_GetBlendMode(atom vp)
+
+ return c_func(xorxViewport_GetBlendMode,{vp})
+	
+end function
+
+public constant xorxViewport_SetPosition = define_c_proc(orx,"+orxViewport_SetPosition",{C_POINTER,C_FLOAT,C_FLOAT}),
+				xorxViewport_SetRelativePosition = define_c_func(orx,"+orxViewport_SetRelativePosition",{C_POINTER,C_UINT},C_UINT),
+				xorxViewport_GetPosition = define_c_proc(orx,"+orxViewport_GetPosition",{C_POINTER,C_POINTER,C_POINTER})
+				
+public procedure orxViewport_SetPosition(atom vp,atom x,atom y)
+
+ c_proc(xorxViewport_SetPosition,{vp,x,y})
+	
+end procedure
+
+public function orxViewport_SetRelativePosition(atom vp,atom flags)
+
+ return c_func(xorxViewport_SetRelativePosition,{vp,flags})
+	
+end function
+
+public procedure orxViewport_GetPosition(atom vp,atom x,atom y)
+
+ c_proc(xorxViewport_GetPosition,{vp,x,y})
+	
+end procedure
+
+public constant xorxViewport_SetSize = define_c_proc(orx,"+orxViewport_SetSize",{C_POINTER,C_FLOAT,C_FLOAT}),
+				xorxViewport_SetRelativeSize = define_c_func(orx,"+orxViewport_SetRelativeSize",{C_POINTER,C_FLOAT,C_FLOAT},C_UINT),
+				xorxViewport_GetSize = define_c_proc(orx,"+orxViewport_GetSize",{C_POINTER,C_POINTER,C_POINTER}),
+				xorxViewport_GetRelativeSize = define_c_proc(orx,"+orxViewport_GetRelativeSize",{C_POINTER,C_POINTER,C_POINTER}),
+				xorxViewport_GetBox = define_c_func(orx,"+orxViewport_GetBox",{C_POINTER,C_POINTER},C_POINTER),
+				xorxViewport_GetCorrectionRatio = define_c_func(orx,"+orxViewport_GetCorrectionRatio",{C_POINTER},C_FLOAT),
+				xorxViewport_GetName = define_c_func(orx,"+orxViewport_GetName",{C_POINTER},C_POINTER),
+				xorxViewport_Get = define_c_func(orx,"+orxViewport_Get",{C_POINTER},C_POINTER)
+				
+public procedure orxViewport_SetSize(atom vp,atom w,atom h)
+
+ c_proc(xorxViewport_SetSize,{vp,w,h})
+	
+end procedure
+
+public function orxViewport_SetRelativeSize(atom vp,atom w,atom h)
+
+ return c_func(xorxViewport_SetRelativeSize,{vp,w,h})
+	
+end function
+
+public procedure orxViewport_GetSize(atom vp,atom w,atom h)
+
+ c_proc(xorxViewport_GetSize,{vp,w,h})
+	
+end procedure
+
+public procedure orxViewport_GetRelativeSize(atom vp,atom w,atom h)
+
+ c_proc(xorxViewport_GetRelativeSize,{vp,w,h})
+	
+end procedure
+
+public function orxViewport_GetBox(atom vp,atom box)
+
+ return c_func(xorxViewport_GetBox,{vp,box})
+	
+end function
+
+public function orxViewport_GetCorrectionRatio(atom vp)
+
+ return c_func(xorxViewport_GetCorrectionRatio,{vp})
+	
+end function
+
+public function orxViewport_GetName(atom vp)
+
+ return c_func(xorxViewport_GetName,{vp})
+	
+end function
+
+public function orxViewport_Get(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxViewport_Get,{str})
+	
+end function
+
+--Sound Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -7482,4 +8234,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­7431.18
+­8183.17
