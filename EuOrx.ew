@@ -8182,6 +8182,842 @@ end function
 
 --Sound Functions
 
+public constant xorxSound_Setup = define_c_proc(orx,"+orxSound_Setup",{}),
+				xorxSound_Init = define_c_func(orx,"+orxSound_Init",{},C_UINT),
+				xorxSound_Exit = define_c_proc(orx,"+orxSound_Exit",{})
+				
+public procedure orxSound_Setup()
+
+ c_proc(xorxSound_Setup,{})
+	
+end procedure
+
+public function orxSound_Init()
+
+ return c_func(xorxSound_Init,{})
+	
+end function
+
+public procedure orxSound_Exit()
+
+ c_proc(xorxSound_Exit,{})
+	
+end procedure
+
+public constant xorxSound_Create = define_c_func(orx,"+orxSound_Create",{},C_POINTER),
+				xorxSound_CreateFromConfig = define_c_func(orx,"+orxSound_CreateFromConfig",{C_POINTER},C_POINTER),
+				xorxSound_CreateWithEmptyStream = define_c_func(orx,"+orxSound_CreateWithEmptyStream",{C_UINT,C_UINT,C_POINTER},C_POINTER),
+				xorxSound_Delete = define_c_func(orx,"+orxSound_Delete",{C_POINTER},C_UINT),
+				xorxSound_ClearCache = define_c_func(orx,"+orxSound_ClearCache",{},C_UINT)
+				
+public function orxSound_Create()
+
+ return c_func(xorxSound_Create,{})
+	
+end function
+
+public function orxSound_CreateFromConfig(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_CreateFromConfig,{str})
+	
+end function
+
+public function orxSound_CreateWithEmptyStream(atom channum,atom samprate,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_CreateWithEmptyStream,{channum,samprate,str})
+	
+end function
+
+public function orxSound_Delete(atom snd)
+
+ return c_func(xorxSound_Delete,{snd})
+	
+end function
+
+public function orxSound_ClearCache()
+
+ return c_func(xorxSound_ClearCache,{})
+	
+end function
+
+public constant xorxSound_CreateSample = define_c_func(orx,"+orxSound_CreateSample",{C_UINT,C_UINT,C_UINT,C_POINTER},C_POINTER),
+				xorxSound_GetSample = define_c_func(orx,"+orxSound_GetSample",{C_POINTER},C_POINTER),
+				xorxSound_DeleteSample = define_c_func(orx,"+orxSound_DeleteSample",{C_POINTER},C_UINT),
+				xorxSound_LinkSample = define_c_func(orx,"+orxSound_LinkSample",{C_POINTER,C_POINTER},C_UINT),
+				xorxSound_UnlinkSample = define_c_func(orx,"+orxSound_UnlinkSample",{C_POINTER},C_UINT)
+				
+public function orxSound_CreateSample(atom channum,atom framenum,atom samperate,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_CreateSample,{channum,framenum,samperate,str})
+	
+end function
+
+public function orxSound_GetSample(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_GetSample,{str})
+	
+end function
+
+public function orxSound_DeleteSample(sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_DeleteSample,{str})
+	
+end function
+
+public function orxSound_LinkSample(atom snd,sequence name)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_LinkSample,{snd,str})
+	
+end function
+
+public function orxSound_UnlinkSample(atom snd)
+
+ return c_func(xorxSound_UnlinkSample,{snd})
+	
+end function
+
+public constant xorxSound_IsStream = define_c_func(orx,"+orxSound_IsStream",{C_POINTER},C_BOOL)
+
+public function orxSound_IsStream(atom snd)
+ 
+ return c_func(xorxSound_IsStream,{snd})
+	
+end function
+
+public constant xorxSound_Play = define_c_func(orx,"+orxSound_Play",{C_POINTER},C_UINT),
+				xorxSound_Pause = define_c_func(orx,"+orxSound_Pause",{C_POINTER},C_UINT),
+				xorxSound_Stop = define_c_func(orx,"+orxSound_Stop",{C_POINTER},C_UINT)
+				
+public function orxSound_Play(atom snd)
+
+ return c_func(xorxSound_Play,{snd})
+	
+end function
+
+public function orxSound_Pause(atom snd)
+
+ return c_func(xorxSound_Pause,{snd})
+	
+end function
+
+public function orxSound_Stop(atom snd)
+
+ return c_func(xorxSound_Stop,{snd})
+	
+end function
+
+public constant xorxSound_StartRecording = define_c_func(orx,"+orxSound_StartRecording",{C_POINTER,C_BOOL,C_UINT,C_UINT},C_UINT),
+				xorxSound_StopRecording = define_c_func(orx,"+orxSound_StopRecording",{},C_UINT),
+				xorxSound_HasRecordingSupport = define_c_func(orx,"+orxSound_HasRecordingSupport",{},C_BOOL)
+				
+public function orxSound_StartRecording(sequence name,atom writeto,atom samprate,atom channum)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSound_StartRecording,{str,writeto,samprate,channum})
+	
+end function
+
+public function orxSound_StopRecording()
+
+ return c_func(xorxSound_StopRecording,{})
+	
+end function
+
+public function orxSound_HasRecordingSupport()
+
+ return c_func(xorxSound_HasRecordingSupport,{})
+	
+end function
+
+public constant xorxSound_SetVolume = define_c_func(orx,"+orxSound_SetVolume",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_SetPitch = define_c_func(orx,"+orxSound_SetPitch",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_SetTime = define_c_func(orx,"+orxSound_SetTime",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_SetPosition = define_c_func(orx,"+orxSound_SetPosition",{C_POINTER,C_POINTER},C_UINT),
+				xorxSound_SetAttenuation = define_c_func(orx,"+orxSound_SetAttenuation",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_SetReferenceDistance = define_c_func(orx,"+orxSound_SetReferenceDistance",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_Loop = define_c_func(orx,"+orxSound_Loop",{C_POINTER,C_BOOL},C_UINT)
+				
+public function orxSound_SetVolume(atom snd,atom vol)
+
+ return c_func(xorxSound_SetVolume,{snd,vol})
+	
+end function
+
+public function orxSound_SetPitch(atom snd,atom pit)
+
+ return c_func(xorxSound_SetPitch,{snd,pit})
+	
+end function
+
+public function orxSound_SetTime(atom snd,atom ftime)
+
+ return c_func(xorxSound_SetTime,{snd,ftime})
+	
+end function
+
+public function orxSound_SetPosition(atom snd,atom pos)
+
+ return c_func(xorxSound_SetPosition,{snd,pos})
+	
+end function
+
+public function orxSound_SetAttenuation(atom snd,atom att)
+
+ return c_func(xorxSound_SetAttenuation,{snd,att})
+	
+end function
+
+public function orxSound_SetReferenceDistance(atom snd,atom dis)
+
+ return c_func(xorxSound_SetReferenceDistance,{snd,dis})
+	
+end function
+
+public function orxSound_Loop(atom snd,atom lop)
+
+ return c_func(xorxSound_Loop,{snd,lop})
+	
+end function
+
+public constant xorxSound_GetVolume = define_c_func(orx,"+orxSound_GetVolume",{C_POINTER},C_FLOAT),
+				xorxSound_GetPitch = define_c_func(orx,"+orxSound_GetPitch",{C_POINTER},C_FLOAT),
+				xorxSound_GetTime = define_c_func(orx,"+orxSound_GetTime",{C_POINTER},C_FLOAT),
+				xorxSound_GetPosition = define_c_func(orx,"+orxSound_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSound_GetAttenuation = define_c_func(orx,"+orxSound_GetAttenuation",{C_POINTER},C_FLOAT),
+				xorxSound_GetReferenceDistance = define_c_func(orx,"+orxSound_GetReferenceDistance",{C_POINTER},C_FLOAT),
+				xorxSound_IsLooping = define_c_func(orx,"+orxSound_IsLooping",{C_POINTER},C_BOOL)
+				
+public function orxSound_GetVolume(atom snd)
+
+ return c_func(xorxSound_GetVolume,{snd})
+	
+end function
+
+public function orxSound_GetPitch(atom snd)
+
+ return c_func(xorxSound_GetPitch,{snd})
+	
+end function
+
+public function orxSound_GetTime(atom snd)
+
+ return c_func(xorxSound_GetTime,{snd})
+	
+end function
+
+public function orxSound_GetPosition(atom snd,atom pos)
+
+ return c_func(xorxSound_GetPosition,{snd,pos})
+	
+end function
+
+public function orxSound_GetAttenuation(atom snd)
+
+ return c_func(xorxSound_GetAttenuation,{snd})
+	
+end function
+
+public function orxSound_GetReferenceDistance(atom snd)
+
+ return c_func(xorxSound_GetReferenceDistance,{snd})
+	
+end function
+
+public function orxSound_IsLooping(atom snd)
+
+ return c_func(xorxSound_IsLooping,{snd})
+	
+end function
+
+public constant xorxSound_GetDuration = define_c_func(orx,"+orxSound_GetDuration",{C_POINTER},C_FLOAT),
+				xorxSound_GetStatus = define_c_func(orx,"+orxSound_GetStatus",{C_POINTER},C_UINT),
+				xorxSound_GetName = define_c_func(orx,"+orxSound_GetName",{C_POINTER},C_POINTER),
+				xorxSound_GetMasterBusID = define_c_func(orx,"+orxSound_GetMasterBusID",{},C_POINTER),
+				xorxSound_GetBusID = define_c_func(orx,"+orxSound_GetBusID",{C_POINTER},C_POINTER),
+				xorxSound_SetBusID = define_c_func(orx,"+orxSound_SetBusID",{C_POINTER,C_POINTER},C_UINT),
+				xorxSound_GetNext = define_c_func(orx,"+orxSound_GetNext",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSound_GetBusParent = define_c_func(orx,"+orxSound_GetBusParent",{C_POINTER},C_POINTER),
+				xorxSound_GetBusChild = define_c_func(orx,"+orxSound_GetBusChild",{C_POINTER},C_POINTER),
+				xorxSound_GetBusSibling = define_c_func(orx,"+orxSound_GetBusSibling",{C_POINTER},C_POINTER),
+				xorxSound_SetBusParent = define_c_func(orx,"+orxSound_SetBusParent",{C_POINTER,C_POINTER},C_UINT),
+				xorxSound_GetBusVolume = define_c_func(orx,"+orxSound_GetBusVolume",{C_POINTER},C_FLOAT),
+				xorxSound_GetBusPitch = define_c_func(orx,"+orxSound_GetBusPitch",{C_POINTER},C_FLOAT),
+				xorxSound_SetBusVolume = define_c_func(orx,"+orxSound_SetBusVolume",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_SetBusPitch = define_c_func(orx,"+orxSound_SetBusPitch",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSound_GetBusGlobalVolume = define_c_func(orx,"+orxSound_GetBusGlobalVolume",{C_POINTER},C_FLOAT),
+				xorxSound_GetBusGlobalPitch = define_c_func(orx,"+orxSound_GetBusGlobalPitch",{C_POINTER},C_FLOAT)
+				
+public function orxSound_GetDuration(atom snd)
+
+ return c_func(xorxSound_GetDuration,{snd})
+	
+end function
+
+public function orxSound_GetStatus(atom snd)
+
+ return c_func(xorxSound_GetStatus,{snd})
+	
+end function
+
+public function orxSound_GetName(atom snd)
+
+ return c_func(xorxSound_GetName,{snd})
+	
+end function
+
+public function orxSound_GetMasterBusID()
+
+ return c_func(xorxSound_GetMasterBusID,{})
+	
+end function
+
+public function orxSound_GetBusID(atom snd)
+
+ return c_func(xorxSound_GetBusID,{snd})
+	
+end function
+
+public function orxSound_SetBusID(atom snd,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_SetBusID,{snd,str})
+	
+end function
+
+public function orxSound_GetNext(atom snd,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetNext,{snd,str})
+	
+end function
+
+public function orxSound_GetBusParent(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusParent,{str})
+	
+end function
+
+public function orxSound_GetBusChild(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusChild,{str})
+	
+end function
+
+public function orxSound_GetBusSibling(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusSibling,{str})
+	
+end function
+
+public function orxSound_SetBusParent(sequence id,sequence id2)
+ 
+ atom str = allocate_string(id,1)
+ atom str2 = allocate_string(id2,1)
+  
+ return c_func(xorxSound_SetBusParent,{str,str2})
+	
+end function
+
+public function orxSound_GetBusVolume(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusVolume,{str})
+	
+end function
+
+public function orxSound_GetBusPitch(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusPitch,{str})
+	
+end function
+
+public function orxSound_SetBusVolume(sequence id,atom vol)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_SetBusVolume,{str,vol})
+	
+end function
+
+public function orxSound_SetBusPitch(sequence id,atom pit)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_SetBusPitch,{str,pit})
+	
+end function
+
+public function orxSound_GetBusGlobalVolume(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusGlobalVolume,{str})
+	
+end function
+
+public function orxSound_GetBusGlobalPitch(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSound_GetBusGlobalPitch,{str})
+	
+end function
+
+--SoundPointer Functions
+
+public constant xorxSoundPointer_Setup = define_c_proc(orx,"+orxSoundPointer_Setup",{}),
+				xorxSoundPointer_Init = define_c_func(orx,"+orxSoundPointer_Init",{},C_UINT),
+				xorxSoundPointer_Exit = define_c_proc(orx,"+orxSoundPointer_Exit",{})
+				
+public procedure orxSoundPointer_Setup()
+
+ c_proc(xorxSoundPointer_Setup,{})
+	
+end procedure
+
+public function orxSoundPointer_Init()
+
+ return c_func(xorxSoundPointer_Init,{})
+	
+end function
+
+public procedure orxSoundPointer_Exit()
+
+ c_proc(xorxSoundPointer_Exit,{})
+	
+end procedure
+
+public constant xorxSoundPointer_Create = define_c_func(orx,"+orxSoundPointer_Create",{},C_POINTER),
+				xorxSoundPointer_Delete = define_c_func(orx,"+orxSoundPointer_Delete",{C_POINTER},C_UINT),
+				xorxSoundPointer_Enable = define_c_proc(orx,"+orxSoundPointer_Enable",{C_POINTER,C_BOOL}),
+				xorxSoundPointer_IsEnabled = define_c_func(orx,"+orxSoundPointer_IsEnabled",{C_POINTER},C_BOOL)
+				
+public function orxSoundPointer_Create()
+
+ return c_func(xorxSoundPointer_Create,{})
+	
+end function
+
+public function orxSoundPointer_Delete(atom sp)
+
+ return c_func(xorxSoundPointer_Delete,{sp})
+	
+end function
+
+public procedure orxSoundPointer_Enable(atom sp,atom en)
+
+ c_proc(xorxSoundPointer_Enable,{sp,en})
+	
+end procedure
+
+public function orxSoundPointer_IsEnabled(atom sp)
+
+ return c_func(xorxSoundPointer_IsEnabled,{sp})
+	
+end function
+
+public constant xorxSoundPointer_SetVolume = define_c_func(orx,"+orxSoundPointer_SetVolume",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundPointer_SetPitch = define_c_func(orx,"+orxSoundPointer_SetPitch",{C_POINTER,C_FLOAT},C_UINT)
+				
+public function orxSoundPointer_SetVolume(atom sp,atom vol)
+
+ return c_func(xorxSoundPointer_SetVolume,{sp,vol})
+	
+end function
+
+public function orxSoundPointer_SetPitch(atom sp,atom pit)
+
+ return c_func(xorxSoundPointer_SetPitch,{sp,pit})
+	
+end function
+
+public constant xorxSoundPointer_Play = define_c_func(orx,"+orxSoundPointer_Play",{C_POINTER},C_UINT),
+				xorxSoundPointer_Pause = define_c_func(orx,"+orxSoundPointer_Pause",{C_POINTER},C_UINT),
+				xorxSoundPointer_Stop = define_c_func(orx,"+orxSoundPointer_Stop",{C_POINTER},C_UINT)
+				
+public function orxSoundPointer_Play(atom sp)
+
+ return c_func(xorxSoundPointer_Play,{sp})
+	
+end function
+
+public function orxSoundPointer_Pause(atom sp)
+
+ return c_func(xorxSoundPointer_Pause,{sp})
+	
+end function
+
+public function orxSoundPointer_Stop(atom sp)
+
+ return c_func(xorxSoundPointer_Stop,{sp})
+	
+end function
+
+public constant xorxSoundPointer_AddSound = define_c_func(orx,"+orxSoundPointer_AddSound",{C_POINTER,C_POINTER},C_UINT),
+				xorxSoundPointer_RemoveSound = define_c_func(orx,"+orxSoundPointer_RemoveSound",{C_POINTER,C_POINTER},C_UINT),
+				xorxSoundPointer_RemoveAllSounds = define_c_func(orx,"+orxSoundPointer_RemoveAllSounds",{C_POINTER},C_UINT),
+				xorxSoundPointer_AddSoundFromConfig = define_c_func(orx,"+orxSoundPointer_AddSoundFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxSoundPointer_RemoveSoundFromConfig = define_c_func(orx,"+orxSoundPointer_RemoveSoundFromConfig",{C_POINTER,C_POINTER},C_UINT),
+				xorxSoundPointer_GetLastAddedSound = define_c_func(orx,"+orxSoundPointer_GetLastAddedSound",{C_POINTER},C_POINTER),
+				xorxSoundPointer_GetCount = define_c_func(orx,"+orxSoundPointer_GetCount",{C_POINTER},C_UINT)
+				
+public function orxSoundPointer_AddSound(atom sp,atom s)
+
+ return c_func(xorxSoundPointer_AddSound,{sp,s})
+	
+end function
+
+public function orxSoundPointer_RemoveSound(atom sp,atom s)
+
+ return c_func(xorxSoundPointer_RemoveSound,{sp,s})
+	
+end function
+
+public function orxSoundPointer_RemoveAllSounds(atom s)
+
+ return c_func(xorxSoundPointer_RemoveAllSounds,{s})
+	
+end function
+
+public function orxSoundPointer_AddSoundFromConfig(atom sp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSoundPointer_AddSoundFromConfig,{sp,str})
+	
+end function
+
+public function orxSoundPointer_RemoveSoundFromConfig(atom sp,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxSoundPointer_RemoveSoundFromConfig,{sp,str})
+	
+end function
+
+public function orxSoundPointer_GetLastAddedSound(atom sp)
+
+ return c_func(xorxSoundPointer_GetLastAddedSound,{sp})
+	
+end function
+
+public function orxSoundPointer_GetCount(atom sp)
+
+ return c_func(xorxSoundPointer_GetCount,{sp})
+	
+end function
+
+--SoundSystem Functions
+
+public constant xorxSoundSystem_Setup = define_c_proc(orx,"+orxSoundSystem_Setup",{})
+
+public procedure orxSoundSystem_Setup()
+
+ c_proc(xorxSoundSystem_Setup,{})
+	
+end procedure
+
+public constant xorxSoundSystem_Init = define_c_func(orx,"+orxSoundSystem_Init",{},C_UINT),
+				xorxSoundSystem_Exit = define_c_proc(orx,"+orxSoundSystem_Exit",{})
+				
+public function orxSoundSystem_Init()
+
+ return c_func(xorxSoundSystem_Init,{})
+	
+end function
+
+public procedure orxSoundSystem_Exit()
+
+ c_proc(xorxSoundSystem_Exit,{})
+	
+end procedure
+
+public constant xorxSoundSystem_CreateSample = define_c_func(orx,"+orxSoundSystem_CreateSample",{C_UINT,C_UINT,C_UINT},C_POINTER),
+				xorxSoundSystem_LoadSample = define_c_func(orx,"+orxSoundSystem_LoadSample",{C_POINTER},C_POINTER),
+				xorxSoundSystem_DeleteSample = define_c_func(orx,"+orxSoundSystem_DeleteSample",{C_POINTER},C_UINT)
+				
+public function orxSoundSystem_CreateSample(atom channum,atom framenum,atom samprate)
+
+ return c_func(xorxSoundSystem_CreateSample,{channum,framenum,samprate})
+	
+end function
+
+public function orxSoundSystem_LoadSample(sequence file)
+
+ atom str = allocate_string(file,1)
+ 
+ return c_func(xorxSoundSystem_LoadSample,{str})
+	
+end function
+
+public function orxSoundSystem_DeleteSample(atom s)
+
+ return c_func(xorxSoundSystem_DeleteSample,{s})
+	
+end function
+
+public constant xorxSoundSystem_GetSampleInfo = define_c_func(orx,"+orxSoundSystem_GetSampleInfo",{C_POINTER,C_POINTER,C_POINTER,C_POINTER},C_UINT),
+				xorxSoundSystem_SetSampleData = define_c_func(orx,"+orxSoundSystem_SetSampleData",{C_POINTER,C_POINTER,C_UINT},C_UINT)
+				
+public function orxSoundSystem_GetSampleInfo(atom s,atom chan,atom frame,atom rate)
+
+ return c_func(xorxSoundSystem_GetSampleInfo,{s,chan,frame,rate})
+	
+end function
+
+public function orxSoundSystem_SetSampleData(atom s,atom dat,atom num)
+
+ return c_func(xorxSoundSystem_SetSampleData,{s,dat,num})
+	
+end function
+
+public constant xorxSoundSystem_CreateFromSample = define_c_func(orx,"+orxSoundSystem_CreateFromSample",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSoundSystem_CreateStream = define_c_func(orx,"+orxSoundSystem_CreateStream",{C_POINTER,C_UINT,C_UINT},C_POINTER),
+				xorxSoundSystem_CreateStreamFromFile = define_c_func(orx,"+orxSoundSystem_CreateStreamFromFile",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSoundSystem_Delete = define_c_func(orx,"+orxSoundSystem_Delete",{C_POINTER},C_UINT),
+				xorxSoundSystem_Play = define_c_func(orx,"+orxSoundSystem_Play",{C_POINTER},C_UINT),
+				xorxSoundSystem_Pause = define_c_func(orx,"+orxSoundSystem_Pause",{C_POINTER},C_UINT),
+				xorxSoundSystem_Stop = define_c_func(orx,"+orxSoundSystem_Stop",{C_POINTER},C_UINT)
+				
+public function orxSoundSystem_CreateFromSample(atom hand,atom s)
+
+ return c_func(xorxSoundSystem_CreateFromSample,{hand,s})
+	
+end function
+
+public function orxSoundSystem_CreateStream(atom hand,atom num,atom rate)
+
+ return c_func(xorxSoundSystem_CreateStream,{hand,num,rate})
+	
+end function
+
+public function orxSoundSystem_CreateStreamFromFile(atom hand,sequence file)
+
+ atom str = allocate_string(file,1)
+ 
+ return c_func(xorxSoundSystem_CreateStreamFromFile,{hand,str})
+	
+end function
+
+public function orxSoundSystem_Delete(atom s)
+
+ return c_func(xorxSoundSystem_Delete,{s})
+	
+end function
+
+public function orxSoundSystem_Play(atom s)
+
+ return c_func(xorxSoundSystem_Play,{s})
+	
+end function
+
+public function orxSoundSystem_Pause(atom s)
+
+ return c_func(xorxSoundSystem_Pause,{s})
+	
+end function
+
+public function orxSoundSystem_Stop(atom s)
+
+ return c_func(xorxSoundSystem_Stop,{s})
+	
+end function
+
+public constant xorxSoundSystem_StartRecording = define_c_func(orx,"+orxSoundSystem_StartRecording",{C_POINTER,C_BOOL,C_UINT,C_UINT},C_UINT),
+				xorxSoundSystem_StopRecording = define_c_func(orx,"+orxSoundSystem_StopRecording",{},C_UINT),
+				xorxSoundSystem_HasRecordingSupport = define_c_func(orx,"+orxSoundSystem_HasRecordingSupport",{},C_BOOL)
+				
+public function orxSoundSystem_StartRecording(sequence name,atom writeto,atom samp,atom num)
+
+ atom str = allocate_string(name,1)
+ 
+ return c_func(xorxSoundSystem_StartRecording,{str,writeto,samp,num})
+	
+end function
+
+public function orxSoundSystem_StopRecording()
+
+ return c_func(xorxSoundSystem_StopRecording,{})
+	
+end function
+
+public function orxSoundSystem_HasRecordingSupport()
+
+ return c_func(xorxSoundSystem_HasRecordingSupport,{})
+	
+end function
+
+public constant xorxSoundSystem_SetVolume = define_c_func(orx,"+orxSoundSystem_SetVolume",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundSystem_SetPitch = define_c_func(orx,"+orxSoundSystem_SetPitch",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundSystem_SetTime = define_c_func(orx,"+orxSoundSystem_SetTime",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundSystem_SetPosition = define_c_func(orx,"+orxSoundSystem_SetPosition",{C_POINTER,C_POINTER},C_UINT),
+				xorxSoundSystem_SetAttenuation = define_c_func(orx,"+orxSoundSystem_SetAttenuation",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundSystem_SetReferenceDistance = define_c_func(orx,"+orxSoundSystem_SetReferenceDistance",{C_POINTER,C_FLOAT},C_UINT),
+				xorxSoundSystem_Loop = define_c_func(orx,"+orxSoundSystem_Loop",{C_POINTER,C_BOOL},C_UINT)
+				
+public function orxSoundSystem_SetVolume(atom s,atom vol)
+
+ return c_func(xorxSoundSystem_SetVolume,{s,vol})
+	
+end function
+
+public function orxSoundSystem_SetPitch(atom s,atom pit)
+
+ return c_func(xorxSoundSystem_SetPitch,{s,pit})
+	
+end function
+
+public function orxSoundSystem_SetTime(atom s,atom t)
+
+ return c_func(xorxSoundSystem_SetTime,{s,t})
+	
+end function
+
+public function orxSoundSystem_SetPosition(atom s,atom pos)
+
+ return c_func(xorxSoundSystem_SetPosition,{s,pos})
+	
+end function
+
+public function orxSoundSystem_SetAttenuation(atom s,atom att)
+
+ return c_func(xorxSoundSystem_SetAttenuation,{s,att})
+	
+end function
+
+public function orxSoundSystem_SetReferenceDistance(atom s,atom dis)
+
+ return c_func(xorxSoundSystem_SetReferenceDistance,{s,dis})
+	
+end function
+
+public function orxSoundSystem_Loop(atom s,atom l)
+
+ return c_func(xorxSoundSystem_Loop,{s,l})
+	
+end function
+
+public constant xorxSoundSystem_GetVolume = define_c_func(orx,"+orxSoundSystem_GetVolume",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_GetPitch = define_c_func(orx,"+orxSoundSystem_GetPitch",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_GetTime = define_c_func(orx,"+orxSoundSystem_GetTime",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_GetPosition = define_c_func(orx,"+orxSoundSystem_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxSoundSystem_GetAttenuation = define_c_func(orx,"+orxSoundSystem_GetAttenuation",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_GetReferenceDistance = define_c_func(orx,"+orxSoundSystem_GetReferenceDistance",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_IsLooping = define_c_func(orx,"+orxSoundSystem_IsLooping",{C_POINTER},C_BOOL),
+				xorxSoundSystem_GetDuration = define_c_func(orx,"+orxSoundSystem_GetDuration",{C_POINTER},C_FLOAT),
+				xorxSoundSystem_GetStatus = define_c_func(orx,"+orxSoundSystem_GetStatus",{C_POINTER},C_UINT)
+				
+public function orxSoundSystem_GetVolume(atom s)
+
+ return c_func(xorxSoundSystem_GetVolume,{s})
+	
+end function
+
+public function orxSoundSystem_GetPitch(atom s)
+
+ return c_func(xorxSoundSystem_GetPitch,{s})
+	
+end function
+
+public function orxSoundSystem_GetTime(atom s)
+
+ return c_func(xorxSoundSystem_GetTime,{s})
+	
+end function
+
+public function orxSoundSystem_GetPosition(atom s,atom pos)
+
+ return c_func(xorxSoundSystem_GetPosition,{s,pos})
+	
+end function
+
+public function orxSoundSystem_GetAttenuation(atom s)
+
+ return c_func(xorxSoundSystem_GetAttenuation,{s})
+	
+end function
+
+public function orxSoundSystem_GetReferenceDistance(atom s)
+
+ return c_func(xorxSoundSystem_GetReferenceDistance,{s})
+	
+end function
+
+public function orxSoundSystem_IsLooping(atom s)
+
+ return c_func(xorxSoundSystem_IsLooping,{s})
+	
+end function
+
+public function orxSoundSystem_GetDuration(atom s)
+
+ return c_func(xorxSoundSystem_GetDuration,{s})
+	
+end function
+
+public function orxSoundSystem_GetStatus(atom s)
+
+ return c_func(xorxSoundSystem_GetStatus,{s})
+	
+end function
+
+public constant xorxSoundSystem_SetGlobalVolume = define_c_func(orx,"+orxSoundSystem_SetGlobalVolume",{C_FLOAT},C_UINT),
+				xorxSoundSystem_GetGlobalVolume = define_c_func(orx,"+orxSoundSystem_GetGlobalVolume",{},C_FLOAT),
+				xorxSoundSystem_SetListenerPosition = define_c_func(orx,"+orxSoundSystem_SetListenerPosition",{C_POINTER},C_UINT),
+				xorxSoundSystem_GetListenerPosition = define_c_func(orx,"+orxSoundSystem_GetListenerPosition",{C_POINTER},C_POINTER)
+				
+public function orxSoundSystem_SetGlobalVolume(atom vol)
+
+ return c_func(xorxSoundSystem_SetGlobalVolume,{vol})
+	
+end function
+
+public function orxSoundSystem_GetGlobalVolume()
+
+ return c_func(xorxSoundSystem_GetGlobalVolume,{})
+	
+end function
+
+public function orxSoundSystem_SetListenerPosition(atom pos)
+
+ return c_func(xorxSoundSystem_SetListenerPosition,{pos})
+	
+end function
+
+public function orxSoundSystem_GetListenerPosition(atom pos)
+
+ return c_func(xorxSoundSystem_GetListenerPosition,{pos})
+	
+end function
+
+--Utility Functions
+
+--HashTable Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -8234,4 +9070,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­8183.17
+­9019.21

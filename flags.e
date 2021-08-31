@@ -1080,4 +1080,125 @@ public constant orxCAMERA_KU32_FLAG_NONE = 0,
 				orxCAMERA_KU32_FLAG_2D = 1,
 				orxCAMERA_KU32_MASK_USER_ALL = #000000FF,
 				orxCAMERA_KU32_GROUP_ID_NUMBER = 16
-­1082.39
+				
+--Render Flags
+public constant orxRENDER_KZ_CONFIG_SECTION  =                 "Render",
+ orxRENDER_KZ_CONFIG_SHOW_FPS           =       "ShowFPS",
+ orxRENDER_KZ_CONFIG_SHOW_PROFILER       =      "ShowProfiler",
+ orxRENDER_KZ_CONFIG_MIN_FREQUENCY        =     "MinFrequency",
+ orxRENDER_KZ_CONFIG_PROFILER_ORIENTATION  =    "ProfilerOrientation",
+ orxRENDER_KZ_CONFIG_CONSOLE_COLOR        =     "ConsoleColor",
+ orxRENDER_KZ_CONFIG_CONSOLE_ALPHA        =     "ConsoleAlpha",
+
+ orxRENDER_KZ_CONFIG_CONSOLE_BACKGROUND_COLOR = "ConsoleBackgroundColor",
+ orxRENDER_KZ_CONFIG_CONSOLE_BACKGROUND_ALPHA = "ConsoleBackgroundAlpha",
+ orxRENDER_KZ_CONFIG_CONSOLE_SEPARATOR_COLOR  = "ConsoleSeparatorColor",
+ orxRENDER_KZ_CONFIG_CONSOLE_SEPARATOR_ALPHA  = "ConsoleSeparatorAlpha",
+ orxRENDER_KZ_CONFIG_CONSOLE_INPUT_COLOR     =  "ConsoleInputColor",
+orxRENDER_KZ_CONFIG_CONSOLE_INPUT_ALPHA     =  "ConsoleInputAlpha",
+ orxRENDER_KZ_CONFIG_CONSOLE_COMPLETION_COLOR = "ConsoleCompletionColor",
+ orxRENDER_KZ_CONFIG_CONSOLE_COMPLETION_ALPHA = "ConsoleCompletionAlpha",
+ orxRENDER_KZ_CONFIG_CONSOLE_LOG_COLOR        = "ConsoleLogColor",
+ orxRENDER_KZ_CONFIG_CONSOLE_LOG_ALPHA       =  "ConsoleLogAlpha",
+
+orxRENDER_KZ_INPUT_SET                    =    "-=RenderSet=-",
+
+ orxRENDER_KZ_INPUT_PROFILER_TOGGLE_HISTORY  =  "ProfilerToggleHistory",
+ orxRENDER_KZ_INPUT_PROFILER_PAUSE            = "ProfilerPause",
+ orxRENDER_KZ_INPUT_PROFILER_PREVIOUS_FRAME  =  "ProfilerPreviousFrame",
+ orxRENDER_KZ_INPUT_PROFILER_NEXT_FRAME      =  "ProfilerNextFrame",
+orxRENDER_KZ_INPUT_PROFILER_PREVIOUS_DEPTH   = "ProfilerPreviousDepth",
+ orxRENDER_KZ_INPUT_PROFILER_NEXT_DEPTH      =  "ProfilerNextDepth",
+ orxRENDER_KZ_INPUT_PROFILER_PREVIOUS_THREAD  = "ProfilerPreviousThread",
+ orxRENDER_KZ_INPUT_PROFILER_NEXT_THREAD     =  "ProfilerNextThread"
+ 
+public enum orxRENDER_EVENT_START = 0,
+			orxRENDER_EVENT_STOP,
+			orxRENDER_EVENT_VIEWPORT_START,
+			orxRENDER_EVENT_VIEWPORT_STOP,
+			orxRENDER_EVENT_OBJECT_START,
+			orxRENDER_EVENT_OBJECT_STOP,
+			orxRENDER_EVENT_CONSOLE_START,
+			orxRENDER_EVENT_CONSOLE_STOP,
+			orxRENDER_EVENT_PROFILER_START,
+			orxRENDER_EVENT_PROFILER_STOP,
+			orxRENDER_EVENT_NUMBER,
+			orxRENDER_EVENT_NONE = orxENUM_NONE
+			
+--Shader Flags
+public enum orxSHADER_PARAM_TYPE_FLOAT = 0,
+			orxSHADER_PARAM_TYPE_TEXTURE,
+			orxSHADER_PARAM_TYPE_VECTOR,
+			orxSHADER_PARAM_TYPE_TIME,
+			orxSHADER_PARAM_TYPE_NUMBER,
+			orxSHADER_PARAM_TYPE_NONE = orxENUM_NONE
+			
+public enum orxSHADER_EVENT_SET_PARAM = 0,
+			orxSHADER_EVENT_NUMBER,
+			orxSHADER_EVENT_NONE = orxENUM_NONE
+			
+--ShaderPointer Flags
+public constant orxSHADERPOINTER_KU32_SHADER_NUMBER = 4
+
+--Viewport Flags
+public constant orxVIEWPORT_KU32_FLAG_ALIGN_CENTER  =  #000000000,
+				orxVIEWPORT_KU32_FLAG_ALIGN_LEFT =     #010000000,
+				orxVIEWPORT_KU32_FLAG_ALIGN_RIGHT  =   #020000000,
+				orxVIEWPORT_KU32_FLAG_ALIGN_TOP     =  #040000000,
+				orxVIEWPORT_KU32_FLAG_ALIGN_BOTTOM  =  #080000000,
+				orxVIEWPORT_KU32_FLAG_NO_DEBUG      =  #001000000,
+				orxVIEWPORT_KU32_MAX_TEXTURE_NUMBER  = 8
+				
+public enum orxVIEWPORT_EVENT_RESIZE = 0,
+			orxVIEWPORT_EVENT_NUMBER,
+			orxVIEWPORT_EVENT_NONE = orxENUM_NONE
+			
+--Sound Flags
+public constant orxSOUND_KZ_RESOURCE_GROUP = "Sound",
+				orxSOUND_KZ_MASTER_BUS = "master"
+				
+public enum orxSOUND_STATUS_PLAY = 0,
+			orxSOUND_STATUS_PAUSE,
+			orxSOUND_STATUS_STOP,
+			orxSOUND_STATUS_NUMBER,
+			orxSOUND_STATUS_NONE = orxENUM_NONE
+			
+public enum orxSOUND_EVENT_START = 0,
+			orxSOUND_EVENT_STOP,
+			orxSOUND_EVENT_ADD,
+			orxSOUND_EVENT_REMOVE,
+			orxSOUND_EVENT_PACKET,
+			orxSOUND_EVENT_RECORDING_START,
+			orxSOUND_EVENT_RECORDING_STOP,
+			orxSOUND_EVENT_RECORDING_PACKET,
+			orxSOUND_EVENT_NUMBER,
+			orxSOUND_EVENT_NONE = orxENUM_NONE
+			
+--SoundPointer Flag
+public constant orxSOUNDPOINTER_KU32_SOUND_NUMBER = 4
+
+--SoundSystem Flags
+public enum orxSOUNDSYSTEM_STATUS_PLAY = 0,
+  orxSOUNDSYSTEM_STATUS_PAUSE,
+  orxSOUNDSYSTEM_STATUS_STOP,
+
+  orxSOUNDSYSTEM_STATUS_NUMBER,
+
+  orxSOUNDSYSTEM_STATUS_NONE = orxENUM_NONE
+  
+public constant orxSOUNDSYSTEM_KZ_CONFIG_SECTION   = "SoundSystem",
+                orxSOUNDSYSTEM_KZ_CONFIG_RATIO = "DimensionRatio",
+                orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_SIZE = "StreamBufferSize",
+                orxSOUNDSYSTEM_KZ_CONFIG_STREAM_BUFFER_NUMBER = "StreamBufferNumber"
+                
+--Utility Flags
+
+public constant orxHASHTABLE_KU32_FLAG_NONE = 0,
+				orxHASHTABLE_KU32_FLAG_NOT_EXPANDABLE = 1
+				
+public constant orxSTRING_KC_VECTOR_END = ")",
+				orxSTRING_KC_VECTOR_END_ALT = "}",
+				orxSTRING_KC_VECTOR_SEPARATOR = ",",
+				orxSTRING_KC_VECTOR_START = "(",
+				orxSTRING_KC_VECTOR_START_ALT = "{"
+­1200.34
