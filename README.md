@@ -1,5 +1,5 @@
 # EuOrx
-Euphoria wrapper for Orx Game Engine
+Euphoria wrapper for Orx Game Engine (WIP)
 
 # ABOUT
 This is a wrapper for the Orx Game engine written in the Euphoria programming language. 
