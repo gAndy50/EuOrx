@@ -9018,6 +9018,328 @@ end function
 
 --HashTable Functions
 
+public constant xorxHashTable_Delete = define_c_func(orx,"+orxHashTable_Delete",{C_POINTER},C_UINT)
+
+public function orxHashTable_Delete(atom ht)
+
+ return c_func(xorxHashTable_Delete,{ht})
+	
+end function
+
+public constant xorxHashTable_Clear = define_c_func(orx,"+orxHashTable_Clear",{C_POINTER},C_UINT),
+				xorxHashTable_GetCount = define_c_func(orx,"+orxHashTable_GetCount",{C_POINTER},C_UINT)
+				
+public function orxHashTable_Clear(atom ht)
+
+ return c_func(xorxHashTable_Clear,{ht})
+	
+end function
+
+public function orxHashTable_GetCount(atom ht)
+
+ return c_func(xorxHashTable_GetCount,{ht})
+	
+end function
+
+public constant xorxHashTable_Get = define_c_func(orx,"+orxHashTable_Get",{C_POINTER,C_LONG},C_POINTER)
+
+public function orxHashTable_Get(atom ht,atom k)
+
+ return c_func(xorxHashTable_Get,{ht,k})
+	
+end function
+
+public constant xorxHashTable_Retrieve = define_c_func(orx,"+orxHashTable_Retrieve",{C_POINTER,C_LONG},C_POINTER)
+
+public function orxHashTable_Retrieve(atom ht,atom k)
+
+ return c_func(xorxHashTable_Retrieve,{ht,k})
+	
+end function
+
+public constant xorxHashTable_Set = define_c_func(orx,"+orxHashTable_Set",{C_POINTER,C_LONG,C_POINTER},C_UINT)
+
+public function orxHashTable_Set(atom ht,atom k,atom d)
+
+ return c_func(xorxHashTable_Set,{ht,k,d})
+	
+end function
+
+public constant xorxHashTable_Add = define_c_func(orx,"+orxHashTable_Add",{C_POINTER,C_LONG,C_POINTER},C_UINT)
+
+public function orxHashTable_Add(atom ht,atom k,atom d)
+
+ return c_func(xorxHashTable_Add,{ht,k,d})
+	
+end function
+
+public constant xorxHashTable_Remove = define_c_func(orx,"+orxHashTable_Remove",{C_POINTER,C_LONG},C_UINT),
+				xorxHashTable_GetNext = define_c_func(orx,"+orxHashTable_GetNext",{C_POINTER,C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxHashTable_Optimize = define_c_func(orx,"+orxHashTable_Optimize",{C_POINTER},C_UINT)
+				
+public function orxHashTable_Remove(atom ht,atom k)
+
+ return c_func(xorxHashTable_Remove,{ht,k})
+	
+end function
+
+public function orxHashTable_GetNext(atom ht,atom it,atom k,atom d)
+
+ return c_func(xorxHashTable_GetNext,{ht,it,k,d})
+	
+end function
+
+public function orxHashTable_Optimize(atom ht)
+
+ return c_func(xorxHashTable_Optimize,{ht})
+	
+end function
+
+--LinkList Functions
+
+public constant xorxLinkList_Clean = define_c_func(orx,"+orxLinkList_Clean",{C_POINTER},C_UINT)
+
+public function orxLinkList_Clean(atom ll)
+
+ return c_func(xorxLinkList_Clean,{ll})
+	
+end function
+
+public constant xorxLinkList_AddStart = define_c_func(orx,"+orxLinkList_AddStart",{C_POINTER,C_POINTER},C_UINT),
+				xorxLinkList_AddEnd = define_c_func(orx,"+orxLinkList_AddEnd",{C_POINTER,C_POINTER},C_UINT),
+				xorxLinkList_AddBefore = define_c_func(orx,"+orxLinkList_AddBefore",{C_POINTER,C_POINTER},C_UINT),
+				xorxLinkList_AddAfter = define_c_func(orx,"+orxLinkList_AddAfter",{C_POINTER,C_POINTER},C_UINT),
+				xorxLinkList_Remove = define_c_func(orx,"+orxLinkList_Remove",{C_POINTER},C_UINT)
+				
+public function orxLinkList_AddStart(atom ll,atom n)
+
+ return c_func(xorxLinkList_AddStart,{ll,n})
+	
+end function
+
+public function orxLinkList_AddEnd(atom l,atom n)
+
+ return c_func(xorxLinkList_AddEnd,{l,n})
+	
+end function
+
+public function orxLinkList_AddBefore(atom n,atom n2)
+
+ return c_func(xorxLinkList_AddBefore,{n,n2})
+	
+end function
+
+public function orxLinkList_AddAfter(atom n,atom n2)
+
+ return c_func(xorxLinkList_AddAfter,{n,n2})
+	
+end function
+
+public function orxLinkList_Remove(atom n)
+
+ return c_func(xorxLinkList_Remove,{n})
+	
+end function
+
+--Inline LinkList Functions
+--orxLinkList_GetList(NODE  ptr) - ptr
+--orxLinkList_GetPrevious(node  ptr) - ptr
+--orxLinkList_GetNext(node ptr) - ptr
+--orxLinkList_GetFirst(node ptr) - ptr
+--orxLinkList_GetLast(node ptr) - ptr
+--orxLinkList_GetCount(node ptr) - uint
+
+--orxString Functions
+
+--orxString inline Functions
+--orxString_SkipWithSpaces(string) string (ptr)
+--orxString_SkipPath(string) string (ptr)
+--orxString_GetLength(string) u32
+--orxString_IsCharacterASCII(u32 charpt) bool
+--orxString_IsCharacterAlphaNumeric(u32 charpt) bool
+--orxString_GetUTF8CharacterLength(u32 charpt) u32
+
+public constant xorxString_PrintUTF8Character = define_c_func(orx,"+orxString_PrintUTF8Character",{C_POINTER,C_UINT,C_UINT},C_UINT)
+
+public function orxString_PrintUTF8Character(sequence st,atom size,atom codept)
+
+ atom str = allocate_string(st,1)
+ 
+ return c_func(xorxString_PrintUTF8Character,{str,size,codept})
+	
+end function
+
+public constant xorxString_GetFirstCharacterCodePoint = define_c_func(orx,"+orxString_GetFirstCharacterCodePoint",{C_POINTER,C_POINTER},C_UINT)
+
+public function orxString_GetFirstCharacterCodePoint(sequence st,sequence z)
+
+ atom str = allocate_string(st,1)
+ atom str2 = allocate_string(z,1)
+ 
+ return c_func(xorxString_GetFirstCharacterCodePoint,{str,str2})
+	
+end function
+
+--orxString_GetCharacterCount(string) u32
+--orxString_NCopy(string,string,u32 charnum) string
+--orxString_Duplicate(string) string
+--orxString_Delete(string) orxSTATUS
+--orxString_Compare(string,string) - s32
+--orxString_NCompare(string,string,u32 charnum) - s32
+--orxString_ICompare(string,string) - s32
+--orxString_NICompare(string,string,u32 charnum) -s32
+--orxString_ExtractBase(string,string) - u32
+--orxString_TS32Base(string,u32 base,ptr val,strng) -orxSTATUS
+--orxString_ToS32(string,ptr val,string) - orxSTATUS
+--orxString_ToU32Base(string,u32 base,ptr val,string) - orxSTATUS
+--orxString_ToU32(string,ptr val,string) - orxSTATUS
+--orxString_ToS64Base(string,u32 base,ptr val,string) - orxSTATUS
+--orxString_ToS64(string,ptr val,string) - orxSTATUS
+--orxString_ToU64Base(string,u32 base,ptr val,string) - orxSTATUS
+--orxStrng_ToU64(string,ptr val,string) - orxSTATUS
+--orxString_ToFloat(string,ptr val,string) - orxSTATUS
+--orxString_ToVector(string,vector val,string) - orxSTATUS
+--orxString_ToBool(string,bool val,string) - orxSTATUS
+--orxString_LowerCase(string) - string
+--orxString_UpperCase(string) - string
+--orxString_SearchString(string,string) - string
+--orxString_SearchChar(string,char) - string
+--orxString_SearchCharIndex(string, char,s32 pos) - s32
+--orxString_Print(string,string,...) -s32
+--orxString_NPrint(string,u32 char,string) - s32
+--orxString_Scan(string,string,...) -s32
+--orxString_GetExtension(string) - string
+
+public constant xorxString_Setup = define_c_proc(orx,"+orxString_Setup",{}),
+				xorxString_Init = define_c_func(orx,"+orxString_Init",{},C_UINT),
+				xorxString_Exit = define_c_proc(orx,"+orxString_Exit",{})
+				
+public procedure orxString_Setup()
+
+ c_proc(xorxString_Setup,{})
+	
+end procedure
+
+public function orxString_Init()
+
+ return c_func(xorxString_Init,{})
+	
+end function
+
+public procedure orxString_Exit()
+
+ c_proc(xorxString_Exit,{})
+	
+end procedure
+
+public constant xorxString_NHash = define_c_func(orx,"+orxString_NHash",{C_POINTER,C_UINT},C_POINTER),
+				xorxString_Hash = define_c_func(orx,"+orxString_Hash",{C_POINTER},C_POINTER),
+				xorxString_GetID = define_c_func(orx,"+oxString_GetID",{C_POINTER},C_POINTER),
+				xorxString_GetFromID = define_c_func(orx,"+orxString_GetFromID",{C_POINTER},C_POINTER),
+				xorxString_Store = define_c_func(orx,"+orxString_Store",{C_POINTER},C_POINTER)
+				
+public function orxString_NHash(sequence s,atom char)
+
+ atom str = allocate_string(s,1)
+ 
+ return c_func(xorxString_NHash,{str,char})
+	
+end function
+
+public function orxString_Hash(sequence s)
+
+ atom str = allocate_string(s,1)
+ 
+ return c_func(xorxString_Hash,{str})
+	
+end function
+
+public function orxString_GetID(sequence s)
+
+ atom str = allocate_string(s,1)
+ 
+ return c_func(xorxString_GetID,{str})
+	
+end function
+
+public function orxString_GetFromID(sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxString_GetFromID,{str})
+	
+end function
+
+public function orxString_Store(sequence s)
+
+ atom str = allocate_string(s,1)
+ 
+ return c_func(xorxString_Store,{str})
+	
+end function
+
+--orxTree Functions
+
+public constant xorxTree_Clean = define_c_func(orx,"+orxTree_Clean",{C_POINTER},C_UINT),
+				xorxTree_AddRoot = define_c_func(orx,"+orxTree_AddRoot",{C_POINTER,C_POINTER},C_UINT),
+				xorxTree_AddParent = define_c_func(orx,"+orxTree_AddParent",{C_POINTER,C_POINTER},C_UINT),
+				xorxTree_AddSibling = define_c_func(orx,"+orxTree_AddSibling",{C_POINTER,C_POINTER},C_UINT),
+				xorxTree_AddChild = define_c_func(orx,"+orxTree_AddChild",{C_POINTER,C_POINTER},C_UINT),
+				xorxTree_MoveAsChild = define_c_func(orx,"+orxTree_MoveAsChild",{C_POINTER,C_POINTER},C_UINT),
+				xorxTree_Remove = define_c_func(orx,"+orxTree_Remove",{C_POINTER},C_UINT)
+				
+public function orxTree_Clean(atom t)
+
+ return c_func(xorxTree_Clean,{t})
+	
+end function
+
+public function orxTree_AddRoot(atom t,atom n)
+
+ return c_func(xorxTree_AddRoot,{t,n})
+	
+end function
+
+public function orxTree_AddParent(atom r,atom n)
+
+ return c_func(xorxTree_AddParent,{r,n})
+	
+end function
+
+public function orxTree_AddSibling(atom r,atom n)
+
+ return c_func(xorxTree_AddSibling,{r,n})
+	
+end function
+
+public function orxTree_AddChild(atom r,atom n)
+
+ return c_func(xorxTree_AddChild,{r,n})
+	
+end function
+
+public function orxTree_MoveAsChild(atom r,atom n)
+
+ return c_func(xorxTree_MoveAsChild,{r,n})
+	
+end function
+
+public function orxTree_Remove(atom n)
+
+ return c_func(xorxTree_Remove,{n})
+	
+end function
+
+--orxTree_GetTree(tree node) - tree
+--orxTree_GetParent(tree node) - tree
+--orxTree_GetChild(tree node) - tree
+--orxTree_GetSiblinh(tree node) - tree
+--orxTree_GetPrevious(tree node) - tree
+--orxTree_GetRoot(tree node) - tree
+--orxTree_GetCount(tree ) - u32
+
+--Physics Functions
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -9070,4 +9392,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­9019.21
+­9341.19
