@@ -1424,7 +1424,7 @@ public function orxLocale_GetString(sequence k)
 	
 end function
 
-public function orxLocale_SetString(sequence k,atom v)
+public function orxLocale_SetString(sequence k,sequence v)
 
  atom str = allocate_string(k,1)
  atom str2 = allocate_string(v,1)
@@ -9392,4 +9392,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­9341.19
+­1427.55
