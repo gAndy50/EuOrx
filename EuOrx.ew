@@ -189,6 +189,15 @@ public constant u32FrameCount = 0,
 				$
 				
 --orxAnim Event Payload
+public constant pstAnim = 0,
+				zAnimName = 4,
+				u32Count = 8,
+				fTime = 12,
+				zName = 16,
+				fValue = 20,
+				fTime = 24,
+				SIZEOF_orxANIM_EVENT_PAYLOAD = 28,
+				$
 
 --orxAnim Custom Event
 public constant zName = 0,
@@ -215,6 +224,94 @@ public constant vPosition = 0,
 --orxPhysics Event
 
 --orxPhysics Event Payload
+
+--orxRGBA Struct
+public constant u8R = 0,
+				u8G = 1,
+				u8B = 2,
+				u8A = 3,
+				SIZEOF_u32RGBA = 4,
+				$
+				
+--orxDisplay Vertext Struct
+public constant fX = 0,
+				fY = 4,
+				fU = 8,
+				fV = 12,
+				stRGBA = 13,
+				SIZEOF_orxDISPLAY_VERTEX = 17,
+				$
+				
+--orxDisplay Transform Struct
+public constant fSrcX = 0,
+				fSrcY = 4,
+				fDstX = 8,
+				fDstY = 12,
+				fRepeatX = 16,
+				fRepeatY = 20,
+				fScaleX = 24,
+				fScaleY = 28,
+				fRotation = 32,
+				SIZEOF_orxDISPLAY_TRANSFORM = 36,
+				$
+
+--orxDisplay Mesh Struct				
+public constant astVertextList = 0,
+				au16IndexList = 4,
+				u32VertexNumber = 5,
+				u32IndexNumber = 6,
+				ePrimititve = 7,
+				SIZEOF_orxDISPLAY_MESH = 8,
+				$
+
+--orxDisplay Video Mode Struct				
+public constant u32Width = 0,
+				u32Height = 1,
+				u32Depth = 2,
+				u32RefreshRate = 3,
+				bFullScreen = 4,
+				SIZEOF_orxDISPLAY_VIDEO_MODE = 5,
+				$
+
+--orxCharacter Glyph Struct				
+public constant fX = 0,
+				fY = 4,
+				fWidth = 8,
+				SIZEOF_orxCHARACTER_GLYPH = 12,
+				$
+				
+--orxCharacter Map Struct
+public constant fCharacterHeight = 0,
+				pstCharacterBank = 4,
+				pstCharacterTable = 8,
+				SIZEOF_orxCHARACTER_MAP = 12,
+				$
+				
+--orxColor Struct
+public constant vRGB = 0,
+				vHSL = 4,
+				vHSV = 8,
+				fAlpha = 12,
+				SIZEOF_orxCOLOR = 16,
+				$
+				
+--orxDisplay Event Payload
+public constant u32Width = 0,
+				u32Height = 0,
+				u32Depth = 0,
+				u32RefreshRate = 0,
+				u32PreviousWidth = 0,
+				u32PreviousHeight = 0,
+				u32PreviousDepth = 0,
+				u32PreviousRefreshRate = 0,
+				bFullScreen = 0,
+				zLocation = 4,
+				stFilenameID = 4,
+				u32ID = 4,
+				SIZEOF_orxDISPLAY_EVENT_PAYLOAD = 8,
+				$
+
+--------------------------------------------------------------------------------------
   
 --Core Functions
 
@@ -9504,4 +9601,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­198.5
+­312.5
