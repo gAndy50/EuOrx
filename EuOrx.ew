@@ -13,6 +13,7 @@ include std/machine.e
 include std/math.e
 include std/dll.e
 include std/os.e
+include std/types.e
 
 --global orx var
 public atom orx
@@ -103,6 +104,117 @@ end ifdef
 -----------------------------------------------
 
 include flags.e
+
+--Orx Structs converted to Eu
+--orxVector
+--First Union
+public constant fH = 0,
+				fR = 0,
+				fRho = 0,
+				fX = 0,
+				--Second Union
+				fG = 4,
+				fS = 4,
+				fTheta = 4,
+				fY = 4,
+				--Third Union
+				fB = 8,
+				fL = 8,
+				fPhi = 8,
+				fV = 8,
+				fZ = 8,
+				SIZEOF_orxVECTOR = 12,
+				$ 
+
+public constant C_orxVECTOR = C_POINTER
+
+--Clock_Info Struct
+public constant fTickSize = 0,
+				fDT = 4,
+				fTime = 8,
+				afModifierList = 12,
+				SIZEOF_orxCLOCK_INFO = 16,
+				$
+				
+public constant C_orxCLOCKINFO = C_POINTER
+
+public constant zName = 0,
+				eType = 1,
+				SIZEOF_orxCOMMAND_VAR_DEF = 2,
+				$
+				
+public constant C_orxCOMMAND_VAR_DEF = C_POINTER
+
+public constant vValue = 4,
+				zValue = 8,
+				u32Value = 12,
+				s32Value = 12,
+				U64Value = 12,
+				s64Value = 12,
+				fValue = 12,
+				bValue = 12,
+				SIZE_OF_orxCOMMAND_VAR = 16,
+				$
+				
+public constant C_orxCOMMAND_VAR = C_POINTER
+
+--orxEvent Struct
+public constant eType = 0,
+				eID = 1,
+				hSender = 4,
+				hRecipient = 8,
+				pstPayload = 12,
+				pContext = 16,
+				SIZEOF_orxEVENT = 20,
+				$
+
+--orxLOCALE Event Payload				
+public constant zLanguage = 0,
+				zStringKey = 4,
+				zStringValue = 8,
+				SIZEOF_orxLOCALE_EVENT_PAYLOAD = 12,
+				$
+
+--Event Payload Struct				
+public constant u32FrameCount = 0,
+				dTime = 4,
+				u32ID = 4,
+				fX = 4,fY = 4, fPressure = 4,
+				dTime = 8,
+				vAcceleration = 8,
+				azValueList = 12,
+				u32Numer = 12,
+				zValue = 16,
+				SIZEOF_EVENT_PAYLOAD = 20,
+				$
+				
+--orxAnim Event Payload
+
+--orxAnim Custom Event
+public constant zName = 0,
+				fValue = 4,
+				fTimeStamp = 8,
+				SIZEOF_orxANIM_CUSTOM_EVENT = 12,
+				$
+
+--orxBody Def Struct				
+public constant vPosition = 0,
+				fRotation = 4,
+				fInertia = 8,
+				fMass = 12,
+				fLinearDamping = 16,
+				fAngularDamping = 20,
+				u32Flags = 24,
+				SIZEOF_orxBODY_DEF = 28,
+				$
+				
+--orxBody Def Part Struct
+
+--orxBody Joint Def Struct
+
+--orxPhysics Event
+
+--orxPhysics Event Payload
   
 --Core Functions
 
@@ -9392,4 +9504,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­1427.55
+­198.5
