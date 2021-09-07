@@ -9270,6 +9270,944 @@ end function
 
 --Physics Functions
 
+public constant xorxPhysics_Setup = define_c_proc(orx,"+orxPhysics_Setup",{})
+
+public procedure orxPhysics_Setup()
+
+ c_proc(xorxPhysics_Setup,{})
+	
+end procedure
+
+public constant xorxPhysics_GetCollisionFlagName = define_c_func(orx,"+oxPhysics_GetCollisionFlagName",{C_UINT},C_POINTER),
+				xorxPhysics_GetCollisionFlagValue = define_c_func(orx,"+orxPhysics_GetCollisionFlagValue",{C_POINTER},C_UINT)
+				
+public function orxPhysics_GetCollisionFlagName(atom flag)
+
+ return c_func(xorxPhysics_GetCollisionFlagName,{flag})
+	
+end function
+
+public function orxPhysics_GetCollisionFlagValue(sequence z)
+
+ atom str = allocate_string(z,1)
+ 
+ return c_func(xorxPhysics_GetCollisionFlagValue,{str})
+	
+end function
+
+public constant xorxPhysics_Init = define_c_func(orx,"+orxPhysics_Init",{},C_INT),
+				xorxPhysics_Exit = define_c_proc(orx,"+orxPhysics_Exit",{})
+				
+public function orxPhysics_Init()
+
+ return c_func(xorxPhysics_Init,{})
+	
+end function
+
+public procedure orxPhysics_Exit()
+
+ c_proc(xorxPhysics_Exit,{})
+	
+end procedure
+
+public constant xorxPhysics_SetGravity = define_c_func(orx,"+orxPhysics_SetGravity",{C_POINTER},C_INT),
+				xorxPhysics_GetGravity = define_c_func(orx,"+orxPhysics_GetGravity",{C_POINTER},C_POINTER)
+				
+public function orxPhysics_SetGravity(atom grav)
+
+ return c_func(xorxPhysics_SetGravity,{grav})
+	
+end function
+
+public function orxPhysics_GetGravity(atom grav)
+
+ return c_func(xorxPhysics_GetGravity,{grav})
+	
+end function
+
+public constant xorxPhysics_CreateBody = define_c_func(orx,"+orxPhysics_CreateBody",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_DeleteBody = define_c_proc(orx,"+orxPhysics_DeleteBody",{C_POINTER}),
+				xorxPhysics_CreatePart = define_c_func(orx,"+orxPhysics_CreatePart",{C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_DeletePart = define_c_proc(orx,"+orxPhysics_DeletePart",{C_POINTER})
+				
+public function orxPhysics_CreateBody(atom data,atom body)
+
+ return c_func(xorxPhysics_CreateBody,{data,body})
+	
+end function
+
+public procedure orxPhysics_DeleteBody(atom body)
+
+ c_proc(xorxPhysics_DeleteBody,{body})
+	
+end procedure
+
+public function orxPhysics_CreatePart(atom body,atom data,atom def)
+
+ return c_func(xorxPhysics_CreatePart,{body,data,def})
+	
+end function
+
+public procedure orxPhysics_DeletePart(atom body)
+
+ c_proc(xorxPhysics_DeletePart,{body})
+	
+end procedure
+
+public constant xorxPhysics_CreateJoint = define_c_func(orx,"+orxPhysics_CreateJoint",{C_POINTER,C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_DeleteJoint = define_c_proc(orx,"+orxPhysics_DeleteJoint",{C_POINTER})
+				
+public function orxPhysics_CreateJoint(atom srcbody,atom body,atom data,atom joint)
+
+ return c_func(xorxPhysics_CreateJoint,{srcbody,body,data,joint})
+	
+end function
+
+public procedure orxPhysics_DeleteJoint(atom joint)
+
+ c_proc(xorxPhysics_DeleteJoint,{joint})
+	
+end procedure
+
+public constant xorxPhysics_SetPosition = define_c_func(orx,"+orxPhysics_SetPosition",{C_POINTER,C_POINTER},C_INT),
+				xorxPhysics_SetRotation = define_c_func(orx,"+orxPhysics_SetRotation",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_SetSpeed = define_c_func(orx,"+orxPhysics_SetSpeed",{C_POINTER,C_POINTER},C_INT),
+				xorxPhysics_SetAngularVelocity = define_c_func(orx,"+orxPhysics_SetAngularVelocity",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_SetCustomGravity = define_c_func(orx,"+orxPhysics_SetCustomGravity",{C_POINTER,C_POINTER},C_INT),
+				xorxPhysics_SetFixedRotation = define_c_func(orx,"+orxPhysics_SetFixedRotation",{C_POINTER,C_BOOL},C_INT),
+				xorxPhysics_SetDynamic = define_c_func(orx,"+orxPhysics_SetDynamic",{C_POINTER,C_BOOL},C_INT),
+				xorxPhysics_SetAllowMoving = define_c_func(orx,"+orxPhysics_SetAllowMoving",{C_POINTER,C_BOOL},C_INT),
+				xorxPhysics_GetPosition = define_c_func(orx,"+orxPhysics_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_GetRotation = define_c_func(orx,"+orxPhysics_GetRotation",{C_POINTER},C_FLOAT),
+				xorxPhysics_GetSpeed = define_c_func(orx,"+orxPhysics_GetSpeed",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_GetSpeedAtWorldPosition = define_c_func(orx,"+orxPhysics_GetSpeedAtWorldPosition",{C_POINTER,C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxPhysics_SetPosition(atom body,atom pos)
+
+ return c_func(xorxPhysics_SetPosition,{body,pos})
+	
+end function
+
+public function orxPhysics_SetRotation(atom body,atom rot)
+
+ return c_func(xorxPhysics_SetRotation,{body,rot})
+	
+end function
+
+public function orxPhysics_SetSpeed(atom body,atom spd)
+
+ return c_func(xorxPhysics_SetSpeed,{body,spd})
+	
+end function
+
+public function orxPhysics_SetAngularVelocity(atom body,atom vel)
+
+ return c_func(xorxPhysics_SetAngularVelocity,{body,vel})
+	
+end function
+
+public function orxPhysics_SetCustomGravity(atom body,atom grav)
+
+ return c_func(xorxPhysics_SetCustomGravity,{body,grav})
+	
+end function
+
+public function orxPhysics_SetFixedRotation(atom body,atom fixed)
+
+ return c_func(xorxPhysics_SetFixedRotation,{body,fixed})
+	
+end function
+
+public function orxPhysics_SetDynamic(atom body,atom dny)
+
+ return c_func(xorxPhysics_SetDynamic,{body,dny})
+	
+end function
+
+public function orxPhysics_SetAllowMoving(atom body,atom allow)
+
+ return c_func(xorxPhysics_SetAllowMoving,{body,allow})
+	
+end function
+
+public function orxPhysics_GetPosition(atom body,atom pos)
+
+ return c_func(xorxPhysics_GetPosition,{body,pos})
+	
+end function
+
+public function orxPhysics_GetRotation(atom body)
+
+ return c_func(xorxPhysics_GetRotation,{body})
+	
+end function
+
+public function orxPhysics_GetSpeed(atom body,atom spd)
+
+ return c_func(xorxPhysics_GetSpeed,{body,spd})
+	
+end function
+
+public function orxPhysics_GetSpeedAtWorldPosition(atom body,atom pos,atom spd)
+
+ return c_func(xorxPhysics_GetSpeedAtWorldPosition,{body,pos,spd})
+	
+end function
+
+public constant xorxPhysics_GetAngularVelocity = define_c_func(orx,"+orxPhysics_GetAngularVelocity",{C_POINTER},C_FLOAT),
+				xorxPhysics_GetCustomGravity = define_c_func(orx,"+orxPhysics_GetCustomGravity",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_IsFixedRotation = define_c_func(orx,"+orxPhysics_IsFixedRotation",{C_POINTER},C_BOOL),
+				xorxPhysics_GetMass = define_c_func(orx,"+orxPhysics_GetMass",{C_POINTER},C_FLOAT),
+				xorxPhysics_GetMassCenter = define_c_func(orx,"+orxPhysics_GetMassCenter",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxPhysics_GetAngularVelocity(atom body)
+
+ return c_func(xorxPhysics_GetAngularVelocity,{body})
+	
+end function
+
+public function orxPhysics_GetCustomGravity(atom body,atom grav)
+
+ return c_func(xorxPhysics_GetCustomGravity,{body,grav})
+	
+end function
+
+public function orxPhysics_IsFixedRotation(atom body)
+
+ return c_func(xorxPhysics_IsFixedRotation,{body})
+	
+end function
+
+public function orxPhysics_GetMass(atom body)
+
+ return c_func(xorxPhysics_GetMass,{body})
+	
+end function
+
+public function orxPhysics_GetMassCenter(atom body,atom mass)
+
+ return c_func(xorxPhysics_GetMassCenter,{body,mass})
+	
+end function
+
+public constant xorxPhysics_SetLinearDamping = define_c_func(orx,"+orxPhysics_SetLinearDamping",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_SetAngularDamping = define_c_func(orx,"+orxPhysics_SetAngularDamping",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_GetLinearDamping = define_c_func(orx,"+orxPhysics_GetLinearDamping",{C_POINTER},C_FLOAT),
+				xorxPhysics_GetAngularDamping = define_c_func(orx,"+orxPhysics_GetAngularDamping",{C_POINTER},C_FLOAT)
+				
+public function orxPhysics_SetLinearDamping(atom body,atom damp)
+
+ return c_func(xorxPhysics_SetLinearDamping,{body,damp})
+	
+end function
+
+public function orxPhysics_SetAngularDamping(atom body,atom damp)
+
+ return c_func(xorxPhysics_SetAngularDamping,{body,damp})
+	
+end function
+
+public function orxPhysics_GetLinearDamping(atom body)
+
+ return c_func(xorxPhysics_GetLinearDamping,{body})
+	
+end function
+
+public function orxPhysics_GetAngularDamping(atom body)
+
+ return c_func(xorxPhysics_GetAngularDamping,{body})
+	
+end function
+
+public constant xorxPhysics_ApplyTorque = define_c_func(orx,"+orxPhysics_ApplyTorque",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_ApplyForce = define_c_func(orx,"+orxPhysics_ApplyForce",{C_POINTER,C_POINTER,C_POINTER},C_INT),
+				xorxPhysics_ApplyImpulse = define_c_func(orx,"+orxPhysics_ApplyImpulse",{C_POINTER,C_POINTER,C_POINTER},C_INT)
+				
+public function orxPhysics_ApplyTorque(atom body,atom tor)
+
+ return c_func(xorxPhysics_ApplyTorque,{body,tor})
+	
+end function
+
+public function orxPhysics_ApplyForce(atom body,atom force,atom pt)
+
+ return c_func(xorxPhysics_ApplyForce,{body,force,pt})
+	
+end function
+
+public function orxPhysics_ApplyImpulse(atom body,atom imp,atom pt)
+
+ return c_func(xorxPhysics_ApplyImpulse,{body,imp,pt})
+	
+end function
+
+public constant xorxPhysics_SetPartSelfFlags = define_c_func(orx,"+orxPhysics_SetPartSelfFlags",{C_POINTER,C_UINT},C_INT),
+				xorxPhysics_SetPartCheckMask = define_c_func(orx,"+orxPhysics_SetPartCheckMask",{C_POINTER,C_UINT},C_INT),
+				xorxPhysics_GetPartSelfFlags = define_c_func(orx,"+orxPhysics_GetPartSelfFlags",{C_POINTER},C_UINT),
+				xorxPhysics_GetPartCheckMask = define_c_func(orx,"+orxPhysics_GetPartCheckMask",{C_POINTER},C_UINT),
+				xorxPhysics_SetPartSolid = define_c_func(orx,"+orxPhysics_SetPartSolid",{C_POINTER,C_BOOL},C_INT),
+				xorxPhysics_IsPartSolid = define_c_func(orx,"+orxPhysics_IsPartSolid",{C_POINTER},C_BOOL),
+				xorxPhysics_SetPartFriction = define_c_func(orx,"+orxPhysics_SetPartFriction",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_GetPartFriction = define_c_func(orx,"+orxPhysics_GetPartFriction",{C_POINTER},C_FLOAT),
+				xorxPhysics_SetPartRestitution = define_c_func(orx,"+orxPhysics_SetPartRestitution",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_GetPartRestitution = define_c_func(orx,"+orxPhysics_GetPartRestitution",{C_POINTER},C_FLOAT),
+				xorxPhysics_SetPartDensity = define_c_func(orx,"+orxPhysics_SetPartDensity",{C_POINTER,C_FLOAT},C_INT),
+				xorxPhysics_GetPartDensity = define_c_func(orx,"+orxPhysics_GetPartDensity",{C_POINTER},C_FLOAT),
+				xorxPhysics_IsInsidePart = define_c_func(orx,"+orxPhysics_IsInsidePart",{C_POINTER,C_POINTER},C_BOOL)
+				
+public function orxPhysics_SetPartSelfFlags(atom body,atom flags)
+
+ return c_func(xorxPhysics_SetPartSelfFlags,{body,flags})
+	
+end function
+
+public function orxPhysics_SetPartCheckMask(atom body,atom mask)
+
+ return c_func(xorxPhysics_SetPartCheckMask,{body,mask})
+	
+end function
+
+public function orxPhysics_GetPartSelfFlags(atom body)
+
+ return c_func(xorxPhysics_GetPartSelfFlags,{body})
+	
+end function
+
+public function orxPhysics_GetPartCheckMask(atom body)
+
+ return c_func(xorxPhysics_GetPartCheckMask,{body})
+	
+end function
+
+public function orxPhysics_SetPartSolid(atom body,atom solid)
+
+ return c_func(xorxPhysics_SetPartSolid,{body,solid})
+	
+end function
+
+public function orxPhysics_IsPartSolid(atom body)
+
+ return c_func(xorxPhysics_IsPartSolid,{body})
+	
+end function
+
+public function orxPhysics_SetPartFriction(atom body,atom fri)
+
+ return c_func(xorxPhysics_SetPartFriction,{body,fri})
+	
+end function
+
+public function orxPhysics_GetPartFriction(atom body)
+
+ return c_func(xorxPhysics_GetPartFriction,{body})
+	
+end function
+
+public function orxPhysics_SetPartRestitution(atom body,atom res)
+
+ return c_func(xorxPhysics_SetPartRestitution,{body,res})
+	
+end function
+
+public function orxPhysics_GetPartRestitution(atom body)
+
+ return c_func(xorxPhysics_GetPartRestitution,{body})
+	
+end function
+
+public function orxPhysics_SetPartDensity(atom body,atom den)
+
+ return c_func(xorxPhysics_SetPartDensity,{body,den})
+	
+end function
+
+public function orxPhysics_GetPartDensity(atom body)
+
+ return c_func(xorxPhysics_GetPartDensity,{body})
+	
+end function
+
+public function orxPhysics_IsInsidePart(atom body,atom pos)
+
+ return c_func(xorxPhysics_IsInsidePart,{body,pos})
+	
+end function
+
+public constant xorxPhysics_EnableMotor = define_c_proc(orx,"+orxPhysics_EnableMotor",{C_POINTER,C_BOOL}),
+				xorxPhysics_SetJointMotorSpeed = define_c_proc(orx,"+orxPhysics_SetJointMotorSpeed",{C_POINTER,C_FLOAT}),
+				xorxPhysics_SetJointMaxMotorTorque = define_c_proc(orx,"+orxPhysics_SetJointMaxMotorTorque",{C_POINTER,C_FLOAT})
+				
+public procedure orxPhysics_EnableMotor(atom body,atom en)
+
+ c_proc(xorxPhysics_EnableMotor,{body,en})
+	
+end procedure
+
+public procedure orxPhysics_SetJointMotorSpeed(atom joint,atom spd)
+
+ c_proc(xorxPhysics_SetJointMotorSpeed,{joint,spd})
+	
+end procedure
+
+public procedure orxPhysics_SetJointMaxMotorTorque(atom joint,atom tor)
+
+ c_proc(xorxPhysics_SetJointMaxMotorTorque,{joint,tor})
+	
+end procedure
+
+public constant xorxPhysics_GetJointReactionForce = define_c_func(orx,"+orxPhysics_GetJointReactionForce",{C_POINTER,C_POINTER},C_POINTER),
+				xorxPhysics_GetJointReactionTorque = define_c_func(orx,"+orxPhysics_GetJointReactionTorque",{C_POINTER},C_FLOAT)
+				
+public function orxPhysics_GetJointReactionForce(atom joint,atom force)
+
+ return c_func(xorxPhysics_GetJointReactionForce,{joint,force})
+	
+end function
+
+public function orxPhysics_GetJointReactionTorque(atom joint)
+
+ return c_func(xorxPhysics_GetJointReactionTorque,{joint})
+	
+end function
+
+public constant xorxPhysics_Raycast = define_c_func(orx,"+orxPhysics_Raycast",{C_POINTER,C_POINTER,C_UINT,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
+
+public function orxPhysics_Raycast(atom pvbeg,atom pvend,atom flag,atom mask,atom early,atom con,atom norm)
+
+ return c_func(xorxPhysics_Raycast,{pvbeg,pvend,flag,mask,early,con,norm})
+	
+end function
+
+public constant xorxPhysics_BoxPick = define_c_func(orx,"+orxPhysics_BoxPick",{C_POINTER,C_UINT,C_UINT,C_POINTER,C_UINT},C_UINT)
+
+public function orxPhysics_BoxPick(atom box,atom flag,atom mask,object datalist,atom num)
+
+ return c_func(xorxPhysics_BoxPick,{box,flag,mask,datalist,num})
+	
+end function
+
+public constant xorxPhysics_EnableSimulation = define_c_proc(orx,"+orxPhysics_EnableSimulation",{C_BOOL})
+
+public procedure orxPhysics_EnableSimulation(atom en)
+
+ c_proc(xorxPhysics_EnableSimulation,{en})
+	
+end procedure
+
+--Body Physics Functions
+public constant xorxBody_Setup = define_c_proc(orx,"+orxBody_Setup",{}),
+				xorxBody_Init = define_c_func(orx,"+orxBody_Init",{},C_INT),
+				xorxBody_Exit = define_c_proc(orx,"+orxBody_Exit",{})
+				
+public procedure orxBody_Setup()
+
+ c_proc(xorxBody_Setup,{})
+	
+end procedure
+
+public function orxBody_Init()
+
+ return c_func(xorxBody_Init,{})
+	
+end function
+
+public procedure orxBody_Exit()
+
+ c_proc(xorxBody_Exit,{})
+	
+end procedure
+
+public constant xorxBody_Create = define_c_func(orx,"+orxBody_Create",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_CreateFromConfig = define_c_func(orx,"+orxBody_CreateFromConfig",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_Delete = define_c_func(orx,"+orxBody_Delete",{C_POINTER},C_INT),
+				xorxBody_GetName = define_c_func(orx,"+orxBody_GetName",{C_POINTER},C_POINTER)
+				
+public function orxBody_Create(atom pown,atom bodydef)
+
+ return c_func(xorxBody_Create,{pown,bodydef})
+	
+end function
+
+public function orxBody_CreateFromConfig(atom pown,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxBody_CreateFromConfig,{pown,str})
+	
+end function
+
+public function orxBody_Delete(atom body)
+
+ return c_func(xorxBody_Delete,{body})
+	
+end function
+
+public function orxBody_GetName(atom body)
+
+ return c_func(xorxBody_GetName,{body})
+	
+end function
+
+public constant xorxBody_TestDefFlags = define_c_func(orx,"+orxBody_TestDefFlags",{C_POINTER,C_UINT},C_BOOL),
+				xorxBody_TestAllDefFlags = define_c_func(orx,"+orxBody_TestAllDefFlags",{C_POINTER,C_UINT},C_BOOL),
+				xorxBody_GetDefFlags = define_c_func(orx,"+orxBody_GetDefFlags",{C_POINTER,C_UINT},C_UINT)
+				
+public function orxBody_TestDefFlags(atom body,atom flags)
+
+ return c_func(xorxBody_TestDefFlags,{body,flags})
+	
+end function
+
+public function orxBody_TestAllDefFlags(atom body,atom flags)
+
+ return c_func(xorxBody_TestAllDefFlags,{body,flags})
+	
+end function
+
+public function orxBody_GetDefFlags(atom body,atom mask)
+
+ return c_func(xorxBody_GetDefFlags,{body,mask})
+	
+end function
+
+public constant xorxBody_AddPart = define_c_func(orx,"+orxBody_AddPart",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_AddPartFromConfig = define_c_func(orx,"+orxBody_AddPartFromConfig",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_RemovePartFromConfig = define_c_func(orx,"+orxBody_RemovePartFromConfig",{C_POINTER,C_POINTER},C_INT),
+				xorxBody_GetNextPart = define_c_func(orx,"+orxBody_GetNextPart",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetPartName = define_c_func(orx,"+orxBody_GetPartName",{C_POINTER},C_POINTER),
+				xorxBody_GetPartDef = define_c_func(orx,"+orxBody_GetPartDef",{C_POINTER},C_POINTER),
+				xorxBody_GetPartBody = define_c_func(orx,"+orxBody_GetPartBody",{C_POINTER},C_POINTER),
+				xorxBody_RemovePart = define_c_func(orx,"+orxBody_RemovePart",{C_POINTER},C_INT)
+				
+public function orxBody_AddPart(atom body,atom bodydef)
+
+ return c_func(xorxBody_AddPart,{body,bodydef})
+	
+end function
+
+public function orxBody_AddPartFromConfig(atom body,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxBody_AddPartFromConfig,{body,str})
+	
+end function
+
+public function orxBody_RemovePartFromConfig(atom body,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxBody_RemovePartFromConfig,{body,str})
+	
+end function
+
+public function orxBody_GetNextPart(atom body,atom bodypart)
+
+ return c_func(xorxBody_GetNextPart,{body,bodypart})
+	
+end function
+
+public function orxBody_GetPartName(atom bodypart)
+
+ return c_func(xorxBody_GetPartName,{bodypart})
+	
+end function
+
+public function orxBody_GetPartBody(atom bodypart)
+
+ return c_func(xorxBody_GetPartBody,{bodypart})
+	
+end function
+
+public function orxBody_RemovePart(atom bodypart)
+
+ return c_func(xorxBody_RemovePart,{bodypart})
+	
+end function
+
+public constant xorxBody_AddJoint = define_c_func(orx,"+orxBody_AddJoint",{C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_AddJointFromConfig = define_c_func(orx,"+orxBody_AddJointFromConfig",{C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetNextJoint = define_c_func(orx,"+orxBody_GetNextJoint",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetJointName = define_c_func(orx,"+orxBody_GetJointName",{C_POINTER},C_POINTER),
+				xorxBody_RemoveJoint = define_c_func(orx,"+orxBody_RemoveJoint",{C_POINTER},C_INT)
+				
+public function orxBody_AddJoint(atom srcbody,atom dstbody,atom jointdef)
+
+ return c_func(xorxBody_AddJoint,{srcbody,dstbody,jointdef})
+	
+end function
+
+public function orxBody_AddJointFromConfig(atom srcbody,atom dstbody,sequence id)
+
+ atom str = allocate_string(id,1)
+ 
+ return c_func(xorxBody_AddJointFromConfig,{srcbody,dstbody,str})
+	
+end function
+
+public function orxBody_GetNextJoint(atom body,atom bodyjoint)
+
+ return c_func(xorxBody_GetNextJoint,{body,bodyjoint})
+	
+end function
+
+public function orxBody_GetJointName(atom bodyjoint)
+
+ return c_func(xorxBody_GetJointName,{bodyjoint})
+	
+end function
+
+public function orxBody_RemoveJoint(atom bodyjoint)
+
+ return c_func(xorxBody_RemoveJoint,{bodyjoint})
+	
+end function
+
+public constant xorxBody_SetPosition = define_c_func(orx,"+orxBody_SetPosition",{C_POINTER,C_POINTER},C_INT),
+				xorxBody_SetRotation = define_c_func(orx,"+orxBody_SetRotation",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_SetScale = define_c_func(orx,"+orxBody_SetScale",{C_POINTER,C_POINTER},C_INT),
+				xorxBody_SetSpeed = define_c_func(orx,"+orxBody_SetSpeed",{C_POINTER,C_POINTER},C_INT),
+				xorxBody_SetAngularVelocity = define_c_func(orx,"+orxBody_SetAngularVelocity",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_SetCustomGravity = define_c_func(orx,"+orxBody_SetCustomGravity",{C_POINTER,C_POINTER},C_INT),
+				xorxBody_SetFixedRotation = define_c_func(orx,"+orxBody_SetFixedRotation",{C_POINTER,C_BOOL},C_INT),
+				xorxBody_SetDynamic = define_c_func(orx,"+orxBody_SetDynamic",{C_POINTER,C_BOOL},C_INT),
+				xorxBody_SetAllowMoving = define_c_func(orx,"+orxBody_SetAllowMoving",{C_POINTER,C_BOOL},C_INT),
+				xorxBody_GetPosition = define_c_func(orx,"+orxBody_GetPosition",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetRotation = define_c_func(orx,"+orxBody_GetRotation",{C_POINTER},C_FLOAT),
+				xorxBody_GetSpeed = define_c_func(orx,"+orxBody_GetSpeed",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetSpeedAtWorldPosition = define_c_func(orx,"+orxBody_GetSpeedAtWorldPosition",{C_POINTER,C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetAngularVelocity = define_c_func(orx,"+orxBody_GetAngularVelocity",{C_POINTER},C_FLOAT),
+				xorxBody_GetCustomGravity = define_c_func(orx,"+orxBody_GetCustomGravity",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxBody_SetPosition(atom body,atom pos)
+
+ return c_func(xorxBody_SetPosition,{body,pos})
+	
+end function
+
+public function orxBody_SetRotation(atom body,atom rot)
+
+ return c_func(xorxBody_SetRotation,{body,rot})
+	
+end function
+
+public function orxBody_SetScale(atom body,atom scale)
+
+ return c_func(xorxBody_SetScale,{body,scale})
+	
+end function
+
+public function orxBody_SetSpeed(atom body,atom spd)
+
+ return c_func(xorxBody_SetSpeed,{body,spd})
+	
+end function
+
+public function orxBody_SetAngularVelocity(atom body,atom vel)
+
+ return c_func(xorxBody_SetAngularVelocity,{body,vel})
+	
+end function
+
+public function orxBody_SetCustomGravity(atom body,atom grav)
+
+ return c_func(xorxBody_SetCustomGravity,{body,grav})
+	
+end function
+
+public function orxBody_SetFixedRotation(atom body,atom fixed)
+
+ return c_func(xorxBody_SetFixedRotation,{body,fixed})
+	
+end function
+
+public function orxBody_SetDynamic(atom body,atom dyn)
+
+ return c_func(xorxBody_SetDynamic,{body,dyn})
+	
+end function
+
+public function orxBody_SetAllowMoving(atom body,atom allow)
+
+ return c_func(xorxBody_SetAllowMoving,{body,allow})
+	
+end function
+
+public function orxBody_GetPosition(atom body,atom pos)
+
+ return c_func(xorxBody_GetPosition,{body,pos})
+	
+end function
+
+public function orxBody_GetRotation(atom body)
+
+ return c_func(xorxBody_GetRotation,{body})
+	
+end function
+
+public function orxBody_GetSpeed(atom body,atom spd)
+
+ return c_func(xorxBody_GetSpeed,{body,spd})
+	
+end function
+
+public function orxBody_GetSpeedAtWorldPosition(atom body,atom pos,atom spd)
+
+ return c_func(xorxBody_GetSpeedAtWorldPosition,{body,pos,spd})
+	
+end function
+
+public function orxBody_GetAngularVelocity(atom body)
+
+ return c_func(xorxBody_GetAngularVelocity,{body})
+	
+end function
+
+public function orxBody_GetCustomGravity(atom body,atom grav)
+
+ return c_func(xorxBody_GetCustomGravity,{body,grav})
+	
+end function
+
+public constant xorxBody_IsFixedRotation = define_c_func(orx,"+orxBody_IsFixedRotation",{C_POINTER},C_BOOL),
+				xorxBody_IsDynamic = define_c_func(orx,"+orxBody_IsDynamic",{C_POINTER},C_BOOL),
+				xorxBody_GetAllowMoving = define_c_func(orx,"+orxBody_GetAllowMoving",{C_POINTER},C_BOOL),
+				xorxBody_GetMass = define_c_func(orx,"+orxBody_GetMass",{C_POINTER},C_FLOAT),
+				xorxBody_GetMassCenter = define_c_func(orx,"+orxBody_GetMassCenter",{C_POINTER,C_POINTER},C_POINTER)
+				
+public function orxBody_IsFixedRotation(atom body)
+
+ return c_func(xorxBody_IsFixedRotation,{body})
+	
+end function
+
+public function orxBody_IsDynamic(atom body)
+
+ return c_func(xorxBody_IsDynamic,{body})
+	
+end function
+
+public function orxBody_GetAllowMoving(atom body)
+
+ return c_func(xorxBody_GetAllowMoving,{body})
+	
+end function
+
+public function orxBody_GetMass(atom body)
+
+ return c_func(xorxBody_GetMass,{body})
+	
+end function
+
+public function orxBody_GetMassCenter(atom body,atom mass)
+
+ return c_func(xorxBody_GetMassCenter,{body,mass})
+	
+end function
+
+public constant xorxBody_SetLinearDamping = define_c_func(orx,"+orxBody_SetLinearDamping",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_SetAngularDamping = define_c_func(orx,"+orxBody_SetAngularDamping",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_GetLinearDamping = define_c_func(orx,"+orxBody_GetLinearDamping",{C_POINTER},C_FLOAT),
+				xorxBody_GetAngularDamping = define_c_func(orx,"+orxBody_GetAngularDamping",{C_POINTER},C_FLOAT),
+				xorxBody_IsInside = define_c_func(orx,"+orxBody_IsInside",{C_POINTER,C_POINTER},C_BOOL)
+				
+public function orxBody_SetLinearDamping(atom body,atom damp)
+
+ return c_func(xorxBody_SetLinearDamping,{body,damp})
+	
+end function
+
+public function orxBody_SetAngularDamping(atom body,atom damp)
+
+ return c_func(xorxBody_SetAngularDamping,{body,damp})
+	
+end function
+
+public function orxBody_GetLinearDamping(atom body)
+
+ return c_func(xorxBody_GetLinearDamping,{body})
+	
+end function
+
+public function orxBody_GetAngularDamping(atom body)
+
+ return c_func(xorxBody_GetAngularDamping,{body})
+	
+end function
+
+public function orxBody_IsInside(atom body,atom pos)
+
+ return c_func(xorxBody_IsInside,{body,pos})
+	
+end function
+
+public constant xorxBody_ApplyTorque = define_c_func(orx,"+orxBody_ApplyTorque",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_ApplyForce = define_c_func(orx,"+orxBody_ApplyForce",{C_POINTER,C_POINTER,C_POINTER},C_INT),
+				xorxBody_ApplyImpulse = define_c_func(orx,"+orxBody_ApplyImpulse",{C_POINTER,C_POINTER,C_POINTER},C_INT)
+				
+public function orxBody_ApplyTorque(atom body,atom tor)
+
+ return c_func(xorxBody_ApplyTorque,{body,tor})
+	
+end function
+
+public function orxBody_ApplyForce(atom body,atom force,atom pt)
+
+ return c_func(xorxBody_ApplyForce,{body,force,pt})
+	
+end function
+
+public function orxBody_ApplyImpulse(atom body,atom imp,atom pt)
+
+ return c_func(xorxBody_ApplyImpulse,{body,imp,pt})
+	
+end function
+
+public constant xorxBody_SetPartSelfFlags = define_c_func(orx,"+orxBody_SetPartSelfFlags",{C_POINTER,C_UINT},C_INT),
+				xorxBody_SetPartCheckMask = define_c_func(orx,"+orxBody_SetPartCheckMask",{C_POINTER,C_UINT},C_INT),
+				xorxBody_GetPartSelfFlags = define_c_func(orx,"+orxBody_GetPartSelfFlags",{C_POINTER},C_UINT),
+				xorxBody_GetPartCheckMask = define_c_func(orx,"+orxBody_GetPartCheckMask",{C_POINTER},C_UINT),
+				xorxBody_SetPartSolid = define_c_func(orx,"+orxBody_SetPartSolid",{C_POINTER,C_BOOL},C_INT),
+				xorxBody_IsPartSolid = define_c_func(orx,"+orxBody_IsPartSolid",{C_POINTER},C_BOOL),
+				xorxBody_SetPartFriction = define_c_func(orx,"+orxBody_SetPartFriction",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_GetPartFriction = define_c_func(orx,"+orxBody_GetPartFriction",{C_POINTER},C_FLOAT),
+				xorxBody_SetPartRestitution = define_c_func(orx,"+orxBody_SetPartRestitution",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_GetPartRestitution = define_c_func(orx,"+orxBody_GetPartRestitution",{C_POINTER},C_FLOAT),
+				xorxBody_SetPartDensity = define_c_func(orx,"+orxBody_SetPartDensity",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_GetPartDensity = define_c_func(orx,"+orxBody_GetPartDensity",{C_POINTER},C_FLOAT),
+				xorxBody_IsInsidePart = define_c_func(orx,"+orxBody_IsInsidePart",{C_POINTER,C_POINTER},C_BOOL)
+				
+public function orxBody_SetPartSelfFlags(atom body,atom flags)
+
+ return c_func(xorxBody_SetPartSelfFlags,{body,flags})
+	
+end function
+
+public function orxBody_SetPartCheckMask(atom body,atom mask)
+
+ return c_func(xorxBody_SetPartCheckMask,{body,mask})
+	
+end function
+
+public function orxBody_GetPartSelfFlags(atom body)
+
+ return c_func(xorxBody_GetPartSelfFlags,{body})
+	
+end function
+
+public function orxBody_GetPartCheckMask(atom body)
+
+ return c_func(xorxBody_GetPartCheckMask,{body})
+	
+end function
+
+public function orxBody_SetPartSolid(atom body,atom solid)
+
+ return c_func(xorxBody_SetPartSolid,{body,solid})
+	
+end function
+
+public function orxBody_IsPartSolid(atom body)
+
+ return c_func(xorxBody_IsPartSolid,{body})
+	
+end function
+
+public function orxBody_SetPartFriction(atom body,atom fri)
+
+ return c_func(xorxBody_SetPartFriction,{body,fri})
+	
+end function
+
+public function orxBody_GetPartFriction(atom body)
+
+ return c_func(xorxBody_GetPartFriction,{body})
+	
+end function
+
+public function orxBody_SetPartRestitution(atom body,atom res)
+
+ return c_func(xorxBody_SetPartRestitution,{body,res})
+	
+end function
+
+public function orxBody_GetPartRestitution(atom body)
+
+ return c_func(xorxBody_GetPartRestitution,{body})
+	
+end function
+
+public function orxBody_SetPartDensity(atom body,atom den)
+
+ return c_func(xorxBody_SetPartDensity,{body,den})
+	
+end function
+
+public function orxBody_GetPartDensity(atom body)
+
+ return c_func(xorxBody_GetPartDensity,{body})
+	
+end function
+
+public function orxBody_IsInsidePart(atom body,atom pos)
+
+ return c_func(xorxBody_IsInsidePart,{body,pos})
+	
+end function
+
+public constant xorxBody_EnableMotor = define_c_func(orx,"+orxBody_EnableMotor",{C_POINTER,C_BOOL},C_INT),
+				xorxBody_SetJointMotorSpeed = define_c_func(orx,"+orxBody_SetJointMotorSpeed",{C_POINTER,C_FLOAT},C_INT),
+				xorxBody_SetJointMaxMotorTorque = define_c_func(orx,"+orxBody_SetJointMaxMotorTorque",{C_POINTER,C_FLOAT},C_INT)
+				
+public function orxBody_EnableMotor(atom joint,atom en)
+
+ return c_func(xorxBody_EnableMotor,{joint,en})
+	
+end function
+
+public function orxBody_SetJointMotorSpeed(atom joint,atom spd)
+
+ return c_func(xorxBody_SetJointMotorSpeed,{joint,spd})
+	
+end function
+
+public function orxBody_SetJointMaxMotorTorque(atom joint,atom maxtor)
+
+ return c_func(xorxBody_SetJointMaxMotorTorque,{joint,maxtor})
+	
+end function
+
+public constant xorxBody_GetJointReactionForce = define_c_func(orx,"+orxBody_GetJointReactionForce",{C_POINTER,C_POINTER},C_POINTER),
+				xorxBody_GetJointReactionTorque = define_c_func(orx,"+orxBody_GetJointReactionTorque",{C_POINTER},C_FLOAT)
+				
+public function orxBody_GetJointReactionForce(atom body,atom force)
+
+ return c_func(xorxBody_GetJointReactionForce,{body,force})
+	
+end function
+
+public function orxBody_GetJointReactionTorque(atom joint)
+
+ return c_func(xorxBody_GetJointReactionTorque,{joint})
+	
+end function
+
+public constant xorxBody_Raycast = define_c_func(orx,"+orxBody_Raycast",{C_POINTER,C_POINTER,C_UINT,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
+
+public function orxBody_Raycast(atom pvbegin,atom pvend,atom flags,atom mask,atom early,atom con,atom norm)
+
+ return c_func(xorxBody_Raycast,{pvbegin,pvend,flags,mask,early,con,norm})
+	
+end function
+
+public constant xorxBody_BoxPick = define_c_func(orx,"+orxBody_BoxPick",{C_POINTER,C_UINT,C_UINT,C_POINTER,C_UINT},C_UINT)
+
+public function orxBody_BoxPick(atom box,atom flags,atom mask,object bodylist,atom num)
+
+ return c_func(xorxBody_BoxPick,{box,flags,mask,bodylist,num})
+	
+end function
+
 -------------------------------------------------------------------------------------------
 --Orx inline Functions converted to Eu
 --WIP
@@ -9322,4 +10260,4 @@ public procedure orx_Execute(atom _u32NbParams,sequence _azParams,sequence _zIni
   orxDebug_Exit()
 	
 end procedure
-­9271.19
+­9693.42
