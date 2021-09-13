@@ -20,7 +20,7 @@ end ifdef
 
 ifdef WINDOWS then
 	orxname &= ".dll"
-elsifdef LINUX then
+elsifdef LINUX or FREEBSD then
 	orxname &= ".so"
 elsedef
 	error:crash( "Platform not supported" )
