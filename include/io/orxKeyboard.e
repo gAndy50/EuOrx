@@ -128,3 +128,54 @@ public enum type orxKEYBOARD_KEY
 
   orxKEYBOARD_KEY_NONE = orxENUM_NONE	
 end type
+
+constant xorxKeyboard_Setup = orxDefine("orxKeyboard_Setup",{}),
+	 xorxKeyboard_Init = orxDefine("orxKeyboard_Init",{},C_UINT),
+	 xorxKeyboard_Exit = orxDefine("orxKeyboard_Exit",{}),
+	 xorxKeyboard_IsKeyPressed = orxDefine("orxKeyboard_IsKeyPressed",{C_INT}, C_BOOL),
+	 xorxKeyboard_GetKeyDisplayName = orxDefine("orxKeyboard_GetKeyDisplayName",{C_INT}, C_STRING),
+	 xorxKeyboard_ReadKey = orxDefine("orxKeyboard_ReadKey",{},C_INT),
+	 xorxKeyboard_ReadString = orxDefine("orxKeyboard_ReadString",{},C_STRING),
+	 xorxKeyboard_ClearBuffer = orxDefine("orxKeyboard_ClearBuffer",{}),
+	 xorxKeyboard_GetKeyName = orxDefine("orxKeyboard_GetKeyName",{C_INT},C_STRING),
+	 xorxKeyboard_Show = orxDefine("orxKeyboard_Show",{C_BOOL},C_INT)
+
+public procedure orxKeyboard_Setup()
+    orxProc(xorxKeyboard_Setup,{})
+end procedure
+
+public function orxKeyboard_Init()
+  return orxFunc(xorxKeyboard_Init,{})
+end function
+
+public procedure orxKeyboard_Exit()
+   orxProc(xorxKeyboard_Exit,{})
+end procedure
+
+public function orxKeyboard_IsKeyPressed(orxKEYBOARD_KEY key)
+  return orxFunc(xorxKeyboard_IsKeyPressed,{key})
+end function
+
+public function orxKeyboard_GetKeyDisplayName(orxKEYBOARD_KEY key)
+  return orxFunc(xorxKeyboard_GetKeyDisplayName,{key})
+end function
+
+public function orxKeyboard_ReadKey()
+  return orxFunc(xorxKeyboard_ReadKey,{})
+end function
+
+public function orxKeyboard_ReadString()
+  return orxFunc(xorxKeyboard_ReadString,{})
+end function
+
+public procedure orxKeyboard_ClearBuffer()
+   orxProc(xorxKeyboard_ClearBuffer,{})
+end procedure
+
+public function orxKeyboard_GetKeyName(orxKEYBOARD_KEY key)
+  return orxFunc(xorxKeyboard_GetKeyName,{key})
+end function
+
+public function orxKeyboard_Show(integer bShow)
+  return orxFunc(xorxKeyboard_Show,{bShow})
+end function
