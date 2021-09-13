@@ -1,4 +1,4 @@
-# READ ME
+# README
 To build Orx using a 32-bit DLL using the CDECL calling convention. 
 
 Go to the orxDECL.h file. Look for "Windows" around line 249. A couple of lines down 254 you'll see "#define orxFASTCALL _fastcall."
