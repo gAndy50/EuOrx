@@ -1,3 +1,4 @@
+include std/machine.e
 public include "orxInclude.e"
 public include "math/orxVector.e"
 
@@ -15,7 +16,7 @@ public enum type orxMOUSE_BUTTON
  orxMOUSE_BUTTON_WHEEL_DOWN,
  orxMOUSE_BUTTON_NUMBER,
  
- orxMOUSE_BUTTON_NONE = orxENUM_NONE
+ orxMOUSE_BUTTON_NONE = 0xFFFFFFFF
 	
 end type
 
@@ -25,7 +26,7 @@ public enum type orxMOUSE_AXIS
 	orxMOUSE_AXIS_Y,
 	orxMOUSE_AXIS_NUMBER,
 	
-	orxMOUSE_AXIS_NONE = orxENUM_NONE
+	orxMOUSE_AXIS_NONE = 0xFFFFFFFF
 	
 end type
 
@@ -40,7 +41,7 @@ constant xorxMouse_Setup = orxDefine("orxMouse_Setup",{}),
 	 xorxMouse_GetPosition = orxDefine("orxMouse_GetPosition",{C_POINTER},C_POINTER),
 	 xorxMouse_IsButtonPressed = orxDefine("orxMouse_IsButtonPressed",{C_INT},C_BOOL),
 	 xorxMouse_GetMoveDelta = orxDefine("orxMouse_GetMoveDelta",{C_POINTER},C_POINTER),
-	 xorxMouse_GetWheelData = orxDefine("orxMouse_GetWheelData",{},C_FLOAT),
+	 xorxMouse_GetWheelDelta = orxDefine("orxMouse_GetWheelDelta",{},C_FLOAT),
 	 xorxMouse_ShowCursor = orxDefine("orxMouse_ShowCursor",{C_BOOL},C_INT),
 	 xorxMouse_Grab = orxDefine("orxMouse_Grab",{C_BOOL},C_INT),
 	 xorxMouse_SetCursor = orxDefine("orxMouse_SetCursor",{C_STRING,C_POINTER},C_INT),
@@ -60,22 +61,22 @@ public procedure orxMouse_Exit()
 end procedure
 
 public function orxMouse_SetPosition(object _pvPosition)
-  pvPosition = allocate_data(SIZEOF_ORXVECTOR)
-  return orxFunc(xorxMouse_SetPosition,{pvPosition})
+  _pvPosition = allocate_data(SIZEOF_ORXVECTOR)
+  return orxFunc(xorxMouse_SetPosition,{_pvPosition})
 end function
 
 public function orxMouse_GetPosition(object _pvPosition)
- pvPosition = allocate_data(SIZEOF_ORXVECTOR)
- return orxFunc(xorxMouse_GetPosition,{pvPosition})
+ _pvPosition = allocate_data(SIZEOF_ORXVECTOR)
+ return orxFunc(xorxMouse_GetPosition,{_pvPosition})
 end function
 
 public function orxMouse_IsButtonPressed(orxMOUSE_BUTTON _eButton)
-  return orxFunc(xorxMouse_IsButtonPressed,{eButton})
+  return orxFunc(xorxMouse_IsButtonPressed,{_eButton})
 end function
 
 public function orxMouse_GetMoveDelta(object _pvPosition)
-  pvPosition = allocate_data(SIZEOF_ORXVECTOR)
-  return orxFunc(xorxMouse_GetMoveDelta,{pvPosition})
+  _pvPosition = allocate_data(SIZEOF_ORXVECTOR)
+  return orxFunc(xorxMouse_GetMoveDelta,{_pvPosition})
 end function
 
 public function orxMouse_GetWheelDelta()
@@ -91,8 +92,8 @@ public function orxMouse_Grab(atom _bGrab)
 end function
 
 public function orxMouse_SetCursor(object _zName, object _pvPosition)
- pvPosition = allocate_data(SIZEOF_ORXVECTOR)
- return orxFunc(xorxMouse_SetCursor,{zName,pvPosition})
+ _pvPosition = allocate_data(SIZEOF_ORXVECTOR)
+ return orxFunc(xorxMouse_SetCursor,{_zName,_pvPosition})
 end function
 
 public function orxMouse_GetButtonName(orxMOUSE_BUTTON _eButton)
@@ -102,3 +103,4 @@ end function
 public function orxMouse_GetAxisName(orxMOUSE_AXIS _eAxis)
  return orxFunc(xorxMouse_GetAxisName,{_eAxis})
 end function
+­80.12
