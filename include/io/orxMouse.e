@@ -1,4 +1,5 @@
 public include "orxInclude.e"
+public include "math/orxVector.e"
 
 public enum type orxMOUSE_BUTTON
 
