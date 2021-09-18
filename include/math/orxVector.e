@@ -26,4 +26,37 @@ public constant
 	orxVECTOR_fV     =  8, -- orxFLOAT (4)
 	-- }
 	SIZEOF_ORXVECTOR = 12
+	
+public constant xorxVector_Bezier = orxDefine("orxVector_Bezier",{C_POINTER,C_POINTER,C_POINTER,C_POINTER,C_POINTER,C_FLOAT},C_POINTER)
 
+public function orxVector_Bezier(object _pvRes,object _pvPoint1,object _pvPoint2,object _pvPoint3,object _pvPoint4,atom _fT)
+
+ _pvPoint1 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint2 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint3 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint4 = allocate_data(SIZEOF_ORXVECTOR)
+ 
+ return orxFunc(xorxVector_Bezier,{_pvRes,_pvPoint1,_pvPoint2,_pvPoint3,_pvPoint4,fT})
+	
+end function
+
+public constant xorxVector_CatmullRom = orxDefine("orxVector_CatmullRom",{C_POINTER,C_POINTER,C_POINTER,C_POINTER,C_POINTER,C_FLOAT},C_POINTER)
+
+public function orxVector_CatmullRom(object _pvRes,object _pvPoint1,object _pvPoint2,object _pvPoint3,object _pvPoint4,atom fT)
+
+ _pvPoint1 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint2 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint3 = allocate_data(SIZEOF_ORXVECTOR)
+ _pvPoint4 = allocate_data(SIZEOF_ORXVECTOR)
+ 
+ return orxFunc(xorxVector_CatmullRom,{_pvRes,_pvPoint1,_pvPoint2,_pvPoint3,_pvPoint4,fT})
+	
+end function
+
+--Vector Constants
+public constant orxVECTOR_X = SIZEOF_ORXVECTOR,
+				orxVECTOR_Y = SIZEOF_ORXVECTOR,
+				orxVECTOR_Z = SIZEOF_ORXVECTOR,
+				orxVECTOR_0 = SIZEOF_ORXVECTOR,
+				orxVECTOR_1 = SIZEOF_ORXVECTOR
+­61.34
