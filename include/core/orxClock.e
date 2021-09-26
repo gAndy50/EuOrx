@@ -1,5 +1,6 @@
 
-public include "orxInclude.e"
+include "orxInclude.e"
+
 public include "core/orxSystem.e"
 public include "utils/orxString.e"
 
@@ -64,10 +65,10 @@ public enum type orxCLOCK_PRIORITY
 end type -- orxCLOCK_PRIORITY
 
 public constant
-	orxCLOCK_INFO_fTickSize      =  0, -- orxFLOAT (4 )
-	orxCLOCK_INFO_fDT            =  4, -- orxFLOAT (4 )
-	orxCLOCK_INFO_fTime          =  8, -- orxFLOAT (4 )
-	orxCLOCK_INFO_afModifierList = 12, -- orxFLOAT[orxCLOCK_MODIFIER_NUMBER] (12 )
+	orxCLOCK_INFO_fTickSize      =  0, -- orxFLOAT (4)
+	orxCLOCK_INFO_fDT            =  4, -- orxFLOAT (4)
+	orxCLOCK_INFO_fTime          =  8, -- orxFLOAT (4)
+	orxCLOCK_INFO_afModifierList = 12, -- orxFLOAT[orxCLOCK_MODIFIER_NUMBER] (12)
 	SIZEOF_ORXCLOCK_INFO         = 24
 
 public enum type orxCLOCK_EVENT
@@ -102,7 +103,7 @@ public function orxClock_Create( atom _fTickSize )
 end function
 
 public function orxClock_CreateFromConfig( object _zConfigID )
-	return orxFunc(xorxClock_CreateFromConfig, {_zConfigID} )
+	return orxFunc( xorxClock_CreateFromConfig, {_zConfigID} )
 end function
 
 public function orxClock_Delete( atom _pstClock )
@@ -152,7 +153,7 @@ end function
 public function orxClock_Register( atom _pstClock, object _pfnCallback, atom _pContext, atom _eModuleID, atom _ePriority, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_Register, {_pstClock,_pfnCallback,_pContext,_eModuleID,_ePriority} )
@@ -161,7 +162,7 @@ end function
 public function orxClock_Unregister( atom _pstClock, object _pfnCallback, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_Unregister, {_pstClock,_pfnCallback} )
@@ -170,7 +171,7 @@ end function
 public function orxClock_GetContext( atom _pstClock, object _pfnCallback, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_GetContext, {_pstClock,_pfnCallback} )
@@ -179,7 +180,7 @@ end function
 public function orxClock_SetContext( atom _pstClock, object _pfnCallback, atom _pContext, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_SetContext, {_pstClock,_pfnCallback,_pContext} )
@@ -200,7 +201,7 @@ end function
 public function orxClock_AddTimer( atom _pstClock, object _pfnCallback, atom _fDelay, atom _s32Repetition, atom _pContext, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_AddTimer, {_pstClock,_pfnCallback,_fDelay,_s32Repetition,_pContext} )
@@ -209,7 +210,7 @@ end function
 public function orxClock_RemoveTimer( atom _pstClock, object _pfnCallback, atom _fDelay, atom _pContext, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_RemoveTimer, {_pstClock,_pfnCallback,_fDelay,_pContext} )
@@ -218,7 +219,7 @@ end function
 public function orxClock_AddGlobalTimer( object _pfnCallback, atom _fDelay, atom _s32Repetition, atom _pContext, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_AddGlobalTimer, {_pfnCallback,_fDelay,_s32Repetition,_pContext} )
@@ -227,7 +228,7 @@ end function
 public function orxClock_RemoveGlobalTimer( atom _pfnCallback, atom _fDelay, atom _pContext, integer _ridCallback=routine_id(_pfnCallback) )
 
 	if sequence( _pfnCallback ) then
-		_pfnCallback = orxCallback( _ridCallback, _pfnCallback )
+		_pfnCallback = orxCallback( _pfnCallback, _ridCallback )
 	end if
 
 	return orxFunc( xorxClock_RemoveGlobalTimer, {_pfnCallback,_fDelay,_pContext} )

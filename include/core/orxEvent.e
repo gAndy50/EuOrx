@@ -2,8 +2,7 @@
 include std/machine.e
 include std/map.e
 include std/math.e
-
-public include "orxInclude.e"
+include "orxInclude.e"
 
 constant
 	xorxEvent_Setup                    = orxDefine( "orxEvent_Setup", {} ),
@@ -118,7 +117,7 @@ end procedure
 public function orxEvent_AddHandler( atom _eEventType, object _pfnEventHandler, integer _ridEventHandler=routine_id(_pfnEventHandler) )
 
 	if sequence( _pfnEventHandler ) then
-		_pfnEventHandler = orxCallback( _ridEventHandler, _pfnEventHandler )
+		_pfnEventHandler = orxCallback( _pfnEventHandler, _ridEventHandler )
 	end if
 
 	return orxFunc( xorxEvent_AddHandler, {_eEventType,_pfnEventHandler} )
@@ -127,7 +126,7 @@ end function
 public function orxEvent_AddHandlerWithContext( atom _eEventType, object _pfnEventHandler, atom _pContext, integer _ridEventHandler=routine_id(_pfnEventHandler) )
 
 	if sequence( _pfnEventHandler ) then
-		_pfnEventHandler = orxCallback( _ridEventHandler, _pfnEventHandler )
+		_pfnEventHandler = orxCallback( _pfnEventHandler, _ridEventHandler )
 	end if
 
 	return orxFunc( xorxEvent_AddHandlerWithContext, {_eEventType,_pfnEventHandler,_pContext} )
@@ -136,7 +135,7 @@ end function
 public function orxEvent_RemoveHandler( atom _eEventType, object _pfnEventHandler, integer _ridEventHandler=routine_id(_pfnEventHandler) )
 
 	if sequence( _pfnEventHandler ) then
-		_pfnEventHandler = orxCallback( _ridEventHandler, _pfnEventHandler )
+		_pfnEventHandler = orxCallback( _pfnEventHandler, _ridEventHandler )
 	end if
 
 	return orxFunc( xorxEvent_RemoveHandler, {_eEventType,_pfnEventHandler} )
@@ -145,7 +144,7 @@ end function
 public function orxEvent_RemoveHandlerWithContext( atom _eEventType, object _pfnEventHandler, atom _pContext, integer _ridEventHandler=routine_id(_pfnEventHandler) )
 
 	if sequence( _pfnEventHandler ) then
-		_pfnEventHandler = orxCallback( _ridEventHandler, _pfnEventHandler )
+		_pfnEventHandler = orxCallback( _pfnEventHandler, _ridEventHandler )
 	end if
 
 	return orxFunc( xorxEvent_RemoveHandlerWithContext, {_eEventType,_pfnEventHandler,_pContext} )
@@ -154,7 +153,7 @@ end function
 public function orxEvent_SetHandlerIDFlags( object _pfnEventHandler, atom _eEventType, atom _pContext, atom _u32AddIDFlags, atom _u32RemoveIDFlags, integer _ridEventHandler=routine_id(_pfnEventHandler) )
 
 	if sequence( _pfnEventHandler ) then
-		_pfnEventHandler = orxCallback( _ridEventHandler, _pfnEventHandler )
+		_pfnEventHandler = orxCallback( _pfnEventHandler, _ridEventHandler )
 	end if
 
 	return orxFunc( xorxEvent_SetHandlerIDFlags, {_pfnEventHandler,_eEventType,_pContext,_u32AddIDFlags,_u32RemoveIDFlags} )

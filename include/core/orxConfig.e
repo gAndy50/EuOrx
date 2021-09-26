@@ -1,14 +1,14 @@
 
 include std/machine.e
+include "orxInclude.e"
 
-public include "orxInclude.e"
 public include "math/orxVector.e"
 
 constant
 	xorxConfig_Setup            = orxDefine( "orxConfig_Setup", {} ),
 	xorxConfig_Init             = orxDefine( "orxConfig_Init", {}, C_UINT ),
 	xorxConfig_Exit             = orxDefine( "orxConfig_Exit", {} ),
-	xorxConfig_SetEncryptionKey = orxDefine( "orxConfig_SetEncryptionKey", {C_STRING},C_UINT ),
+	xorxConfig_SetEncryptionKey = orxDefine( "orxConfig_SetEncryptionKey", {C_STRING}, C_UINT ),
 	xorxConfig_GetEncryptionKey = orxDefine( "orxConfig_GetEncryptionKey", {}, C_STRING ),
 	xorxConfig_SetBootstrap     = orxDefine( "orxConfig_SetBootstrap", {C_POINTER}, C_UINT ),
 	xorxConfig_SetBaseName      = orxDefine( "orxConfig_SetBaseName", {C_STRING}, C_UINT ),
@@ -52,7 +52,7 @@ end function
 public function orxConfig_SetBootstrap( object _pfnBootstrap, integer _ridBootstrap=routine_id(_pfnBootstrap) )
 
 	if sequence( _pfnBootstrap ) then
-		_pfnBootstrap = orxCallback( _ridBootstrap, _pfnBootstrap )
+		_pfnBootstrap = orxCallback( _pfnBootstrap, _ridBootstrap )
 	end if
 
 	return orxFunc( xorxConfig_SetBootstrap, {_pfnBootstrap} )
@@ -94,7 +94,7 @@ end function
 public function orxConfig_Save( object _zFileName, atom _bUseEncryption, object _pfnSaveCallback, integer _ridSaveCallback=routine_id(_pfnSaveCallback) )
 
 	if sequence( _pfnSaveCallback ) then
-		_pfnSaveCallback = orxCallback( _ridSaveCallback, _pfnSaveCallback )
+		_pfnSaveCallback = orxCallback( _pfnSaveCallback, _ridSaveCallback )
 	end if
 
 	return orxFunc( xorxConfig_Save, {_zFileName,_bUseEncryption,_pfnSaveCallback} )

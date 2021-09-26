@@ -70,15 +70,15 @@ end type -- orxMODULE_ID
 public procedure orxModule_Register( atom _eModuleID, object _zModuleName, object _pfnSetup, object _pfnInit, object _pfnExit, integer _ridSetup=routine_id(_pfnSetup), integer _ridInit=routine_id(_pfnInit), integer _ridExit=routine_id(_pfnExit) )
 
 	if sequence( _pfnSetup ) then
-		_pfnSetup = orxCallback( _ridSetup, _pfnSetup )
+		_pfnSetup = orxCallback( _pfnSetup, _ridSetup )
 	end if
 
 	if sequence( _pfnInit ) then
-		_pfnInit = orxCallback( _ridInit, _pfnInit )
+		_pfnInit = orxCallback( _pfnInit, _ridInit )
 	end if
 
 	if sequence( _pfnExit ) then
-		_pfnExit = orxCallback( _ridExit, _pfnExit )
+		_pfnExit = orxCallback( _pfnExit, _ridExit )
 	end if
 
 	orxProc( xorxModule_Register, {_eModuleID,_zModuleName,_pfnSetup,_pfnInit,_pfnExit} )

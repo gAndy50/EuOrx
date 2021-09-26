@@ -1,8 +1,7 @@
 
 include std/filesys.e
 include std/sequence.e
-
-public include "orxInclude.e"
+include "orxInclude.e"
 
 constant
 	x_orxDebug_Init           = orxDefine( "_orxDebug_Init", {}, C_UINT ),
@@ -97,7 +96,7 @@ end ifdef
 	_orxDebug_SetFlags( orxDEBUG_KU32_STATIC_FLAG_TERMINAL, or_bits(
 		orxDEBUG_KU32_STATIC_FLAG_FILE,
 		orxDEBUG_KU32_STATIC_FLAG_CONSOLE
-	))
+	 ))
 	_orxDebug_Log( orxDEBUG_LEVEL_LOG, __FUNCTION__, __FILE__, __LINE__, STRING, ARGS )
 	_orxDebug_SetFlags( u32DebugFlags, orxDEBUG_KU32_STATIC_MASK_USER_ALL )
 
@@ -150,7 +149,7 @@ public procedure orxDEBUG_INIT()
 	atom versionNumeric = c_func( _orxSystem_GetVersionNumeric, {} )
 
 	integer _orxSystem_GetVersionFullString = machine_func( M_DEFINE_C, {liborx,"+orxSystem_GetVersionFullString",{},C_POINTER} )
-	atom versionString = c_func( _orxSystem_GetVersionFullString,{} )
+	atom versionString = c_func( _orxSystem_GetVersionFullString, {} )
 
 	if versionNumeric < __orxVERSION__ then
 
@@ -161,7 +160,7 @@ public procedure orxDEBUG_INIT()
 		orxANSI_KZ_COLOR_FG_RED & orxANSI_KZ_COLOR_BLINK_ON & " Problems will likely ensue!",
 		{peek_string(versionString),__orxVERSION_FULL_STRING__} )
 
-	elsif c_func( _orxSystem_GetVersionNumeric, {} ) > __orxVERSION__ then
+	elsif versionNumeric > __orxVERSION__ then
 
 		orxLOG( "The version of the runtime library [" & orxANSI_KZ_COLOR_FG_GREEN & "%s" &
 		orxANSI_KZ_COLOR_FG_DEFAULT & "] is " & orxANSI_KZ_COLOR_FG_YELLOW &  orxANSI_KZ_COLOR_BLINK_ON & "more recent" &
@@ -392,7 +391,7 @@ end procedure
 public procedure _orxDebug_SetLogCallback( object _pfnLogCallback, integer _ridLogCallback=routine_id(_pfnLogCallback) )
 
 	if sequence( _pfnLogCallback ) then
-		_pfnLogCallback = orxCallback( _ridLogCallback, _pfnLogCallback )
+		_pfnLogCallback = orxCallback( _pfnLogCallback, _ridLogCallback )
 	end if
 
 	orxProc( x_orxDebug_SetLogCallback, {_pfnLogCallback} )

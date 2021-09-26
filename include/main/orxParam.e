@@ -1,11 +1,10 @@
 
 include std/machine.e
-
-public include "orxInclude.e"
+include "orxInclude.e"
 
 constant
 	xorxParam_Setup       = orxDefine( "orxParam_Setup", {} ),
-	xorxParam_Init        = orxDefine( "orxParam_Init", {},C_UINT ),
+	xorxParam_Init        = orxDefine( "orxParam_Init", {}, C_UINT ),
 	xorxParam_Exit        = orxDefine( "orxParam_Exit", {} ),
 	xorxParam_Register    = orxDefine( "orxParam_Register", {C_POINTER} ,C_UINT ),
 	xorxParam_DisplayHelp = orxDefine( "orxParam_DisplayHelp", {} ,C_UINT ),
@@ -58,7 +57,7 @@ public function orxParam_Create( atom _u32Flags, object _zShortName, object _zLo
 	end if
 
 	if sequence( _pfnParser ) then
-		_pfnParser = orxCallback( _ridParser, _pfnParser )
+		_pfnParser = orxCallback( _pfnParser, _ridParser )
 	end if
 
 	atom _pstParam = allocate_data( SIZEOF_ORXPARAM )
