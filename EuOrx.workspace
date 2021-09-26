@@ -1,0 +1,165 @@
+<NotepadPlus>
+    <Project name="EuOrx">
+        <Folder name="include">
+            <Folder name="anim">
+                <File name="include\anim\orxAnim.e" />
+                <File name="include\anim\orxAnimPointer.e" />
+                <File name="include\anim\orxAnimSet.e" />
+            </Folder>
+            <Folder name="base">
+                <File name="include\base\orxDecl.e" />
+                <File name="include\base\orxModule.e" />
+                <File name="include\base\orxType.e" />
+                <File name="include\base\orxVersion.e" />
+            </Folder>
+            <Folder name="core">
+                <File name="include\core\orxClock.e" />
+                <File name="include\core\orxCommand.e" />
+                <File name="include\core\orxConfig.e" />
+                <File name="include\core\orxConsole.e" />
+                <File name="include\core\orxEvent.e" />
+                <File name="include\core\orxLocale.e" />
+                <File name="include\core\orxResource.e" />
+                <File name="include\core\orxSystem.e" />
+            </Folder>
+            <Folder name="debug">
+                <File name="include\debug\orxDebug.e" />
+                <File name="include\debug\orxFPS.e" />
+                <File name="include\debug\orxProfiler.e" />
+            </Folder>
+            <Folder name="display">
+                <File name="include\display\orxDisplay.e" />
+                <File name="include\display\orxFont.e" />
+                <File name="include\display\orxGraphic.e" />
+                <File name="include\display\orxScreenshot.e" />
+                <File name="include\display\orxText.e" />
+                <File name="include\display\orxTexture.e" />
+            </Folder>
+            <Folder name="io">
+                <File name="include\io\orxFile.e" />
+                <File name="include\io\orxInput.e" />
+                <File name="include\io\orxJoystick.e" />
+                <File name="include\io\orxKeyboard.e" />
+                <File name="include\io\orxMouse.e" />
+            </Folder>
+            <Folder name="main">
+                <File name="include\main\orxParam.e" />
+            </Folder>
+            <Folder name="math">
+                <File name="include\math\orxAABox.e" />
+                <File name="include\math\orxMath.e" />
+                <File name="include\math\orxOBox.e" />
+                <File name="include\math\orxVector.e" />
+            </Folder>
+            <Folder name="memory">
+                <File name="include\memory\orxBank.e" />
+                <File name="include\memory\orxMemory.e" />
+            </Folder>
+            <Folder name="object">
+                <File name="include\object\orxFrame.e" />
+                <File name="include\object\orxFX.e" />
+                <File name="include\object\orxFXPointer.e" />
+                <File name="include\object\orxObject.e" />
+                <File name="include\object\orxSpawner.e" />
+                <File name="include\object\orxStructure.e" />
+                <File name="include\object\orxTimeLine.e" />
+            </Folder>
+            <Folder name="physics">
+                <File name="include\physics\orxBody.e" />
+                <File name="include\physics\orxPhysics.e" />
+            </Folder>
+            <Folder name="plugin">
+                <Folder name="define">
+                    <File name="include\plugin\define\orxPlugin_CoreDefine.e" />
+                    <File name="include\plugin\define\orxPlugin_CoreID.e" />
+                    <File name="include\plugin\define\orxPlugin_Display.e" />
+                    <File name="include\plugin\define\orxPlugin_Joystick.e" />
+                    <File name="include\plugin\define\orxPlugin_Keyboard.e" />
+                    <File name="include\plugin\define\orxPlugin_Mouse.e" />
+                    <File name="include\plugin\define\orxPlugin_Physics.e" />
+                    <File name="include\plugin\define\orxPlugin_Render.e" />
+                    <File name="include\plugin\define\orxPlugin_SoundSystem.e" />
+                </Folder>
+                <File name="include\plugin\orxPlugin.e" />
+                <File name="include\plugin\orxPluginCore.e" />
+                <File name="include\plugin\orxPluginType.e" />
+                <File name="include\plugin\orxPluginUser.e" />
+            </Folder>
+            <Folder name="render">
+                <File name="include\render\orxCamera.e" />
+                <File name="include\render\orxRender.e" />
+                <File name="include\render\orxShader.e" />
+                <File name="include\render\orxShaderPointer.e" />
+                <File name="include\render\orxViewport.e" />
+            </Folder>
+            <Folder name="sound">
+                <File name="include\sound\orxSound.e" />
+                <File name="include\sound\orxSoundPointer.e" />
+                <File name="include\sound\orxSoundSystem.e" />
+            </Folder>
+            <Folder name="utils">
+                <File name="include\utils\orxHashTable.e" />
+                <File name="include\utils\orxLinkList.e" />
+                <File name="include\utils\orxString.e" />
+                <File name="include\utils\orxTree.e" />
+            </Folder>
+            <File name="include\orx.e" />
+            <File name="include\orxInclude.e" />
+            <File name="include\orxKernel.e" />
+            <File name="include\orxUtils.e" />
+        </Folder>
+        <Folder name="tutorial">
+            <Folder name="data">
+                <Folder name="anim">
+                    <File name="tutorial\data\anim\soldier_full.png" />
+                </Folder>
+                <Folder name="fx">
+                    <File name="tutorial\data\fx\shootfx_01.png" />
+                    <File name="tutorial\data\fx\shootfx_02.png" />
+                    <File name="tutorial\data\fx\shootfx_03.png" />
+                    <File name="tutorial\data\fx\shootfx_04.png" />
+                </Folder>
+                <Folder name="object">
+                    <File name="tutorial\data\object\+.png" />
+                    <File name="tutorial\data\object\boat1.png" />
+                    <File name="tutorial\data\object\boat2.png" />
+                    <File name="tutorial\data\object\box.png" />
+                    <File name="tutorial\data\object\bullet.png" />
+                    <File name="tutorial\data\object\customchinesefont.png" />
+                    <File name="tutorial\data\object\demoiselle.png" />
+                    <File name="tutorial\data\object\fuji.png" />
+                    <File name="tutorial\data\object\mask.png" />
+                    <File name="tutorial\data\object\orx.png" />
+                    <File name="tutorial\data\object\particle.png" />
+                    <File name="tutorial\data\object\particle2.png" />
+                    <File name="tutorial\data\object\penguinattack.png" />
+                    <File name="tutorial\data\object\soldier.png" />
+                    <File name="tutorial\data\object\x.png" />
+                </Folder>
+                <Folder name="scenery">
+                    <File name="tutorial\data\scenery\cloud.png" />
+                    <File name="tutorial\data\scenery\ground.png" />
+                    <File name="tutorial\data\scenery\sky.png" />
+                </Folder>
+                <Folder name="sound">
+                    <File name="tutorial\data\sound\bip.wav" />
+                    <File name="tutorial\data\sound\gbloop.ogg" />
+                </Folder>
+            </Folder>
+            <Folder name="src">
+                <File name="tutorial\src\01_Object.ex" />
+                <File name="tutorial\src\01_Object.ini" />
+                <File name="tutorial\src\eu.cfg" />
+            </Folder>
+        </Folder>
+        <Folder name="win32">
+            <File name="win32\README.md" />
+        </Folder>
+        <File name="eu.cfg" />
+        <File name="EuOrx.ew" />
+        <File name="flags.e" />
+        <File name="NOTES.md" />
+        <File name="orxStructs.e" />
+        <File name="README.md" />
+    </Project>
+</NotepadPlus>
