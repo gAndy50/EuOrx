@@ -1,5 +1,6 @@
 
-public include "orxInclude.e"
+include "orxInclude.e"
+
 public include "core/orxClock.e"
 public include "render/orxCamera.e"
 public include "render/orxShaderPointer.e"
@@ -12,25 +13,25 @@ constant
 	xorxViewport_Exit                 = orxDefine( "orxViewport_Exit", {} ),
 	xorxViewport_Create               = orxDefine( "orxViewport_Create", {}, C_POINTER ),
 	xorxViewport_CreateFromConfig     = orxDefine( "orxViewport_CreateFromConfig", {C_STRING}, C_POINTER ),
-	xorxViewport_Delete               = orxDefine( "orxViewport_Delete", {C_POINTER}, C_UINT),
+	xorxViewport_Delete               = orxDefine( "orxViewport_Delete", {C_POINTER}, C_UINT ),
 	xorxViewport_SetTextureList       = orxDefine( "orxViewport_SetTextureList", {C_POINTER,C_UINT,C_POINTER} ),
 	xorxViewport_GetTextureList       = orxDefine( "orxViewport_GetTextureList", {C_POINTER,C_UINT,C_POINTER}, C_UINT ),
-	xorxViewport_GetTextureCount      = orxDefine( "orxViewport_GetTextureCount", {C_POINTER}, C_UINT),
+	xorxViewport_GetTextureCount      = orxDefine( "orxViewport_GetTextureCount", {C_POINTER}, C_UINT ),
 	xorxViewport_SetBackgroundColor   = orxDefine( "orxViewport_SetBackgroundColor", {C_POINTER,C_POINTER}, C_UINT ),
 	xorxViewport_ClearBackgroundColor = orxDefine( "orxViewport_ClearBackgroundColor", {C_POINTER}, C_UINT ),
 	xorxViewport_HasBackgroundColor   = orxDefine( "orxViewport_HasBackgroundColor", {C_POINTER}, C_BOOL ),
-	xorxViewport_GetBackgroundColor   = orxDefine( "orxViewport_GetBackgroundColor", {C_POINTER,C_POINTER}, C_POINTER),
+	xorxViewport_GetBackgroundColor   = orxDefine( "orxViewport_GetBackgroundColor", {C_POINTER,C_POINTER}, C_POINTER ),
 	xorxViewport_Enable               = orxDefine( "orxViewport_Enable", {C_POINTER,C_BOOL} ),
-	xorxViewport_IsEnabled            = orxDefine( "orxViewport_IsEnabled", {C_POINTER}, C_BOOL),
+	xorxViewport_IsEnabled            = orxDefine( "orxViewport_IsEnabled", {C_POINTER}, C_BOOL ),
 	xorxViewport_SetCamera            = orxDefine( "orxViewport_SetCamera", {C_POINTER,C_POINTER} ),
-	xorxViewport_GetCamera            = orxDefine( "orxViewport_GetCamera", {C_POINTER}, C_POINTER),
+	xorxViewport_GetCamera            = orxDefine( "orxViewport_GetCamera", {C_POINTER}, C_POINTER ),
 	xorxViewport_AddShader            = orxDefine( "orxViewport_AddShader", {C_POINTER,C_STRING}, C_UINT ),
 	xorxViewport_RemoveShader         = orxDefine( "orxViewport_RemoveShader", {C_POINTER,C_STRING}, C_UINT ),
 	xorxViewport_EnableShader         = orxDefine( "orxViewport_EnableShader", {C_POINTER,C_BOOL} ),
 	xorxViewport_IsShaderEnabled      = orxDefine( "orxViewport_IsShaderEnabled", {C_POINTER}, C_BOOL ),
-	xorxViewport_GetShaderPointer     = orxDefine( "orxViewport_GetShaderPointer", {C_POINTER}, C_POINTER),
+	xorxViewport_GetShaderPointer     = orxDefine( "orxViewport_GetShaderPointer", {C_POINTER}, C_POINTER ),
 	xorxViewport_SetBlendMode         = orxDefine( "orxViewport_SetBlendMode", {C_POINTER,C_UINT}, C_UINT ),
-	xorxViewport_GetBlendMode         = orxDefine( "orxViewport_GetBlendMode", {C_POINTER}, C_UINT),
+	xorxViewport_GetBlendMode         = orxDefine( "orxViewport_GetBlendMode", {C_POINTER}, C_UINT ),
 	xorxViewport_SetPosition          = orxDefine( "orxViewport_SetPosition", {C_POINTER,C_FLOAT,C_FLOAT} ),
 	xorxViewport_SetRelativePosition  = orxDefine( "orxViewport_SetRelativePosition", {C_POINTER,C_UINT}, C_UINT ),
 	xorxViewport_GetPosition          = orxDefine( "orxViewport_GetPosition", {C_POINTER,C_POINTER,C_POINTER} ),
@@ -41,7 +42,7 @@ constant
 	xorxViewport_GetBox               = orxDefine( "orxViewport_GetBox", {C_POINTER,C_POINTER}, C_POINTER ),
 	xorxViewport_GetCorrectionRatio   = orxDefine( "orxViewport_GetCorrectionRatio", {C_POINTER}, C_FLOAT ),
 	xorxViewport_GetName              = orxDefine( "orxViewport_GetName", {C_POINTER}, C_STRING ),
-	xorxViewport_Get                  = orxDefine( "orxViewport_Get", {C_STRING}, C_POINTER)
+	xorxViewport_Get                  = orxDefine( "orxViewport_Get", {C_STRING}, C_POINTER )
 
 
 public constant orxVIEWPORT_KU32_FLAG_ALIGN_CENTER  = 0x00000000

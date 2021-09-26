@@ -1,9 +1,11 @@
 
-include std/machine.e
-
 public include "orxInclude.e"
 public include "orxKernel.e"
 public include "orxUtils.e"
+
+constant
+	M_ALLOC = 16,
+	M_FREE  = 17
 
 public integer sbStopByEvent = orxFALSE
 
@@ -11,8 +13,8 @@ public function orx_DefaultEventHandler( atom _pstEvent )
 
 	integer eResult = orxSTATUS_SUCCESS
 
-	orxASSERT( orxEvent_GetType(_pstEvent) = orxEVENT_TYPE_SYSTEM )
-	orxASSERT( orxEvent_GetID(_pstEvent) = orxSYSTEM_EVENT_CLOSE )
+	orxASSERT( orxEvent_GetType( _pstEvent ) = orxEVENT_TYPE_SYSTEM )
+	orxASSERT( orxEvent_GetID( _pstEvent ) = orxSYSTEM_EVENT_CLOSE )
 
 	sbStopByEvent = orxTRUE
 
@@ -33,26 +35,26 @@ public procedure orx_Execute( object _pfnInit, object _pfnRun, object _pfnExit, 
 
 	if atom( _azParams ) then
 		sequence cmd = command_line()
-		{_azParams,_u32NbParams} = {cmd[2..$],length(cmd)-1}
+		{_azParams,_u32NbParams} = {cmd[2..$],length( cmd )-1}
 	end if
 
 	orxDEBUG_INIT()
 
 	orxASSERT( _u32NbParams > 0 )
-	orxASSERT( not equal(_azParams, orxNULL) )
-	orxASSERT( not equal(_pfnRun, orxNULL) )
+	orxASSERT( not equal( _azParams, orxNULL ) )
+	orxASSERT( not equal( _pfnRun, orxNULL ) )
 
-	orxModule_Register( orxMODULE_ID_MAIN, "MAIN", "orx_MainSetup", _pfnInit, _pfnExit, routine_id("orx_MainSetup"), _ridInit, _ridExit )
+	orxModule_Register( orxMODULE_ID_MAIN, "MAIN", "orx_MainSetup", _pfnInit, _pfnExit, routine_id( "orx_MainSetup" ), _ridInit, _ridExit )
 
-	if orxParam_SetArgs(_u32NbParams, _azParams) != orxSTATUS_FAILURE then
+	if orxParam_SetArgs( _u32NbParams, _azParams ) != orxSTATUS_FAILURE then
 
-		if orxModule_Init(orxMODULE_ID_MAIN) != orxSTATUS_FAILURE then
+		if orxModule_Init( orxMODULE_ID_MAIN ) != orxSTATUS_FAILURE then
 
-			atom stPayload = allocate_data( SIZEOF_ORXSYSTEM_EVENT_PAYLOAD )
+			atom stPayload = machine_func( M_ALLOC, SIZEOF_ORXSYSTEM_EVENT_PAYLOAD )
 			integer eClockStatus, eMainStatus
 
 			orxEvent_AddHandler( orxEVENT_TYPE_SYSTEM, "orx_DefaultEventHandler" )
-			orxEvent_SetHandlerIDFlags( "orx_DefaultEventHandler", orxEVENT_TYPE_SYSTEM, orxNULL, orxEVENT_GET_FLAG(orxSYSTEM_EVENT_CLOSE), orxEVENT_KU32_MASK_ID_ALL )
+			orxEvent_SetHandlerIDFlags( "orx_DefaultEventHandler", orxEVENT_TYPE_SYSTEM, orxNULL, orxEVENT_GET_FLAG( orxSYSTEM_EVENT_CLOSE ), orxEVENT_KU32_MASK_ID_ALL )
 
 			orxMemory_Zero( stPayload, SIZEOF_ORXSYSTEM_EVENT_PAYLOAD )
 
@@ -69,13 +71,13 @@ public procedure orx_Execute( object _pfnInit, object _pfnRun, object _pfnExit, 
 				atom u32FrameCount = peek4u( stPayload + orxSYSTEM_EVENT_PAYLOAD_u32FrameCount )
 				poke4( stPayload + orxSYSTEM_EVENT_PAYLOAD_u32FrameCount, u32FrameCount+1 )
 
-				until ((sbStopByEvent != orxFALSE) or (eMainStatus = orxSTATUS_FAILURE) or (eClockStatus = orxSTATUS_FAILURE))
+				until ( ( sbStopByEvent != orxFALSE ) or ( eMainStatus = orxSTATUS_FAILURE ) or ( eClockStatus = orxSTATUS_FAILURE ))
 			end loop
 
 			orxEvent_RemoveHandler( orxEVENT_TYPE_SYSTEM, "orx_DefaultEventHandler" )
 
 			orxModule_Exit( orxMODULE_ID_MAIN )
-			free( stPayload )
+			machine_proc( M_FREE, stPayload )
 
 		end if
 

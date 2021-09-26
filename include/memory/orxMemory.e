@@ -1,7 +1,7 @@
 
 include std/machine.e
+include "orxInclude.e"
 
-public include "orxInclude.e"
 public include "debug/orxDebug.e"
 
 constant
@@ -12,7 +12,7 @@ constant
 	xorxMemory_Reallocate       = orxDefine( "orxMemory_Reallocate", {C_POINTER,C_UINT,C_UINT}, C_POINTER ),
 	xorxMemory_Free             = orxDefine( "orxMemory_Free", {C_POINTER} ),
 	xorxMemory_GetTypeName      = orxDefine( "orxMemory_GetTypeName", {C_UINT}, C_STRING ),
-	xorxMemory_GetCacheLineSize = orxDefine( "orxMemory_GetCacheLineSize", {},C_UINT )
+	xorxMemory_GetCacheLineSize = orxDefine( "orxMemory_GetCacheLineSize", {}, C_UINT )
 
 ifdef __orxDEBUG__ or __orxPROFILER__ then
 
@@ -101,8 +101,8 @@ public function orxMemory_Compare( atom _pMem1, atom _pMem2, atom _u32Size )
 	orxASSERT( _pMem1 != orxNULL )
 	orxASSERT( _pMem2 != orxNULL )
 
-	sequence _azMem1 = peek({ _pMem1, _u32Size })
-	sequence _azMem2 = peek({ _pMem2, _u32Size })
+	sequence _azMem1 = peek( { _pMem1, _u32Size } )
+	sequence _azMem2 = peek( { _pMem2, _u32Size } )
 
 	return compare( _azMem1, _azMem2 )
 end function
@@ -141,17 +141,17 @@ ifdef __orxDEBUG__ or __orxPROFILER__ then
 
 public function orxMemory_GetUsage( atom _eMemType )
 
-	atom _pu32Buffer = allocate_data( sizeof(C_UINT)*5 )
-	atom _pu32Count          = _pu32Buffer + sizeof(C_UINT)*0
-	atom _pu32PeakCount      = _pu32Buffer + sizeof(C_UINT)*1
-	atom _pu32Size           = _pu32Buffer + sizeof(C_UINT)*2
-	atom _pu32PeakSize       = _pu32Buffer + sizeof(C_UINT)*3
-	atom _pu32OperationCount = _pu32Buffer + sizeof(C_UINT)*4
+	atom _pu32Buffer = allocate_data( sizeof( C_UINT )*5 )
+	atom _pu32Count          = _pu32Buffer + sizeof( C_UINT )*0
+	atom _pu32PeakCount      = _pu32Buffer + sizeof( C_UINT )*1
+	atom _pu32Size           = _pu32Buffer + sizeof( C_UINT )*2
+	atom _pu32PeakSize       = _pu32Buffer + sizeof( C_UINT )*3
+	atom _pu32OperationCount = _pu32Buffer + sizeof( C_UINT )*4
 
 	object eResult = orxFunc( xorxMemory_GetUsage, {_eMemType,_pu32Count,_pu32PeakCount,_pu32Size,_pu32PeakSize,_pu32OperationCount} )
 
 	if eResult = orxSTATUS_SUCCESS then
-		eResult = peek4u({ _pu32Buffer, 5 })
+		eResult = peek4u( { _pu32Buffer, 5 } )
 	end if
 
 	free( _pu32Buffer )

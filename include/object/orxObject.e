@@ -1,5 +1,5 @@
 
-public include "orxInclude.e"
+include "orxInclude.e"
 
 public include "anim/orxAnimSet.e"
 public include "core/orxClock.e"

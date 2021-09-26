@@ -1,7 +1,6 @@
 
 include std/math.e
-
-public include "orxInclude.e"
+include "orxInclude.e"
 
 public include "io/orxJoystick.e"
 public include "io/orxKeyboard.e"

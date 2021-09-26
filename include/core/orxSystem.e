@@ -1,7 +1,7 @@
 
 include std/machine.e
+include "orxInclude.e"
 
-public include "orxInclude.e"
 public include "math/orxVector.e"
 
 constant
@@ -121,7 +121,7 @@ public function orxSystem_GetVersion( atom _pstVersion=orxNULL )
 		atom u32Minor =       peek4u( _pstVersion + orxVERSION_u32Minor )
 		atom u32Build =       peek4u( _pstVersion + orxVERSION_u32Build )
 
-		return {u32Major,u32Minor,u32Build,peek_string(zRelease)}
+		return {u32Major,u32Minor,u32Build,peek_string( zRelease )}
 
 	end if
 
@@ -129,11 +129,11 @@ public function orxSystem_GetVersion( atom _pstVersion=orxNULL )
 end function
 
 public function orxSystem_GetVersionString()
-	return orxFunc(xorxSystem_GetVersionString, {} )
+	return orxFunc( xorxSystem_GetVersionString, {} )
 end function
 
 public function orxSystem_GetVersionFullString()
-	return orxFunc(xorxSystem_GetVersionFullString, {} )
+	return orxFunc( xorxSystem_GetVersionFullString, {} )
 end function
 
 public function orxSystem_GetVersionNumeric()
