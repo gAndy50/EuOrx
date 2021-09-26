@@ -1,9 +1,14 @@
 
-include std/dll.e
-include std/machine.e
-include std/error.e
+constant NULL = 0
 
-public atom liborx = NULL
+constant
+	M_ALLOC      = 16,
+	M_FREE       = 17,
+	M_OPEN_DLL   = 50,
+	M_DEFINE_C   = 51,
+	M_CALL_BACK  = 52,
+	M_DEFINE_VAR = 56,
+	M_CRASH      = 67
 
 enum FNAME,FARGS,FTYPE
 enum CBADDR,CBNAME
@@ -23,10 +28,10 @@ ifdef WINDOWS then
 elsifdef LINUX or FREEBSD then
 	orxname &= ".so"
 elsedef
-	error:crash( "Platform not supported" )
+	machine_proc( M_CRASH, "Platform not supported" )
 end ifdef
 
-liborx = open_dll( orxname )
+public atom liborx = machine_func( M_OPEN_DLL, orxname )
 
 ifdef __orxDEBUG__ and __orxVERBOSE__ then
 	constant STDERR = 2
@@ -34,18 +39,20 @@ ifdef __orxDEBUG__ and __orxVERBOSE__ then
 end ifdef
 
 if liborx = NULL then
-	error:crash( "Library \"%s\" not found!", {orxname} )
+	machine_proc( M_CRASH, sprintf( "Library \"%s\" not found!", {orxname} ) )
 end if
 
-public constant 
-	C_BOOL    = dll:C_BOOL,
-	C_DOUBLE  = dll:C_DOUBLE,
-	C_FLOAT   = dll:C_FLOAT,
-	C_INT     = dll:C_INT,
-	C_LONG    = dll:C_LONG,
-	C_UINT    = dll:C_UINT,
-	C_POINTER = dll:C_POINTER,
-	C_STRING  = #04000004 -- special value, basically C_CHAR+C_POINTER
+public constant
+	C_INT     = 0x01000004,
+	C_LONG    = 0x01000008,
+	C_UINT    = 0x02000004,
+	C_POINTER = 0x03000001,
+	C_FLOAT   = 0x03000004,
+	C_DOUBLE  = 0x03000008,
+	C_BOOL    = C_INT
+
+public constant
+	C_STRING  = 0x04000004 -- special value, basically C_CHAR+C_POINTER
 
 public function orxDefine( sequence fname, object fargs=0, atom ftype=0 )
 
@@ -54,10 +61,10 @@ public function orxDefine( sequence fname, object fargs=0, atom ftype=0 )
 	if atom( fargs ) then
 		-- variable definition
 
-		atom ptr = define_c_var( liborx, fname )
+		atom ptr = machine_func( M_DEFINE_VAR, {liborx,fname} )
 
 		if ptr = NULL then
-			error:crash( "C variable \"%s\" not found in \"%s\"", {fname,orxname} )
+			machine_proc( M_CRASH, sprintf("C variable \"%s\" not found in \"%s\"", {fname,orxname}) )
 		end if
 
 		if fargs = C_STRING then
@@ -75,7 +82,7 @@ public function orxDefine( sequence fname, object fargs=0, atom ftype=0 )
 		-- function definition
 
 		-- fname,fargs,ftype are original function name/args/type
-		-- dname,dargs,dtype are "raw" values sent to define_c_func/proc
+		-- dname,dargs,dtype are "raw" values sent to M_DEFINE_C
 
 		sequence dname = fname
 		sequence dargs = fargs
@@ -97,20 +104,14 @@ public function orxDefine( sequence fname, object fargs=0, atom ftype=0 )
 			dtype = C_POINTER
 		end if
 
-		integer id = -1
-
-		if dtype = 0 then
-			id = define_c_proc( liborx, dname, dargs )
-		else
-			id = define_c_func( liborx, dname, dargs, dtype )
-		end if
+		integer id = machine_func( M_DEFINE_C, {liborx,dname,dargs,dtype} )
 
 		ifdef __orxDEBUG__ and __orxVERBOSE__ then
 			printf( STDERR, "%3d orxDefine(\"%s\")\n", {id,fname} )
 		end ifdef
 
 		if id = -1 then
-			error:crash( "C routine \"%s\" not found in \"%s\"", {fname,orxname} )
+			machine_proc( M_CRASH, sprintf("C routine \"%s\" not found in \"%s\"", {fname,orxname}) )
 		end if
 
 		while length( orxdefs ) < id do
@@ -128,14 +129,22 @@ public function orxDefine( sequence fname, object fargs=0, atom ftype=0 )
 	return result
 end function
 
-public function orxCallback( integer func, sequence name="" )
+public function orxCallback( sequence name, integer func=routine_id(name) )
 
 	if length( orxcbid ) < func then
 		orxcbid &= repeat( NULL, func-length(orxcbid) )
 	end if
 
+	object param = func
+
+	ifdef WINDOWS then
+		param = {'+',func}
+	end ifdef
+
+	atom addr = machine_func( M_CALL_BACK, {param} )
+
 	if atom( orxcbid[func] ) then
-		orxcbid[func] = {call_back(func),name}
+		orxcbid[func] = {addr,name}
 	end if
 
 	ifdef __orxDEBUG__ and __orxVERBOSE__ then
@@ -157,22 +166,24 @@ public function orxFunc( integer id, sequence pargs )
 
 	-- check argument lengths (c_func/proc does this)
 	if length( fargs ) != length( pargs ) then
-		error:crash( "C routine \"%s\" needs %d arguments, not %d", {fname,length(fargs),length(pargs)} )
+		machine_proc( M_CRASH, sprintf("C routine \"%s\" needs %d arguments, not %d", {fname,length(fargs),length(pargs)}) )
 	end if
 
 	-- allocate strings to memory
 	for i = 1 to length( fargs ) do
 		if fargs[i] = C_STRING and sequence( pargs[i] ) then
-			pargs[i] = allocate_string( pargs[i] )
+			sequence str = pargs[i]
+			pargs[i] = machine_func( M_ALLOC, length(str) )
+			poke( pargs[i], str )
+			poke( pargs[i]+length(str), NULL )
 			flist = append( flist, pargs[i] )
 		end if
 	end for
 
-	object result
+	object result = NULL
 
 	if ftype = 0 then
 		c_proc( id, pargs )
-		result = NULL
 	else
 		result = c_func( id, pargs )
 	end if
@@ -192,7 +203,7 @@ public function orxFunc( integer id, sequence pargs )
 
 	-- free allocated strings
 	for i = 1 to length( flist ) do
-		free( flist[i] )
+		machine_proc( M_FREE, flist[i] )
 	end for
 
 	return result
