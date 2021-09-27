@@ -1,6 +1,6 @@
 include "orxInclude.e"
-include "plugin/orxPluginCore.e"
-include "math/orxAABox.e"
+public include "plugin/orxPluginCore.e"
+public include "math/orxAABox.e"
 
 public constant orxBODY_DEF_KU32_FLAG_NONE = #00000000,
 				orxBODY_DEF_KU32_FLAG_2D = #00000001,
@@ -63,18 +63,18 @@ public constant ORXBODY_PART_DEF_VSCALE = 0,
 				ORXBODY_PART_DEF_U32VERTEXCOUNT = 28,
 				ORXBODY_PART_DEF_AVVERTICES = 28, --[orxBODY_PART_DEF_KU2_MESH_VERTEX_NUMBER]
 				--STEDGE
-				ORXBODY_PART_DEF_AVVERTICES = 28,
+				ORXBODY_PART_DEF_AVVERTICES_ = 28,
 				ORXBODY_PART_DEF_AVVERTICES_2 = 28, --ARRAY OF 2
 				ORXBODY_PART_DEF_VNEXT = 28,
 				ORXBODY_PART_DEF_BHASPREVIOUS = 28,
 				ORXBODY_PART_DEF_BHASNEXT = 28,
 				--STCHAIN
 				ORXBODY_PART_DEF_VPREVIOUS = 28,
-				ORXBODY_PART_DEF_VNEXT = 28,
-				ORXBODY_PART_DEF_AVVERTICES_P = 28 --VECTOR POINTER
+				ORXBODY_PART_DEF_VNEXT_ = 28,
+				ORXBODY_PART_DEF_AVVERTICES_P = 28, --VECTOR POINTER
 				ORXBODY_PART_DEF_BISLOOP = 28,
-				ORXBODY_PART_DEF_BHASPREVIOUS = 28,
-				ORXBODY_PART_DEF_BHASNEXT = 28,
+				ORXBODY_PART_DEF_BHASPREVIOUS_ = 28,
+				ORXBODY_PART_DEF_BHASNEXT_ = 28,
 				SIZEOF_ORXBODY_PART_DEF = 32,
 				$
 				
@@ -108,7 +108,7 @@ public constant ORXBODY_JOINT_DEF_VSRCSCALE = 0,
 				ORXBODY_JOINT_DEF_FSRCLENGTH = 16,
 				ORXBODY_JOINT_DEF_FMAXSRCLENGTH = 16,
 				ORXBODY_JOINT_DEF_DSTLENGTH = 16,
-				ORXBODY_JOINT_DEF_FMAXDSTLENGTH = 16
+				ORXBODY_JOINT_DEF_FMAXDSTLENGTH = 16,
 				--STPULLEY
 				--ORXBODY_JOINT_DEF_VTRANSLATIONAXIS = 16,
 				ORXBODY_JOINT_DEF_FFREQUENCY = 16,
@@ -119,7 +119,7 @@ public constant ORXBODY_JOINT_DEF_VSRCSCALE = 0,
 				ORXBODY_JOINT_DEF_FDEFAULTROATION = 16,
 				--STWELD
 				ORXBODY_JOINT_DEF_FMAXFORCE = 16,
-				ORXBODY_JOINT_DEF_FMAXTORQUE = 16
+				ORXBODY_JOINT_DEF_FMAXTORQUE = 16,
 				--STFRICTION
 				ORXBODY_JOINT_DEF_ZSRCJOINTNAME = 16,
 				ORXBODY_JOINT_DEF_ZDSTJOINTNAME = 16,
@@ -231,7 +231,7 @@ end procedure
 
 public function orxPhysics_CreatePart(object _pstBody,object _hUserData,object _BodyPartDef)
 
- _BodyPartDef = allocate_data(SIZEOF_ORXBODY_PART_DEF
+ _BodyPartDef = allocate_data(SIZEOF_ORXBODY_PART_DEF)
  
  return orxFunc(xorxPhysics_CreatePart,{_pstBody,_hUserData,_BodyPartDef})
 	
@@ -477,7 +477,7 @@ end function
 
 public function orxPhysics_SetPartCheckMask(object _pstBody,atom _Mask)
 
- return orxFunc(xorxPhysics_SetParCheckMask,{_pstBody,_Mask})
+ return orxFunc(xorxPhysics_SetPartCheckMask,{_pstBody,_Mask})
 	
 end function
 
@@ -590,7 +590,7 @@ public function orxPhysics_GetJointReactionTorque(object _pstJoint)
 	
 end function
 
-public constant xorxPhysics_Raycast = orxDefine("orxPhysics_Raycast",{C_POINTER,C_POINTER,C_UINt,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
+public constant xorxPhysics_Raycast = orxDefine("orxPhysics_Raycast",{C_POINTER,C_POINTER,C_UINT,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
 
 public function orxPhysics_Raycast(object _pvBegin,object _pvEnd, atom _SelfFlags,atom _CheckMask,atom _bEarlyExit,object _pvContact,object _pvNorm)
 
@@ -620,4 +620,4 @@ public procedure orxPhysics_EnableSimulation(atom _bEn)
  orxProc(xorxPhysics_EnableSimulation,{_bEn})
 	
 end procedure
-­620.45
+­8.11

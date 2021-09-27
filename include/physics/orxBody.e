@@ -1,7 +1,8 @@
 include "orxInclude.e"
 
-include "object/orxStructure.e"
-include "physics/orxPhysics.e"
+public include "object/orxStructure.e"
+public include "physics/orxPhysics.e"
+public include "math/orxAABox.e"
 
 public constant xorxBody_Setup = orxDefine("orxBody_Setup",{}),
 				xorxBody_Init = orxDefine("orxBody_Init",{},C_INT),
@@ -83,7 +84,7 @@ end function
 
 public constant xorxBody_AddPart = orxDefine("orxBody_AddPart",{C_POINTER,C_POINTER},C_POINTER),
 				xorxBody_AddPartFromConfig = orxDefine("orxBody_AddPartFromConfig",{C_POINTER,C_STRING},C_POINTER),
-				xorxBody_RemovePArtFromConfig = orxDefine("orxBody_RemovePartFromConfig",{C_POINTER,C_STRING},C_INT),
+				xorxBody_RemovePartFromConfig = orxDefine("orxBody_RemovePartFromConfig",{C_POINTER,C_STRING},C_INT),
 				xorxBody_GetNextPart = orxDefine("orxBody_GetNextPart",{C_POINTER,C_POINTER},C_POINTER),
 				xorxBody_GetPartName = orxDefine("orxBody_GetPartName",{C_POINTER},C_STRING),
 				xorxBody_GetPartDef = orxDefine("orxBody_GetPartDef",{C_POINTER},C_POINTER),
@@ -403,7 +404,7 @@ public function orxBody_ApplyImpulse(object _pstBody,object _pvImp,object _pvPt)
 end function
 
 public constant xorxBody_SetPartSelfFlags = orxDefine("orxBody_SetPartSelfFlags",{C_POINTER,C_UINT},C_INT),
-				xorxBody_SetParCheckMask = orxDefine("orxBody_SetPartCheckMask",{C_POINTER,C_UINT},C_INT),
+				xorxBody_SetPartCheckMask = orxDefine("orxBody_SetPartCheckMask",{C_POINTER,C_UINT},C_INT),
 				xorxBody_GetPartSelfFlags = orxDefine("orxBody_GetPartSelfFlags",{C_POINTER},C_UINT),
 				xorxBody_GetPartCheckMask = orxDefine("orxBody_GetPartCheckMask",{C_POINTER},C_UINT),
 				xorxBody_SetPartSolid = orxDefine("orxBody_SetPartSolid",{C_POINTER,C_BOOL},C_INT),
@@ -452,7 +453,7 @@ public function orxBody_IsPartSolid(object _pstBody)
 	
 end function
 
-public function orxBody_SetPartFriction(object _pstbody,atom _fFri)
+public function orxBody_SetPartFriction(object _pstBody,atom _fFri)
 
  return orxFunc(xorxBody_SetPartFriction,{_pstBody,_fFri})
 	
@@ -525,17 +526,17 @@ public function orxBody_GetJointReactionForce(object Joint,object _pvFor)
 
  _pvFor = allocate_data(SIZEOF_ORXVECTOR)
  
- return orxFunc(xorxBody_GetJointReactionForce,{Jint,_pvFor})
+ return orxFunc(xorxBody_GetJointReactionForce,{Joint,_pvFor})
 	
 end function
 
 public function orxBody_GetJointReactionTorque(object Joint)
 
- return orxFunc(xBody_GetJointReactionTorque,{Joint})
+ return orxFunc(xorxBody_GetJointReactionTorque,{Joint})
 	
 end function
 
-public constant xorxBody_Raycast = orxDefine("orxBody_Raycast",{C_POINTER,C_POINTER,C_UINt,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
+public constant xorxBody_Raycast = orxDefine("orxBody_Raycast",{C_POINTER,C_POINTER,C_UINT,C_UINT,C_BOOL,C_POINTER,C_POINTER},C_POINTER)
 
 public function orxBody_Raycast(object _pvBegin,object _pvEnd,atom _SelfFlags,atom _CheckMask,atom _Early,object _pvCon,object _pvNorm)
 
@@ -557,4 +558,4 @@ public function orxBody_BoxPick(object _pstBox,atom _Self,atom _Check,object _Bo
  return orxFunc(xorxBody_BoxPick,{_pstBox,_Self,_Check,_BodyList,_u32Num})
 	
 end function
-­557.74
+­5.32
